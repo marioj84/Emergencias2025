@@ -1,279 +1,347 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Quiz - Marca respuestas correctas/incorrectas</title>
-  <style>
-    :root{
-      --bg:#071124;
-      --text:#e6eef8;
-      --box:#0f2230;
-      --box-strong:rgba(255,255,255,0.03);
-      --green-bg: rgba(46,204,113,0.12);
-      --green-border: rgba(46,204,113,0.85);
-      --red-bg: rgba(231,76,60,0.10);
-      --red-border: rgba(231,76,60,0.85);
-    }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial;
-      padding: 20px;
-    }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Quiz - Mejorado</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#061422;
+    --card:#092433;
+    --card-2:#0c3040;
+    --muted:#a9c0d6;
+    --accent1:#4db6ac; /* verde-azulado */
+    --accent2:#4a90e2; /* azul */
+    --danger:#ff6b6b;
+    --success:#2ecc71;
+    --option-bg: rgba(255,255,255,0.02);
+    --option-border: rgba(255,255,255,0.04);
+    --glass: rgba(255,255,255,0.03);
+    --radius:12px;
+  }
+  *{box-sizing:border-box}
+  body {
+    margin:0;
+    min-height:100vh;
+    background: linear-gradient(180deg,#04101a 0%, #061422 60%);
+    color:#d6e9f6;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    padding:30px;
+    display:flex;
+    justify-content:center;
+  }
 
-    /* Pregunta */
-    .question {
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));
-      border-radius: 8px;
-      padding: 12px;
-      margin-bottom: 12px;
-      border: 1px solid rgba(255,255,255,0.03);
-    }
-    .question h4 { margin:0 0 10px 0; font-size:14px; color:var(--text); }
+  .wrap {
+    width:100%;
+    max-width:980px;
+  }
 
-    /* Opciones (cajas) */
-    .options { display:flex; flex-direction:column; gap:8px; }
-    .option-label {
-      display:flex;
-      align-items:center;
-      gap:8px;
-      padding:10px 12px;
-      border-radius:8px;
-      background: var(--box);
-      border: 1px solid rgba(255,255,255,0.03);
-      cursor:pointer;
-      transition: background .18s ease, border-color .18s ease, transform .05s ease;
-      user-select:none;
-    }
-    .option-label input { transform:translateY(1px); }
+  /* Header pequeño */
+  header#quiz-header {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    margin-bottom:18px;
+  }
+  header h1 {
+    font-size:16px;
+    margin:0;
+    font-weight:600;
+    color:#eaf6ff;
+    letter-spacing:0.2px;
+  }
+  header p { margin:0; color:var(--muted); font-size:13px; }
 
-    .option-label:hover { transform: translateY(-1px); }
+  /* Card pregunta */
+  .question {
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));
+    border-radius: var(--radius);
+    padding:14px;
+    margin-bottom:14px;
+    border: 1px solid var(--glass);
+    box-shadow: 0 6px 18px rgba(2,8,12,0.45);
+  }
+  .q-head {
+    display:flex;
+    gap:12px;
+    align-items:flex-start;
+    margin-bottom:12px;
+  }
+  .q-num {
+    background: linear-gradient(90deg,var(--accent1),var(--accent2));
+    color:#022428;
+    font-weight:700;
+    padding:6px 10px;
+    border-radius:9px;
+    font-size:13px;
+    min-width:44px;
+    text-align:center;
+    box-shadow: 0 6px 20px rgba(10,25,30,0.45);
+  }
+  .q-text { font-size:14px; line-height:1.35; color:#e9f5ff; font-weight:600; }
 
-    /* Estado correcto / incorrecto */
-    .option-label.correct {
-      background: var(--green-bg) !important;
-      border-color: var(--green-border) !important;
-      box-shadow: 0 4px 14px rgba(46,204,113,0.06);
-    }
-    .option-label.incorrect {
-      background: var(--red-bg) !important;
-      border-color: var(--red-border) !important;
-      box-shadow: 0 4px 14px rgba(231,76,60,0.06);
-    }
+  /* Opciones como cajas grandes */
+  .options { display:flex; flex-direction:column; gap:10px; margin-top:6px; }
+  .option-label {
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:14px 16px;
+    border-radius:10px;
+    background:var(--option-bg);
+    border: 1px solid var(--option-border);
+    cursor:pointer;
+    transition: transform .08s ease, box-shadow .14s ease, background .14s ease, border-color .14s ease;
+    user-select:none;
+  }
+  .option-label:hover { transform:translateY(-3px); box-shadow: 0 10px 28px rgba(2,8,12,0.45); }
 
-    /* Progreso (pequeño) */
-    #quiz-progress-container { margin-top: 10px; max-width: 900px; }
-    #quiz-progress-text { font-size:13px; margin-bottom:6px; opacity:0.95; }
-    #quiz-progress-bar { width:100%; height:12px; background: rgba(255,255,255,0.06); border-radius:8px; overflow:hidden; }
-    #quiz-progress-fill { height:100%; width:0%; transition: width 350ms ease; background: linear-gradient(90deg, rgba(46,204,113,0.9), rgba(52,152,219,0.9)); }
+  /* Radio personalizado */
+  .radio {
+    width:18px;
+    height:18px;
+    border-radius:50%;
+    border: 2px solid rgba(255,255,255,0.16);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex:0 0 18px;
+    background:transparent;
+  }
+  .radio::after {
+    content:"";
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:transparent;
+    transition: background .12s ease, transform .12s ease;
+    transform:scale(0.8);
+  }
+  .option-label input[type="radio"]{ display:none; }
 
-    /* Botones bloqueo/config */
-    #quiz-lock-toggle, #quiz-set-password {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.06);
-      color: var(--text);
-      padding: 6px 10px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 13px;
-      margin-top:8px;
-    }
-  </style>
+  /* Checked state - shown on label */
+  .option-label.selected { border-color: rgba(255,255,255,0.16); box-shadow: 0 6px 30px rgba(2,8,12,0.55); }
+  .option-label.selected .radio{ border-color: rgba(255,255,255,0.9); }
+  .option-label.selected .radio::after{ background:rgba(255,255,255,0.92); transform:scale(1); }
+
+  /* Correct / Incorrect */
+  .option-label.correct {
+    background: linear-gradient(90deg, rgba(46,204,113,0.08), rgba(52,152,219,0.03));
+    border-color: rgba(46,204,113,0.8);
+    box-shadow: 0 10px 30px rgba(46,204,113,0.06);
+  }
+  .option-label.correct .radio{ border-color: rgba(46,204,113,0.95); }
+  .option-label.correct .radio::after{ background: rgba(46,204,113,0.95); }
+
+  .option-label.incorrect {
+    background: linear-gradient(90deg, rgba(255,107,107,0.08), rgba(255,107,107,0.03));
+    border-color: rgba(255,107,107,0.9);
+    box-shadow: 0 10px 30px rgba(255,107,107,0.06);
+  }
+  .option-label.incorrect .radio{ border-color: rgba(255,107,107,0.95); }
+  .option-label.incorrect .radio::after{ background: rgba(255,107,107,0.95); }
+
+  /* Texto de opción */
+  .option-text { font-size:15px; color:#dff2ff; line-height:1.25; }
+
+  /* Progreso */
+  .progress-wrap {
+    margin-top:18px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.02));
+    padding:12px;
+    border-radius:10px;
+    border:1px solid var(--glass);
+    display:flex;
+    gap:12px;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .progress-left { display:flex; flex-direction:column; gap:6px; }
+  .progress-stats { font-size:13px; color:var(--muted); }
+  .bar {
+    width:420px;
+    max-width:62%;
+    height:12px;
+    background: rgba(255,255,255,0.04);
+    border-radius:10px;
+    overflow:hidden;
+    position:relative;
+    border:1px solid rgba(255,255,255,0.02);
+  }
+  .bar-fill {
+    height:100%;
+    width:0%;
+    transition: width 420ms cubic-bezier(.2,.9,.2,1);
+    background: linear-gradient(90deg, var(--accent1), var(--accent2));
+    box-shadow: 0 6px 18px rgba(74,144,226,0.12) inset;
+  }
+  .progress-percent {
+    font-weight:700;
+    color:#eaffff;
+    font-size:13px;
+    min-width:60px;
+    text-align:right;
+  }
+
+  /* Responsive */
+  @media (max-width:720px){
+    .bar{ max-width:50%; width:50%;}
+    .wrap{ padding:0 12px; }
+    .q-text{ font-size:13px; }
+  }
+</style>
 </head>
 <body>
+  <div class="wrap">
 
-  <!-- EJEMPLO: preguntas (pon aquí tus preguntas reales).
-       Importante: cada .question debe tener data-correct con la letra correcta (A,B,C...) -->
-  <div class="question" data-qid="11" data-correct="A">
-    <h4>11. CUANDO A UN TRIPULANTE LE CORRESPONDE UN DESCANSO MÍNIMO (10 HORAS), SE DEBERÁ CONSIDERAR UN TIEMPO ADICIONAL DE 45 MINUTOS PARA EFECTOS DE TRASLADO... </h4>
-    <div class="options">
-      <label class="option-label"><input type="radio" name="q11" value="A"> VERDADERO</label>
-      <label class="option-label"><input type="radio" name="q11" value="B"> FALSO</label>
+    <header id="quiz-header">
+      <div>
+        <h1>Quiz TAC - Práctica</h1>
+        <p>Progreso visual, respuestas con marcación inmediata.</p>
+      </div>
+      <div style="text-align:right">
+        <p style="margin:0;color:var(--muted);font-size:13px">Preguntas: <span id="total-qs">0</span></p>
+      </div>
+    </header>
+
+    <!-- EJEMPLO: Reemplaza cada .question con tu pregunta real y ajusta data-correct="A" -->
+    <div class="question" data-qid="11" data-correct="A">
+      <div class="q-head">
+        <div class="q-num">11</div>
+        <div class="q-text">CUANDO A UN TRIPULANTE LE CORRESPONDE UN DESCANSO MÍNIMO (10 HORAS), SE DEBERÁ CONSIDERAR UN TIEMPO ADICIONAL DE 45 MINUTOS PARA EFECTOS DE TRASLADO...</div>
+      </div>
+      <div class="options">
+        <label class="option-label"><div class="radio"></div><input type="radio" name="q11" value="A"><div class="option-text">VERDADERO</div></label>
+        <label class="option-label"><div class="radio"></div><input type="radio" name="q11" value="B"><div class="option-text">FALSO</div></label>
+      </div>
     </div>
+
+    <div class="question" data-qid="12" data-correct="B">
+      <div class="q-head">
+        <div class="q-num">12</div>
+        <div class="q-text">Otra pregunta de ejemplo</div>
+      </div>
+      <div class="options">
+        <label class="option-label"><div class="radio"></div><input type="radio" name="q12" value="A"><div class="option-text">Opción A</div></label>
+        <label class="option-label"><div class="radio"></div><input type="radio" name="q12" value="B"><div class="option-text">Opción B</div></label>
+        <label class="option-label"><div class="radio"></div><input type="radio" name="q12" value="C"><div class="option-text">Opción C</div></label>
+      </div>
+    </div>
+
+    <!-- PROGRESO -->
+    <div class="progress-wrap" aria-live="polite">
+      <div class="progress-left">
+        <div class="progress-stats" id="progress-text">Respondido: 0/0 — Falta: 0</div>
+        <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div class="bar-fill" id="bar-fill" style="width:0%"></div>
+        </div>
+      </div>
+      <div class="progress-percent" id="progress-percent">0%</div>
+    </div>
+
   </div>
 
-  <div class="question" data-qid="12" data-correct="B">
-    <h4>12. Otra pregunta de ejemplo</h4>
-    <div class="options">
-      <label class="option-label"><input type="radio" name="q12" value="A"> Opción A</label>
-      <label class="option-label"><input type="radio" name="q12" value="B"> Opción B</label>
-      <label class="option-label"><input type="radio" name="q12" value="C"> Opción C</label>
-    </div>
-  </div>
+<script>
+(function(){
+  const QUESTION_SELECTOR = '.question';
+  const RADIO_SELECTOR = 'input[type="radio"]';
+  const progressText = document.getElementById('progress-text');
+  const barFill = document.getElementById('bar-fill');
+  const progressPercent = document.getElementById('progress-percent');
+  const totalQsEl = document.getElementById('total-qs');
 
-  <!-- BARRA DE PROGRESO -->
-  <div id="quiz-progress-container" aria-live="polite" style="max-width:900px;">
-    <div id="quiz-progress-text">Respondido: 0/0 (0%) — Falta: 0</div>
-    <div id="quiz-progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-      <div id="quiz-progress-fill" style="width:0%"></div>
-    </div>
-
-    <div>
-      <button id="quiz-lock-toggle">🔒 Modo solo lectura (bloqueado)</button>
-      <button id="quiz-set-password" title="Configurar contraseña">⚙️ Set pass</button>
-    </div>
-  </div>
-
-  <script>
-    (function(){
-      // Selectores
-      const QUESTION_SELECTOR = '.question';
-      const OPTION_LABEL_SELECTOR = '.option-label';
-      const RADIO_SELECTOR = 'input[type="radio"]';
-
-      // Progreso UI
-      const progressText = document.getElementById('quiz-progress-text');
-      const progressFill = document.getElementById('quiz-progress-fill');
-
-      // Lock keys (misma lógica anterior)
-      const LOCK_KEY = 'quiz_edit_locked_v1';
-      const PASS_KEY = 'quiz_edit_pass_v1';
-      const lockToggleBtn = document.getElementById('quiz-lock-toggle');
-      const setPassBtn = document.getElementById('quiz-set-password');
-
-      /* ---------- Funciones de progreso ---------- */
-      function updateProgress(){
-        const questions = Array.from(document.querySelectorAll(QUESTION_SELECTOR));
-        const total = questions.length;
-        let answered = 0;
-        questions.forEach(q => {
-          const anyChecked = q.querySelector(RADIO_SELECTOR + ':checked');
-          if (anyChecked) answered++;
+  function init(){
+    const qs = Array.from(document.querySelectorAll(QUESTION_SELECTOR));
+    totalQsEl.innerText = qs.length;
+    qs.forEach(q => {
+      // marcar click en label -> marcar clase selected
+      q.querySelectorAll('label.option-label').forEach(lbl => {
+        const radio = lbl.querySelector('input[type="radio"]');
+        lbl.addEventListener('click', (ev)=>{
+          // si el radio ya estaba seleccionado, allow change (no bloqueo)
+          // actualizar estados visuales
+          q.querySelectorAll('label.option-label').forEach(l=> l.classList.remove('selected'));
+          lbl.classList.add('selected');
+          // marcar el input manualmente (por si el click vino en el container)
+          if (radio) radio.checked = true;
+          evaluateQuestion(q);
+          updateProgress();
         });
-        const pct = total === 0 ? 0 : Math.round((answered / total) * 10000) / 100;
-        const remaining = total - answered;
-        progressText.innerText = `Respondido: ${answered}/${total} (${pct}%) — Falta: ${remaining}`;
-        progressFill.style.width = pct + '%';
-        progressFill.parentElement.setAttribute('aria-valuenow', pct);
-      }
-
-      /* ---------- Marcación correcta/incorrecta ---------- */
-      function evaluateQuestion(questionEl){
-        // Q tiene data-correct (letra). Si no existe, no hace nada.
-        const correct = (questionEl.getAttribute('data-correct') || '').toString().trim().toUpperCase();
-        if (!correct) {
-          // limpiar marcas si antes existían
-          questionEl.querySelectorAll(OPTION_LABEL_SELECTOR).forEach(l => l.classList.remove('correct','incorrect'));
-          return;
-        }
-        const checked = questionEl.querySelector(RADIO_SELECTOR + ':checked');
-        // limpiar marcas anteriores
-        questionEl.querySelectorAll(OPTION_LABEL_SELECTOR).forEach(l => l.classList.remove('correct','incorrect'));
-        if (!checked) return;
-        const selectedVal = (checked.value || '').toString().trim().toUpperCase();
-
-        // marca la correcta siempre (si existe)
-        const correctInput = questionEl.querySelector(RADIO_SELECTOR + `[value="${correct}"]`);
-        if (correctInput) {
-          const correctLabel = correctInput.closest('label') || correctInput.parentElement;
-          if (correctLabel) correctLabel.classList.add('correct');
-        }
-
-        // si seleccionó incorrecta, marca la seleccionada como incorrecta
-        if (selectedVal !== correct) {
-          const selectedLabel = checked.closest('label') || checked.parentElement;
-          if (selectedLabel) selectedLabel.classList.add('incorrect');
-        } else {
-          // si seleccionó la correcta, la etiqueta seleccionada ya tiene .correct por la línea anterior
-          const selectedLabel = checked.closest('label') || checked.parentElement;
-          if (selectedLabel) selectedLabel.classList.add('correct');
-        }
-      }
-
-      /* Recalcula para todas las preguntas (útil en init y en import)*/
-      function evaluateAllQuestions(){
-        const questions = Array.from(document.querySelectorAll(QUESTION_SELECTOR));
-        questions.forEach(q => evaluateQuestion(q));
-      }
-
-      /* ---------- Evento: cuando cambia una opción ---------- */
-      document.addEventListener('change', function(e){
-        if (!e.target || !e.target.matches(RADIO_SELECTOR)) return;
-        const q = e.target.closest(QUESTION_SELECTOR);
-        if (!q) return;
-        evaluateQuestion(q);
-        updateProgress();
-      }, true);
-
-      /* Also update when page navigation buttons used (if exist) */
-      document.addEventListener('click', function(e){
-        const t = e.target;
-        if (!t) return;
-        const txt = (t.innerText || '').toLowerCase();
-        if (txt.includes('siguiente') || txt.includes('anterior') || txt.includes('next') || txt.includes('prev')) {
-          setTimeout(() => { evaluateAllQuestions(); updateProgress(); }, 250);
-        }
       });
 
-      /* ---------- Ocultar controles peligrosos (si quieres) ---------- */
-      function hideButtonsByText(texts) {
-        const buttons = Array.from(document.querySelectorAll('button, a, input[type="button"], .btn, .button'));
-        texts.forEach(txt => {
-          buttons.forEach(b => {
-            if (!b) return;
-            const label = (b.innerText || b.value || '').trim().toLowerCase();
-            if (label.includes(txt.toLowerCase())) {
-              b.style.display = 'none';
-              b.disabled = true;
-              b.onclick = (ev)=>{ ev.preventDefault(); ev.stopPropagation(); return false; };
-            }
-          });
+      // also allow keyboard change (listen to inputs)
+      q.querySelectorAll(RADIO_SELECTOR).forEach(r => {
+        r.addEventListener('change', ()=> {
+          q.querySelectorAll('label.option-label').forEach(l=> l.classList.remove('selected'));
+          const sel = r.closest('label.option-label'); if (sel) sel.classList.add('selected');
+          evaluateQuestion(q);
+          updateProgress();
         });
-      }
-      function hideModeControls(){
-        hideButtonsByText(['modo edición','modo edicion','editar','importar respuestas','importar']);
-      }
+      });
+    });
 
-      /* ---------- Lock simple (localStorage) ---------- */
-      function isLocked(){ const val = localStorage.getItem(LOCK_KEY); return val === null ? true : (val === '1'); }
-      function setLocked(val){ localStorage.setItem(LOCK_KEY, val ? '1' : '0'); renderLockBtn(); if (val) hideModeControls(); }
-      function renderLockBtn(){
-        if (!lockToggleBtn) return;
-        const locked = isLocked();
-        lockToggleBtn.textContent = locked ? '🔒 Modo solo lectura (bloqueado)' : '🔓 Edición ACTIVA';
-        lockToggleBtn.setAttribute('aria-pressed', (!locked).toString());
-      }
-      function promptToUnlock(){
-        const stored = localStorage.getItem(PASS_KEY);
-        if (!stored) { alert('No hay contraseña configurada. Usa "Set pass" para crearla.'); return; }
-        const pass = prompt('Introduce la contraseña para desbloquear la edición:');
-        if (pass === null) return;
-        if (pass === stored) { setLocked(false); alert('Edición desbloqueada.'); }
-        else alert('Contraseña incorrecta.');
-      }
-      function setPasswordFlow(){
-        const newPass = prompt('Define la contraseña de edición (guárdala en un lugar seguro).');
-        if (!newPass) return;
-        localStorage.setItem(PASS_KEY, newPass);
-        alert('Contraseña guardada en este navegador.');
-      }
+    // init progress
+    updateProgress();
+  }
 
-      /* ---------- Inicialización ---------- */
-      function init(){
-        evaluateAllQuestions();
-        updateProgress();
-        setInterval(updateProgress, 1000);
+  function evaluateQuestion(questionEl){
+    const correct = (questionEl.getAttribute('data-correct')||'').toString().trim().toUpperCase();
+    // limpiar
+    questionEl.querySelectorAll('.option-label').forEach(l=> l.classList.remove('correct','incorrect'));
+    if (!correct) return;
+    const checked = questionEl.querySelector(RADIO_SELECTOR + ':checked');
+    // marcar la correcta aunque no se haya seleccionado
+    const correctInput = questionEl.querySelector(RADIO_SELECTOR + `[value="${correct}"]`);
+    if (correctInput){
+      const corrLabel = correctInput.closest('label.option-label');
+      if (corrLabel) corrLabel.classList.add('correct');
+    }
+    if (!checked) return;
+    const selectedVal = (checked.value||'').toString().trim().toUpperCase();
+    if (selectedVal !== correct) {
+      const selLabel = checked.closest('label.option-label');
+      if (selLabel) selLabel.classList.add('incorrect');
+    } else {
+      // if selected correct, ensure it's visually correct
+      const selLabel = checked.closest('label.option-label');
+      if (selLabel) selLabel.classList.add('correct');
+    }
+  }
 
-        if (lockToggleBtn) {
-          lockToggleBtn.addEventListener('click', function(){
-            if (isLocked()) promptToUnlock();
-            else if (confirm('¿Quieres bloquear la edición?')) setLocked(true);
-          });
-        }
-        if (setPassBtn) setPassBtn.addEventListener('click', setPasswordFlow);
+  function updateProgress(){
+    const qs = Array.from(document.querySelectorAll(QUESTION_SELECTOR));
+    const total = qs.length;
+    let answered = 0;
+    qs.forEach(q => {
+      if (q.querySelector(RADIO_SELECTOR + ':checked')) answered++;
+    });
+    const pct = total === 0 ? 0 : Math.round((answered/total)*100);
+    const remaining = total - answered;
+    progressText.innerText = `Respondido: ${answered}/${total} — Falta: ${remaining}`;
+    barFill.style.width = pct + '%';
+    progressPercent.innerText = pct + '%';
+    // update accessible attr
+    const bar = barFill.parentElement;
+    if (bar) bar.setAttribute('aria-valuenow', pct);
+  }
 
-        // hide possible edit/import controls
-        hideModeControls();
-        renderLockBtn();
-      }
+  // inicializa al cargar
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else init();
 
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
-      } else init();
+  // si necesitas que las preguntas se evalúen cuando alguien use botones "Siguiente" externos,
+  // mantuve un listener que re-evalúa tras clicks en el documento (suavemente).
+  document.addEventListener('click', (e)=>{
+    const txt = (e.target.innerText || '').toLowerCase();
+    if (txt.includes('siguiente') || txt.includes('anterior') || txt.includes('next') || txt.includes('prev')) {
+      setTimeout(()=>{ document.querySelectorAll(QUESTION_SELECTOR).forEach(q=> evaluateQuestion(q)); updateProgress(); }, 220);
+    }
+  });
 
-    })();
-  </script>
-
+})();
+</script>
 </body>
 </html>
