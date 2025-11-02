@@ -1,9 +1,14 @@
 
 (() => {
-  // Elements
+  // ====== CONFIG ======
+  // Reemplaza esta URL con el despliegue de tu Apps Script (Web App) para guardar en Google Sheets:
+  const WEBAPP_URL = ""; // <-- pega aquí tu URL de implementación (https://script.google.com/macros/s/XXXXX/exec)
+
+  // ====== ELEMENTOS ======
   const welcome = document.getElementById('welcome');
   const firstNameInput = document.getElementById('first-name');
   const lastNameInput = document.getElementById('last-name');
+  const moduleSelect = document.getElementById('module-select');
   const startBtn = document.getElementById('btn-start');
   const welcomeError = document.getElementById('welcome-error');
 
@@ -22,31 +27,21 @@
   const confettiCanvas = document.getElementById('confetti');
   const ctx = confettiCanvas.getContext('2d');
 
-  // State
+  // ====== ESTADO ======
   let firstName = '';
   let lastName = '';
+  let selModule = 'SKY · Prueba 1';
+
   let baseQuestions = [];
   let questions = [];
   let current = 0;
-  let selections = []; // guarda el TEXTO seleccionado por pregunta
+  let selections = []; // TEXTO seleccionado por pregunta
   let startTime = 0;
   let timerId = null;
   let particles = [];
+  let attemptId = '';
 
-  // Resize confetti canvas
-  function sizeCanvas(){
-    confettiCanvas.width = window.innerWidth;
-    confettiCanvas.height = window.innerHeight;
-  }
-  sizeCanvas(); window.addEventListener('resize', sizeCanvas);
-
-  // Fetch questions
-  fetch('questions.json', {cache:'no-store'})
-    .then(r => r.ok ? r.json() : [])
-    .then(data => { baseQuestions = Array.isArray(data) ? data : []; })
-    .catch(() => {});
-
-  // Utilities
+  // ====== UTILIDADES ======
   function shuffle(arr){
     const a = arr.slice();
     for(let i=a.length-1;i>0;i--){
@@ -62,8 +57,24 @@
     const sec = s%60;
     return pad(m)+':'+pad(sec);
   }
+  function uid(){
+    return Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,8);
+  }
 
-  // Timer
+  // ====== CANVAS CONFETTI ======
+  function sizeCanvas(){
+    confettiCanvas.width = window.innerWidth;
+    confettiCanvas.height = window.innerHeight;
+  }
+  sizeCanvas(); window.addEventListener('resize', sizeCanvas);
+
+  // ====== CARGA PREGUNTAS ======
+  fetch('questions.json', {cache:'no-store'})
+    .then(r => r.ok ? r.json() : [])
+    .then(data => { baseQuestions = Array.isArray(data) ? data : []; })
+    .catch(() => {});
+
+  // ====== TIMER ======
   function startTimer(){
     startTime = Date.now();
     timerId = setInterval(() => {
@@ -75,10 +86,11 @@
     if (timerId) { clearInterval(timerId); timerId = null; }
   }
 
-  // Start
+  // ====== INICIO ======
   startBtn.addEventListener('click', () => {
     const f = (firstNameInput.value || '').trim();
     const l = (lastNameInput.value || '').trim();
+    selModule = moduleSelect.value || 'SKY · Prueba 1';
     if (!f || !l) { welcomeError.textContent = 'Por favor, escribe tu nombre y apellido.'; return; }
     firstName = f; lastName = l;
     welcome.classList.add('hidden');
@@ -96,7 +108,7 @@
     if (current < questions.length - 1) { current++; renderQuestion(); }
   });
 
-  // Keyboard navigation: 1-5 / A-E select; Enter next; Backspace prev
+  // Navegación por teclado
   window.addEventListener('keydown', (e) => {
     if (quizArea.classList.contains('hidden')) return;
     const key = e.key.toLowerCase();
@@ -121,6 +133,7 @@
     }
   });
 
+  // ====== QUIZ ======
   function startQuiz(shuffleQuestions=false){
     if (!baseQuestions.length){
       questions = [];
@@ -137,6 +150,7 @@
     questions = shuffleQuestions ? shuffle(baseQuestions) : baseQuestions.slice();
     current = 0;
     selections = new Array(questions.length).fill(null);
+    attemptId = uid();
     buildSteps();
     quizArea.classList.remove('hidden');
     startTimer();
@@ -152,7 +166,6 @@
       stepsEl.appendChild(s);
     }
   }
-
   function updateSteps(){
     const steps = Array.from(stepsEl.querySelectorAll('.step'));
     steps.forEach((el, i) => {
@@ -175,13 +188,10 @@
     const item = questions[current];
     questionTitle.textContent = item.question;
 
-    // fade-in
     const card = document.getElementById('question-card');
-    card.classList.remove('fade-in');
-    void card.offsetWidth; // reflow
-    card.classList.add('fade-in');
+    card.classList.remove('fade-in'); void card.offsetWidth; card.classList.add('fade-in');
 
-    // Shuffle options each render
+    // Mezcla opciones en cada render
     const entries = item.options.map((t, i) => ({ text: t, correct: i === item.answerIndex }));
     const mixed = shuffle(entries);
 
@@ -275,14 +285,11 @@
     const pct = Math.round((correct / total) * 100);
     const elapsed = Date.now()-startTime;
 
-    // confetti if >=80
     if (pct >= 80) fireConfetti();
 
-    // animated donut (stroke-dashoffset animation via CSS/JS)
     const radius = 80;
     const circumference = 2 * Math.PI * radius;
     const dash = (pct/100) * circumference;
-    const gap = circumference - dash;
 
     const summaryHTML = `
       <div class="summary">
@@ -295,7 +302,7 @@
           </defs>
           <circle cx="110" cy="110" r="${radius}" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="18"></circle>
           <circle id="donut-fill" cx="110" cy="110" r="${radius}" fill="none" stroke="url(#grad)" stroke-width="18"
-                  stroke-dasharray="${circumference}" stroke-dashoffset="${circumference}"
+                  stroke-dasharray="${2*Math.PI*radius}" stroke-dashoffset="${2*Math.PI*radius}"
                   transform="rotate(-90 110 110)" style="transition: stroke-dashoffset 900ms ease"></circle>
           <text x="110" y="105">${pct}%</text>
           <text x="110" y="135" style="font-size:12px; fill: var(--muted);">${correct}/${total} correctas</text>
@@ -317,24 +324,35 @@
     scoreEl.textContent = correct + ' / ' + total;
     updateSteps();
 
-    // animate donut after insertion
     requestAnimationFrame(() => {
       const donut = document.getElementById('donut-fill');
-      if (donut) donut.style.strokeDashoffset = String(circumference - dash);
+      if (donut) donut.style.strokeDashoffset = String(2*Math.PI*radius - dash);
+    });
+
+    // Envía a Google Sheets (Apps Script) si hay URL configurada
+    sendResultToSheets({
+      attemptId,
+      module: selModule,
+      firstName,
+      lastName,
+      scorePct: pct,
+      correct,
+      total,
+      elapsedMs: elapsed,
+      timestamp: new Date().toISOString()
     });
 
     document.getElementById('btn-download').addEventListener('click', () => downloadResultsXLSX(elapsed));
     document.getElementById('btn-retry').addEventListener('click', () => {
       welcome.classList.remove('hidden');
       quizArea.classList.add('hidden');
-      // keep name or clear? we'll keep for speed; user can edit
     });
   }
 
   function downloadResultsXLSX(elapsedMs){
     const rows = [
-      ['Nombre','Apellido','Tiempo total','',''],
-      [firstName,lastName,fmtTime(elapsedMs),'',''],
+      ['Módulo','Nombre','Apellido','Tiempo total','Intento'],
+      [selModule, firstName,lastName,fmtTime(elapsedMs),attemptId],
       [],
       ['N°','Pregunta','Respuesta seleccionada','Respuesta correcta','¿Acertó?']
     ];
@@ -351,7 +369,23 @@
     XLSX.writeFile(wb, 'resultado_quiz.xlsx');
   }
 
-  // confetti simple
+  // ====== ENVIAR A SHEETS (Apps Script) ======
+  async function sendResultToSheets(payload){
+    if (!WEBAPP_URL) return; // no configurado => no envía
+    try{
+      await fetch(WEBAPP_URL, {
+        method: 'POST',
+        mode: 'cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+    }catch(e){
+      // Silencioso para no romper UX
+      console.warn('No se pudo enviar a Sheets:', e);
+    }
+  }
+
+  // ====== CONFETTI ======
   function fireConfetti(){
     particles = [];
     const colors = ['#60a5fa','#1d4ed8','#93c5fd','#22c55e','#f59e0b'];
@@ -369,6 +403,7 @@
     let t = 0;
     const maxT = 200;
     function step(){
+      const ctx = confettiCanvas.getContext('2d');
       ctx.clearRect(0,0,confettiCanvas.width,confettiCanvas.height);
       particles.forEach(p => {
         p.x += p.vx;

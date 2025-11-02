@@ -56,9 +56,9 @@ h1{margin:0 0 4px;font-size:22px}
 .fade-in{animation:fade .35s ease both}
 @keyframes fade{from{opacity:0; transform:translateY(6px)}to{opacity:1; transform:translateY(0)}}
 
-.form-row{display:grid;grid-template-columns:1fr 1fr auto;gap:12px;align-items:end}
+.form-row{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:12px;align-items:end}
 .form-row label{display:flex;flex-direction:column;gap:6px;font-size:14px}
-.form-row input{border:1px solid var(--border);border-radius:10px;padding:12px;background:var(--bg-soft);color:var(--txt)}
+.form-row input, .form-row select{border:1px solid var(--border);border-radius:10px;padding:12px;background:var(--bg-soft);color:var(--txt)}
 .btn{display:inline-flex;align-items:center;gap:8px;border-radius:12px;padding:10px 14px;border:1px solid var(--border);cursor:pointer;background:var(--bg-soft);color:var(--txt);box-shadow:var(--shadow);transition:transform .12s ease}
 .btn:hover{transform:translateY(-1px)}
 .btn.primary{background:linear-gradient(90deg,var(--primary),var(--primary-2));border:0;color:white}
@@ -94,8 +94,7 @@ h1{margin:0 0 4px;font-size:22px}
 .donut{width:200px;height:200px}
 .donut text{font-family: inherit; fill: var(--txt); font-size: 18px; dominant-baseline: middle; text-anchor: middle;}
 
-@media(max-width:760px){
-  .container{padding:16px}
+@media(max-width:900px){
   .form-row{grid-template-columns:1fr;align-items:stretch}
   .actions{justify-content:flex-end}
 }

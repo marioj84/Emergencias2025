@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Quiz - Emergencias2025</title>
+  <title>Quiz - SKY · Prueba</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
@@ -15,7 +15,7 @@
   <canvas id="confetti"></canvas>
   <main class="container">
     <header class="top">
-      <h1><span class="logo">📘</span> Quiz — Emergencias2025</h1>
+      <h1><span class="logo">📘</span> SKY · Quiz</h1>
       <div class="meta">
         <div id="timer" class="chip">⏱ 00:00</div>
         <div id="theme-ind" class="chip" title="Tema automático">🌓</div>
@@ -24,8 +24,14 @@
 
     <!-- Pantalla inicial -->
     <section id="welcome" class="card glass fade-in">
-      <h2 class="mt0">Identifícate para comenzar</h2>
+      <h2 class="mt0">Selecciona módulo e identifícate</h2>
       <div class="form-row">
+        <label>
+          Módulo
+          <select id="module-select">
+            <option value="SKY · Prueba 1" selected>SKY · Prueba 1</option>
+          </select>
+        </label>
         <label>
           Nombre
           <input id="first-name" type="text" placeholder="Tu nombre" autocomplete="given-name">
