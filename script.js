@@ -1,4 +1,5 @@
 
+// Step 1: Progress bar only (precisa y visible)
 (() => {
   const fileInput = document.getElementById('file-input');
   const quizArea = document.getElementById('quiz-area');
@@ -9,7 +10,6 @@
   const progressBar = document.getElementById('progress-bar');
   const progressText = document.getElementById('progress-text');
   const resultEl = document.getElementById('result');
-  const liveStatsEl = document.getElementById('live-stats');
   const scoreEl = document.getElementById('score');
   const btnGenerateJSON = document.getElementById('btn-generate-json');
   const btnReset = document.getElementById('btn-reset');
@@ -17,22 +17,17 @@
   let questions = [];
   let current = 0;
   let correctCount = 0;
-  let incorrectCount = 0;
   let answered = false;
-  let selections = []; // track selected index per question
+  let selections = [];
 
-  // Try auto-load questions.json
-  fetch('questions.json', {cache:'no-store'}).then(r => {
-    if (!r.ok) throw new Error('no json');
+  // Intentar auto-cargar questions.json
+  fetch('questions.json', {cache:'no-store'}).then(r=>{
+    if(!r.ok) throw new Error('no json');
     return r.json();
-  }).then(data => {
+  }).then(data=>{
     questions = data || [];
-    if (questions.length) {
-      startQuiz();
-    }
-  }).catch(() => {
-    // no embedded json; wait for excel upload
-  });
+    if(questions.length){ startQuiz(); }
+  }).catch(()=>{});
 
   fileInput.addEventListener('change', (e) => {
     const f = e.target.files[0];
@@ -41,15 +36,13 @@
   });
 
   btnReset.addEventListener('click', () => {
-    questions = []; current = 0; correctCount = 0; incorrectCount = 0; answered = false;
+    questions = []; current = 0; correctCount = 0; answered = false;
     selections = [];
     quizArea.classList.add('hidden');
     resultEl.textContent = '';
     optionsEl.innerHTML = '';
-    progressBar.style.width = '0%';
-    progressText.textContent = 'Pregunta 0 / 0';
+    setProgress(0, 0, false);
     scoreEl.textContent = '0 / 0';
-    liveStatsEl.textContent = 'Correctas: 0 · Incorrectas: 0';
     fileInput.value = '';
   });
 
@@ -71,15 +64,22 @@
     if (!questions.length) return;
     if (current > 0) {
       current--;
-      // no recalc counts when solo navegamos atrás; solo mostrar estado
-      renderQuestion(true);
+      answered = selections[current] !== null;
+      renderQuestion();
     }
   });
 
   btnNext.addEventListener('click', () => {
     if (!questions.length) return;
     if (current >= questions.length - 1) {
-      showSummary();
+      // fin
+      setProgress(questions.length, questions.length, true);
+      questionTitle.textContent = 'Resumen';
+      optionsEl.innerHTML = '<div class="muted">Has respondido ' + correctCount + ' de ' + questions.length + ' preguntas.</div>';
+      resultEl.textContent = '';
+      btnNext.disabled = true;
+      btnPrev.disabled = true;
+      scoreEl.textContent = correctCount + ' / ' + questions.length;
       return;
     }
     current++;
@@ -87,8 +87,8 @@
     renderQuestion();
   });
 
-  function startQuiz() {
-    current = 0; correctCount = 0; incorrectCount = 0; answered = false;
+  function startQuiz(){
+    current = 0; correctCount = 0; answered = false;
     selections = new Array(questions.length).fill(null);
     quizArea.classList.remove('hidden');
     renderQuestion();
@@ -107,47 +107,46 @@
     reader.readAsArrayBuffer(file);
   }
 
-  function parseRows(rows) {
+  function parseRows(rows){
     const parsed = [];
-    for (let r=0;r<rows.length;r++){
+    for(let r=0;r<rows.length;r++){
       const row = rows[r];
-      if (!row || row.length===0) continue;
-      if (r === 0) {
+      if(!row || row.length===0) continue;
+      if(r===0){
         const first = String(row[0]||'').toLowerCase();
-        if (first.includes('preg') || first.includes('pregunta') || first.includes('question')) continue;
+        if(first.includes('preg')||first.includes('pregunta')||first.includes('question')) continue;
       }
       const q = String(row[0]||'').trim();
-      if (!q) continue;
+      if(!q) continue;
       const opts = [];
-      for (let i=1;i<=5;i++){
+      for(let i=1;i<=5;i++){
         const v = row[i];
-        if (v !== undefined && String(v).trim() !== '') opts.push(String(v).trim());
+        if(v !== undefined && String(v).trim()!=='') opts.push(String(v).trim());
       }
-      if (!opts.length) { opts.push('Opción 1'); opts.push('Opción 2'); }
+      if(!opts.length){ opts.push('Opción 1'); opts.push('Opción 2'); }
       const answerRaw = row[6] !== undefined ? String(row[6]).trim() : '';
       let answerIdx = 0;
-      if (answerRaw !== '') {
+      if(answerRaw!==''){
         const asNum = parseInt(answerRaw,10);
-        if (!Number.isNaN(asNum) && asNum >= 1 && asNum <= opts.length) {
-          answerIdx = asNum - 1;
-        } else {
+        if(!Number.isNaN(asNum) && asNum>=1 && asNum<=opts.length){ answerIdx = asNum-1; }
+        else{
           const letter = answerRaw.toUpperCase();
           const letters = ['A','B','C','D','E'];
           const li = letters.indexOf(letter);
-          if (li !== -1 && li < opts.length) answerIdx = li;
-          else {
+          if(li !== -1 && li < opts.length) answerIdx = li;
+          else{
             const matchIndex = opts.findIndex(o => o.toLowerCase() === answerRaw.toLowerCase());
             answerIdx = matchIndex !== -1 ? matchIndex : 0;
           }
         }
-      } else answerIdx = 0;
+      }else answerIdx = 0;
       parsed.push({question:q, options:opts, answerIndex:answerIdx});
     }
     questions = parsed;
     startQuiz();
   }
 
-  function renderQuestion(showAsAnswered = false) {
+  function renderQuestion(){
     const item = questions[current];
     questionTitle.textContent = item.question;
     optionsEl.innerHTML = '';
@@ -160,16 +159,19 @@
       btn.addEventListener('click', onSelect);
       optionsEl.appendChild(btn);
     });
-    updateProgress();
+
+    // progreso: si la pregunta actual ya fue respondida, considerarla completada
+    const completed = selections.filter(x => x !== null).length;
+    setProgress(completed, questions.length, false);
+
     resultEl.textContent = '';
     btnNext.disabled = true;
     btnPrev.disabled = current === 0;
     scoreEl.textContent = correctCount + ' / ' + questions.length;
-    liveStatsEl.textContent = 'Correctas: ' + correctCount + ' · Incorrectas: ' + incorrectCount;
 
-    // If already answered this one, show state
+    // si ya fue respondida, mostrar estado bloqueado
     const sel = selections[current];
-    if (showAsAnswered && sel !== null) {
+    if(sel !== null){
       const buttons = Array.from(optionsEl.querySelectorAll('.option-btn'));
       buttons.forEach(b => b.classList.add('disabled'));
       const correctIdx = item.answerIndex;
@@ -181,108 +183,45 @@
     }
   }
 
-  function onSelect(ev) {
-    if (answered) return;
+  function onSelect(ev){
+    if(answered) return;
     answered = true;
     const idx = Number(ev.currentTarget.dataset.index);
     const item = questions[current];
     selections[current] = idx;
+
+    // recalcular progreso (esta pregunta pasa a "completada")
+    const completed = selections.filter(x => x !== null).length;
+    setProgress(completed, questions.length, false);
+
     const buttons = Array.from(optionsEl.querySelectorAll('.option-btn'));
     buttons.forEach(b => b.classList.add('disabled'));
     const correctIdx = item.answerIndex;
-    const correctText = item.options[correctIdx] || '';
-
-    if (idx === correctIdx) {
+    if(idx === correctIdx){
       ev.currentTarget.classList.add('correct');
       resultEl.textContent = 'Correcto ✅';
       correctCount++;
-    } else {
+    }else{
       ev.currentTarget.classList.add('incorrect');
       const correctBtn = buttons.find(b => Number(b.dataset.index) === correctIdx);
       if (correctBtn) correctBtn.classList.add('correct');
-      resultEl.textContent = 'Incorrecto, la respuesta correcta es: ' + correctText;
-      incorrectCount++;
+      resultEl.textContent = 'Incorrecto — se muestra la respuesta correcta.';
     }
     btnNext.disabled = false;
-    btnNext.textContent = (current === questions.length - 1) ? 'Descargar preguntas, respuestas seleccionadas y respuesta correcta' : 'Siguiente';
     scoreEl.textContent = correctCount + ' / ' + questions.length;
-    liveStatsEl.textContent = 'Correctas: ' + correctCount + ' · Incorrectas: ' + incorrectCount;
+  }
 
-    // If last question, clicking will download results
-    if (current === questions.length - 1) {
-      btnNext.onclick = () => {
-        downloadResults();
-      };
-    } else {
-      // restore default handler
-      btnNext.onclick = null;
+  // Precisión del avance: completed/total -> barra y texto
+  function setProgress(completed, total, isFinal){
+    total = Math.max(1, total);
+    const pct = Math.round((completed/total)*100);
+    progressBar.style.width = pct + '%';
+    if(isFinal){
+      progressText.textContent = 'Finalizado';
+    }else{
+      // Mostrar pregunta actual indexada 1..N
+      const currentShown = Math.min(completed + 1, total);
+      progressText.textContent = 'Pregunta ' + currentShown + ' / ' + total;
     }
   }
-
-  function updateProgress() {
-    const pct = Math.round(((current) / Math.max(1, questions.length)) * 100);
-    progressBar.style.width = pct + '%';
-    progressText.textContent = 'Pregunta ' + (current + 1) + ' / ' + questions.length;
-  }
-
-  function showSummary() {
-    // Render donut summary replacing question card
-    const total = questions.length || 1;
-    const pct = Math.round((correctCount / total) * 100);
-    const radius = 70;
-    const circumference = 2 * Math.PI * radius;
-    const dash = (pct/100) * circumference;
-    const gap = circumference - dash;
-
-    const summaryHTML = `
-      <div class="summary">
-        <svg class="donut" viewBox="0 0 180 180" width="180" height="180" aria-label="Resumen">
-          <circle cx="90" cy="90" r="${radius}" fill="none" stroke="#e5e7eb" stroke-width="18"></circle>
-          <circle cx="90" cy="90" r="${radius}" fill="none" stroke="#10b981" stroke-width="18"
-                  stroke-dasharray="${dash} ${gap}" transform="rotate(-90 90 90)"></circle>
-          <text x="90" y="90">${pct}%</text>
-        </svg>
-        <div class="muted">Resumen: ${correctCount} correctas de ${total} preguntas</div>
-        <div class="muted">Incorrectas: ${incorrectCount}</div>
-        <button id="btn-download" class="btn">Descargar preguntas, respuestas seleccionadas y respuesta correcta</button>
-      </div>
-    `;
-    questionTitle.textContent = 'Resumen';
-    optionsEl.innerHTML = summaryHTML;
-    resultEl.textContent = '';
-    btnPrev.disabled = true;
-    btnNext.disabled = true;
-    progressBar.style.width = '100%';
-    progressText.textContent = 'Finalizado';
-    scoreEl.textContent = correctCount + ' / ' + total;
-    const dl = document.getElementById('btn-download');
-    dl.addEventListener('click', downloadResults);
-  }
-
-  function downloadResults() {
-    // build CSV with columns: #, Pregunta, Opción Seleccionada, Correcta, ¿Acertó?
-    const rows = [];
-    rows.push(['N°','Pregunta','Respuesta seleccionada','Respuesta correcta','¿Acertó?']);
-    questions.forEach((q, i) => {
-      const selIdx = selections[i];
-      const selText = selIdx !== null && selIdx >= 0 ? q.options[selIdx] : '';
-      const corText = q.options[q.answerIndex];
-      const ok = selIdx === q.answerIndex ? 'Sí' : 'No';
-      rows.push([i+1, q.question, selText, corText, ok]);
-    });
-    const csv = rows.map(r => r.map(v => {
-      const s = String(v).replace(/"/g,'""');
-      return `"${s}"`;
-    }).join(',')).join('\n');
-    const blob = new Blob([csv], {type:'text/csv;charset=utf-8'});
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'resultado_quiz.csv';
-    a.click();
-    URL.revokeObjectURL(url);
-  }
-
-  // Expose for debugging
-  window.__quiz = { get questions(){ return questions; }, get selections(){ return selections; } };
 })();
