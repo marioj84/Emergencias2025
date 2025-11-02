@@ -2,7 +2,7 @@
 (() => {
   // ====== CONFIG ======
   // Reemplaza esta URL con el despliegue de tu Apps Script (Web App) para guardar en Google Sheets:
-  const WEBAPP_URL = ""; // <-- pega aquí tu URL de implementación (https://script.google.com/macros/s/XXXXX/exec)
+  const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbymfQEX_oXWMxqY_aKAx3erV6Vtmoz-hGMtGe1IQswEOheNjTpXK2v6qAE2smctoouDeA/exec"; // <-- pega aquí tu URL de implementación (https://script.google.com/macros/s/XXXXX/exec)
 
   // ====== ELEMENTOS ======
   const welcome = document.getElementById('welcome');
