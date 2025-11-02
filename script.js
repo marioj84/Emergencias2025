@@ -24,7 +24,7 @@
   let current = 0;
   let selections = []; // índice seleccionado por pregunta
 
-  // Cargar preguntas desde questions.json (no hay controles de carga)
+  // Cargar preguntas desde questions.json
   fetch('questions.json', {cache:'no-store'})
     .then(r => r.ok ? r.json() : [])
     .then(data => { questions = data || []; })
@@ -46,25 +46,28 @@
   btnPrev.addEventListener('click', () => {
     if (current > 0) { current--; renderQuestion(true); }
   });
+
+  // Un solo handler para "Siguiente"/"Ver resultados" vía data-state
   btnNext.addEventListener('click', () => {
-    if (!questions.length) return;
-    // Si es la última y ya respondida, ver resultados
-    if (current >= questions.length - 1 && selections[current] !== null) {
+    if (btnNext.disabled) return;
+    const state = btnNext.getAttribute('data-state') || 'next';
+    if (state === 'results') {
       showSummary();
       return;
     }
     if (current < questions.length - 1) {
-      current++; renderQuestion();
+      current++;
+      renderQuestion();
     }
   });
 
   function startQuiz() {
     if (!questions.length) {
-      // Mensaje si no hay preguntas
       quizArea.classList.remove('hidden');
       questionTitle.textContent = 'No hay preguntas disponibles. Agrega un questions.json.';
       optionsEl.innerHTML = '';
-      btnNext.disabled = true; btnPrev.disabled = true;
+      setNextState('next', true, 'Siguiente');
+      btnPrev.disabled = true;
       progressBar.style.width = '0%'; progressText.textContent = 'Pregunta 0 / 0';
       scoreEl.textContent = '0 / 0'; liveStatsEl.textContent = 'Correctas: 0 · Incorrectas: 0';
       return;
@@ -104,7 +107,6 @@
     progressText.textContent = 'Pregunta ' + (current + 1) + ' / ' + questions.length;
 
     resultEl.textContent = '';
-    btnNext.disabled = true;
     btnPrev.disabled = current === 0;
 
     const {correct, incorrect} = counts();
@@ -113,6 +115,7 @@
 
     const sel = selections[current];
     if (sel !== null || showAsAnswered) {
+      // Mostrar estado bloqueado
       const buttons = Array.from(optionsEl.querySelectorAll('.option-btn'));
       buttons.forEach(b => b.classList.add('disabled'));
       const correctIdx = item.answerIndex;
@@ -122,26 +125,24 @@
         const selectedBtn = buttons.find(b => Number(b.dataset.index) === sel);
         if (selectedBtn) selectedBtn.classList.add('incorrect');
       }
-      btnNext.disabled = false;
+      // Habilitar siguiente
       if (current === questions.length - 1 && sel !== null) {
-        btnNext.textContent = 'Ver resultados';
-        btnNext.onclick = showSummary;
+        setNextState('results', false, 'Ver resultados');
       } else {
-        btnNext.textContent = 'Siguiente';
-        btnNext.onclick = null;
+        setNextState('next', false, 'Siguiente');
       }
     } else {
-      btnNext.textContent = 'Siguiente';
-      btnNext.onclick = null;
+      // Aún sin respuesta
+      setNextState('next', true, 'Siguiente');
     }
   }
 
   function onSelect(ev) {
     const idx = Number(ev.currentTarget.dataset.index);
-    const item = questions[current];
-    if (selections[current] !== null) return;
+    if (selections[current] !== null) return; // no recontar
     selections[current] = idx;
 
+    const item = questions[current];
     const buttons = Array.from(optionsEl.querySelectorAll('.option-btn'));
     buttons.forEach(b => b.classList.add('disabled'));
     const correctIdx = item.answerIndex;
@@ -161,14 +162,18 @@
     scoreEl.textContent = correct + ' / ' + questions.length;
     liveStatsEl.textContent = 'Correctas: ' + correct + ' · Incorrectas: ' + incorrect;
 
-    btnNext.disabled = false;
+    // Habilitar siguiente tras responder
     if (current === questions.length - 1) {
-      btnNext.textContent = 'Ver resultados';
-      btnNext.onclick = showSummary;
+      setNextState('results', false, 'Ver resultados');
     } else {
-      btnNext.textContent = 'Siguiente';
-      btnNext.onclick = null;
+      setNextState('next', false, 'Siguiente');
     }
+  }
+
+  function setNextState(state, disabled, label){
+    btnNext.setAttribute('data-state', state);
+    btnNext.disabled = !!disabled;
+    btnNext.textContent = label;
   }
 
   function showSummary() {
@@ -200,7 +205,7 @@
     optionsEl.innerHTML = summaryHTML;
     resultEl.textContent = '';
     btnPrev.disabled = true;
-    btnNext.disabled = true;
+    setNextState('next', true, 'Siguiente'); // bloquear el next en el resumen
     progressBar.style.width = '100%';
     progressText.textContent = 'Finalizado';
     scoreEl.textContent = correct + ' / ' + total;
@@ -209,13 +214,10 @@
     document.getElementById('btn-retry').addEventListener('click', () => {
       welcome.classList.remove('hidden');
       quizArea.classList.add('hidden');
-      // mantener nombre lleno si quieres, si no, limpiar:
-      // firstNameInput.value = ''; lastNameInput.value = '';
     });
   }
 
   function downloadResultsXLSX(){
-    // Primera fila con Nombre y Apellido
     const rows = [['Nombre', 'Apellido', '', '', ''], [firstName, lastName, '', '', ''], [],
                   ['N°','Pregunta','Respuesta seleccionada','Respuesta correcta','¿Acertó?']];
     selections.forEach((sel, i) => {
