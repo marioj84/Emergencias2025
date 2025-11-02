@@ -1,364 +1,279 @@
 <!doctype html>
 <html lang="es">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Quiz TAC - Práctica (Manual advance)</title>
-<style>
-  :root{font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;}
-  body{margin:0;background:#0f1724;color:#e6eef8;display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px}
-  .card{width:100%;max-width:900px;background:#0b1220;border-radius:12px;box-shadow:0 10px 30px rgba(2,6,23,.6);padding:20px}
-  header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;gap:12px;flex-wrap:wrap}
-  h1{font-size:1.1rem;margin:0}
-  .controls{display:flex;gap:8px;align-items:center}
-  .progress{font-size:.9rem;color:#9fb0c8}
-  .question{font-size:1.05rem;margin:12px 0;padding:12px;background:rgba(255,255,255,0.02);border-radius:8px}
-  .options{display:grid;grid-template-columns:1fr;gap:10px;margin-top:12px}
-  button.opt{padding:12px 14px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:inherit;font-size:1rem;cursor:pointer;text-align:left}
-  button.opt:disabled{opacity:.7;cursor:not-allowed}
-  .correct{outline:3px solid rgba(34,197,94,0.15);background:rgba(34,197,94,0.06)}
-  .wrong{outline:3px solid rgba(239,68,68,0.12);background:rgba(239,68,68,0.04)}
-  .feedback{margin-top:12px;font-weight:600}
-  .footer{display:flex;justify-content:space-between;align-items:center;margin-top:16px}
-  .small{font-size:.9rem;color:#9fb0c8}
-  .summary{text-align:center}
-  .btn{background:#1f6feb;border:none;padding:8px 12px;border-radius:8px;color:white;cursor:pointer}
-  .btn.secondary{background:transparent;border:1px solid rgba(255,255,255,0.06)}
-  .btn.ghost{background:transparent;border:none;color:#9fb0c8}
-  .btn[disabled]{opacity:0.6;cursor:not-allowed}
-  .admin-panel{margin-top:12px;background:rgba(255,255,255,0.02);padding:10px;border-radius:8px}
-  .admin-row{display:flex;gap:8px;align-items:center;padding:6px 0;border-bottom:1px dashed rgba(255,255,255,0.03)}
-  .admin-row:last-child{border-bottom:none}
-  .label-chip{background:rgba(255,255,255,0.04);padding:4px 8px;border-radius:6px;font-size:.9rem}
-  input[type=file]{display:none}
-  .hint{font-size:.85rem;color:#9fb0c8}
-  @media(max-width:680px){.card{padding:14px}}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Quiz - Marca respuestas correctas/incorrectas</title>
+  <style>
+    :root{
+      --bg:#071124;
+      --text:#e6eef8;
+      --box:#0f2230;
+      --box-strong:rgba(255,255,255,0.03);
+      --green-bg: rgba(46,204,113,0.12);
+      --green-border: rgba(46,204,113,0.85);
+      --red-bg: rgba(231,76,60,0.10);
+      --red-border: rgba(231,76,60,0.85);
+    }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial;
+      padding: 20px;
+    }
+
+    /* Pregunta */
+    .question {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 12px;
+      border: 1px solid rgba(255,255,255,0.03);
+    }
+    .question h4 { margin:0 0 10px 0; font-size:14px; color:var(--text); }
+
+    /* Opciones (cajas) */
+    .options { display:flex; flex-direction:column; gap:8px; }
+    .option-label {
+      display:flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 12px;
+      border-radius:8px;
+      background: var(--box);
+      border: 1px solid rgba(255,255,255,0.03);
+      cursor:pointer;
+      transition: background .18s ease, border-color .18s ease, transform .05s ease;
+      user-select:none;
+    }
+    .option-label input { transform:translateY(1px); }
+
+    .option-label:hover { transform: translateY(-1px); }
+
+    /* Estado correcto / incorrecto */
+    .option-label.correct {
+      background: var(--green-bg) !important;
+      border-color: var(--green-border) !important;
+      box-shadow: 0 4px 14px rgba(46,204,113,0.06);
+    }
+    .option-label.incorrect {
+      background: var(--red-bg) !important;
+      border-color: var(--red-border) !important;
+      box-shadow: 0 4px 14px rgba(231,76,60,0.06);
+    }
+
+    /* Progreso (pequeño) */
+    #quiz-progress-container { margin-top: 10px; max-width: 900px; }
+    #quiz-progress-text { font-size:13px; margin-bottom:6px; opacity:0.95; }
+    #quiz-progress-bar { width:100%; height:12px; background: rgba(255,255,255,0.06); border-radius:8px; overflow:hidden; }
+    #quiz-progress-fill { height:100%; width:0%; transition: width 350ms ease; background: linear-gradient(90deg, rgba(46,204,113,0.9), rgba(52,152,219,0.9)); }
+
+    /* Botones bloqueo/config */
+    #quiz-lock-toggle, #quiz-set-password {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      color: var(--text);
+      padding: 6px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+      margin-top:8px;
+    }
+  </style>
 </head>
 <body>
-  <div class="card" id="app">
-    <header>
-      <div style="display:flex;flex-direction:column">
-        <h1>Quiz TAC - Práctica</h1>
-        <div class="hint">Carga: <span id="loaded-count">0</span> preguntas — Modo: <span id="mode-label">Usuario</span></div>
-      </div>
-      <div class="controls">
-        <div class="progress" id="progress">Cargando...</div>
-        <button class="btn secondary" id="toggle-mode">Modo edición</button>
-        <button class="btn" id="export-answers" title="Exportar respuestas configuradas">Exportar respuestas</button>
-        <label class="btn secondary" for="importFile" style="cursor:pointer;margin-left:6px">Importar respuestas</label>
-        <input id="importFile" type="file" accept="application/json">
-      </div>
-    </header>
 
-    <main id="main">
-      <div id="question-area">
-        <div class="question" id="qtext">...</div>
-        <div class="options" id="opts"></div>
-        <div class="feedback" id="feedback"></div>
-      </div>
-
-      <div class="summary" id="summary" style="display:none">
-        <h2 id="final-title">¡Terminaste!</h2>
-        <p id="final-score"></p>
-        <button class="btn" id="restart">Volver a empezar</button>
-      </div>
-
-      <div class="admin-panel" id="admin" style="display:none">
-        <strong>Edición rápida de respuestas</strong>
-        <div id="admin-list" style="margin-top:8px;max-height:320px;overflow:auto"></div>
-        <div style="margin-top:8px;display:flex;gap:8px">
-          <button class="btn" id="save-admin">Guardar en Local</button>
-          <button class="btn secondary" id="clear-admin">Borrar guardado</button>
-        </div>
-      </div>
-    </main>
-
-    <div class="footer">
-      <div class="small" id="timer">Selecciona una opción, revisa y pulsa "Siguiente".</div>
-      <div>
-        <button class="btn secondary" id="prev" style="display:none">Anterior</button>
-        <button class="btn" id="next" disabled>Siguiente</button>
-      </div>
+  <!-- EJEMPLO: preguntas (pon aquí tus preguntas reales).
+       Importante: cada .question debe tener data-correct con la letra correcta (A,B,C...) -->
+  <div class="question" data-qid="11" data-correct="A">
+    <h4>11. CUANDO A UN TRIPULANTE LE CORRESPONDE UN DESCANSO MÍNIMO (10 HORAS), SE DEBERÁ CONSIDERAR UN TIEMPO ADICIONAL DE 45 MINUTOS PARA EFECTOS DE TRASLADO... </h4>
+    <div class="options">
+      <label class="option-label"><input type="radio" name="q11" value="A"> VERDADERO</label>
+      <label class="option-label"><input type="radio" name="q11" value="B"> FALSO</label>
     </div>
   </div>
 
-<script>
-(async function(){
-  const dataUrl = './questions.json';
-  let questions = [];
-  try {
-    const r = await fetch(dataUrl);
-    questions = await r.json();
-  } catch(err){
-    document.getElementById('qtext').textContent = 'No se pudo cargar questions.json. Asegúrate de subir questions.json en el mismo directorio.';
-    console.error(err);
-    return;
-  }
+  <div class="question" data-qid="12" data-correct="B">
+    <h4>12. Otra pregunta de ejemplo</h4>
+    <div class="options">
+      <label class="option-label"><input type="radio" name="q12" value="A"> Opción A</label>
+      <label class="option-label"><input type="radio" name="q12" value="B"> Opción B</label>
+      <label class="option-label"><input type="radio" name="q12" value="C"> Opción C</label>
+    </div>
+  </div>
 
-  // Normalize options to array of strings; original has {label,text}
-  questions = questions.map(q=>{
-    const opts = (q.options||[]).map(o => (typeof o === 'string') ? o : (o.text || o.label || ''));
-    return {...q, options: opts};
-  });
+  <!-- BARRA DE PROGRESO -->
+  <div id="quiz-progress-container" aria-live="polite" style="max-width:900px;">
+    <div id="quiz-progress-text">Respondido: 0/0 (0%) — Falta: 0</div>
+    <div id="quiz-progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+      <div id="quiz-progress-fill" style="width:0%"></div>
+    </div>
 
-  const app = {
-    questions,
-    idx: 0,
-    score: 0,
-    mode: 'user', // or 'admin'
-    answersMap: {}, // { id : correctIndex }
-    selectionMade: false, // control manual advance
-    lastSelection: null
-  };
+    <div>
+      <button id="quiz-lock-toggle">🔒 Modo solo lectura (bloqueado)</button>
+      <button id="quiz-set-password" title="Configurar contraseña">⚙️ Set pass</button>
+    </div>
+  </div>
 
-  // Load saved answers from localStorage (if any)
-  const SAVED_KEY = 'tac_quiz_answers_v1';
-  const saved = localStorage.getItem(SAVED_KEY);
-  if(saved){
-    try{ app.answersMap = JSON.parse(saved); }catch(e){ app.answersMap = {}; }
-  }
+  <script>
+    (function(){
+      // Selectores
+      const QUESTION_SELECTOR = '.question';
+      const OPTION_LABEL_SELECTOR = '.option-label';
+      const RADIO_SELECTOR = 'input[type="radio"]';
 
-  // DOM refs
-  const qtext = document.getElementById('qtext');
-  const opts = document.getElementById('opts');
-  const feedback = document.getElementById('feedback');
-  const progress = document.getElementById('progress');
-  const loadedCount = document.getElementById('loaded-count');
-  const modeLabel = document.getElementById('mode-label');
-  const adminPanel = document.getElementById('admin');
-  const adminList = document.getElementById('admin-list');
-  const exportBtn = document.getElementById('export-answers');
-  const importFile = document.getElementById('importFile');
-  const nextBtn = document.getElementById('next');
-  const prevBtn = document.getElementById('prev');
+      // Progreso UI
+      const progressText = document.getElementById('quiz-progress-text');
+      const progressFill = document.getElementById('quiz-progress-fill');
 
-  document.getElementById('loaded-count').innerText = app.questions.length;
-  progress.textContent = `Pregunta 1 / ${app.questions.length}`;
+      // Lock keys (misma lógica anterior)
+      const LOCK_KEY = 'quiz_edit_locked_v1';
+      const PASS_KEY = 'quiz_edit_pass_v1';
+      const lockToggleBtn = document.getElementById('quiz-lock-toggle');
+      const setPassBtn = document.getElementById('quiz-set-password');
 
-  function updateProgress(){
-    progress.textContent = `Pregunta ${app.idx+1} / ${app.questions.length}`;
-  }
-
-  function getCorrectIndex(q){
-    // Priority: a) q.correctIndex if exists b) app.answersMap by id c) undefined
-    if(typeof q.correctIndex === 'number') return q.correctIndex;
-    if(app.answersMap && (q.id in app.answersMap)) return app.answersMap[q.id];
-    return undefined;
-  }
-
-  function renderQuestion(){
-    feedback.textContent = '';
-    app.selectionMade = false;
-    app.lastSelection = null;
-    nextBtn.disabled = true;
-    document.getElementById('question-area').style.display = '';
-    adminPanel.style.display = app.mode === 'admin' ? 'block' : 'none';
-    modeLabel.textContent = app.mode === 'admin' ? 'Edición' : 'Usuario';
-    updateProgress();
-
-    const q = app.questions[app.idx];
-    qtext.innerHTML = `<strong>${q.id}.</strong> ${escapeHtml((q.text||'').trim())}`;
-    opts.innerHTML = '';
-    q.options.forEach((optText, i)=>{
-      const btn = document.createElement('button');
-      btn.className = 'opt';
-      btn.innerHTML = `<span class="label-chip">${String.fromCharCode(65+i)}</span>&nbsp; ${escapeHtml(optText)}`;
-      btn.dataset.index = i;
-      btn.onclick = () => onSelect(i, btn, q);
-      opts.appendChild(btn);
-    });
-
-    prevBtn.style.display = app.idx>0 ? 'inline-block' : 'none';
-
-    // In admin mode, highlight currently configured answer
-    if(app.mode === 'admin'){
-      Array.from(opts.children).forEach(b=>{
-        const idx = parseInt(b.dataset.index,10);
-        const c = getCorrectIndex(app.questions[app.idx]);
-        b.style.outline = (c === idx) ? '3px solid rgba(34,197,94,0.15)' : '';
-      });
-    }
-  }
-
-  function escapeHtml(s){ return s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;'); }
-
-  function disableOptions(){
-    const buttons = opts.querySelectorAll('button.opt');
-    buttons.forEach(b => b.disabled = true);
-  }
-
-  function enableOptions(){
-    const buttons = opts.querySelectorAll('button.opt');
-    buttons.forEach(b => b.disabled = false);
-  }
-
-  function onSelect(i, btn, q){
-    if(app.mode === 'admin'){
-      // Set this option as correct for this question
-      app.answersMap[q.id] = i;
-      // persist immediately
-      localStorage.setItem(SAVED_KEY, JSON.stringify(app.answersMap));
-      feedback.textContent = `Guardado: pregunta ${q.id} → ${String.fromCharCode(65+i)}`;
-      // refresh admin list visuals
-      renderAdminList();
-      // update visual on options
-      Array.from(opts.children).forEach(b=>{
-        const idx = parseInt(b.dataset.index,10);
-        b.style.outline = (idx===i) ? '3px solid rgba(34,197,94,0.15)' : '';
-      });
-      return;
-    }
-
-    // User mode: mark selection visually, show feedback, enable Siguiente
-    disableOptions();
-    app.selectionMade = true;
-    app.lastSelection = i;
-    nextBtn.disabled = false;
-
-    const correctIdx = getCorrectIndex(q);
-    const correctBtn = opts.querySelector(`button[data-index="${correctIdx}"]`);
-    if(correctIdx === undefined){
-      // No answer key: only show selected highlight and a neutral message
-      btn.classList.add('correct');
-      feedback.textContent = 'Respuesta registrada (aún no hay clave para evaluar). Pulsa Siguiente para avanzar.';
-    } else if(i === correctIdx){
-      btn.classList.add('correct');
-      feedback.textContent = 'Correcto ✅ — Pulsa Siguiente para continuar.';
-      app.score += 1;
-    } else {
-      btn.classList.add('wrong');
-      if(correctBtn) correctBtn.classList.add('correct');
-      feedback.textContent = `Incorrecto ✖️ — respuesta correcta: ${String.fromCharCode(65+correctIdx)}. Pulsa Siguiente.`;
-    }
-  }
-
-  function nextQuestion(){
-    if(!app.selectionMade && app.mode === 'user'){
-      // Prevent advancing without selecting in user mode
-      return;
-    }
-    if(app.idx < app.questions.length - 1){
-      app.idx += 1;
-      renderQuestion();
-    } else {
-      showSummary();
-    }
-  }
-  function prevQuestion(){
-    // allow moving back; reset score is not retroactive (simple behaviour)
-    if(app.idx > 0){
-      app.idx -= 1;
-      renderQuestion();
-    }
-  }
-  function showSummary(){
-    document.getElementById('question-area').style.display = 'none';
-    document.getElementById('summary').style.display = 'block';
-    document.getElementById('final-score').textContent = `Obtuviste ${app.score} de ${app.questions.length} (${Math.round(app.score/app.questions.length*100)}%)`;
-  }
-
-  // Admin list rendering: show all questions with current mapping
-  function renderAdminList(){
-    adminList.innerHTML = '';
-    for(const q of app.questions){
-      const row = document.createElement('div');
-      row.className = 'admin-row';
-      const left = document.createElement('div');
-      left.style.flex = '1';
-      left.innerHTML = `<strong>${q.id}.</strong> ${escapeHtml(q.text||'').slice(0,120)}`;
-      const right = document.createElement('div');
-      right.style.display = 'flex';
-      right.style.gap = '6px';
-      q.options.forEach((opt, idx)=>{
-        const b = document.createElement('button');
-        b.textContent = String.fromCharCode(65+idx);
-        b.title = opt;
-        b.onclick = ()=> {
-          app.answersMap[q.id] = idx;
-          localStorage.setItem(SAVED_KEY, JSON.stringify(app.answersMap));
-          renderAdminList();
-        };
-        if(app.answersMap[q.id] === idx) b.style.outline = '3px solid rgba(34,197,94,0.15)';
-        right.appendChild(b);
-      });
-      row.appendChild(left);
-      row.appendChild(right);
-      adminList.appendChild(row);
-    }
-  }
-
-  // Export answers as JSON download
-  function exportAnswers(){
-    const payload = {generatedAt: new Date().toISOString(), answers: app.answersMap};
-    const blob = new Blob([JSON.stringify(payload, null, 2)], {type: 'application/json'});
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'tac_answers.json';
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    URL.revokeObjectURL(url);
-  }
-
-  // Import answers file (expects {answers: {id: index}})
-  importFile.addEventListener('change', (e)=>{
-    const f = e.target.files[0];
-    if(!f) return;
-    const reader = new FileReader();
-    reader.onload = (ev)=>{
-      try{
-        const js = JSON.parse(ev.target.result);
-        const map = js.answers || js;
-        app.answersMap = map;
-        localStorage.setItem(SAVED_KEY, JSON.stringify(app.answersMap));
-        alert('Respuestas importadas.');
-        renderAdminList();
-        renderQuestion();
-      }catch(err){
-        alert('Archivo inválido: debe ser JSON con formato { "answers": { "1":0, "2":1 } } o similar.');
-        console.error(err);
+      /* ---------- Funciones de progreso ---------- */
+      function updateProgress(){
+        const questions = Array.from(document.querySelectorAll(QUESTION_SELECTOR));
+        const total = questions.length;
+        let answered = 0;
+        questions.forEach(q => {
+          const anyChecked = q.querySelector(RADIO_SELECTOR + ':checked');
+          if (anyChecked) answered++;
+        });
+        const pct = total === 0 ? 0 : Math.round((answered / total) * 10000) / 100;
+        const remaining = total - answered;
+        progressText.innerText = `Respondido: ${answered}/${total} (${pct}%) — Falta: ${remaining}`;
+        progressFill.style.width = pct + '%';
+        progressFill.parentElement.setAttribute('aria-valuenow', pct);
       }
-    };
-    reader.readAsText(f);
-  });
 
-  // UI bindings
-  document.getElementById('toggle-mode').addEventListener('click', ()=>{
-    app.mode = app.mode === 'user' ? 'admin' : 'user';
-    document.getElementById('mode-label').textContent = app.mode === 'admin' ? 'Edición' : 'Usuario';
-    document.getElementById('toggle-mode').textContent = app.mode === 'admin' ? 'Modo usuario' : 'Modo edición';
-    renderQuestion();
-    if(app.mode === 'admin') renderAdminList();
-  });
-  prevBtn.addEventListener('click', ()=>{
-    prevQuestion();
-  });
-  nextBtn.addEventListener('click', ()=>{
-    nextQuestion();
-  });
-  document.getElementById('restart').addEventListener('click', ()=>{
-    app.idx = 0; app.score = 0; document.getElementById('question-area').style.display=''; document.getElementById('summary').style.display='none'; renderQuestion();
-  });
-  document.getElementById('save-admin').addEventListener('click', ()=>{
-    localStorage.setItem(SAVED_KEY, JSON.stringify(app.answersMap));
-    alert('Guardado en localStorage.');
-  });
-  document.getElementById('clear-admin').addEventListener('click', ()=>{
-    if(confirm('Borrar las respuestas guardadas en local?')){
-      localStorage.removeItem(SAVED_KEY);
-      app.answersMap = {};
-      renderAdminList();
-      alert('Guardado borrado.');
-    }
-  });
-  exportBtn.addEventListener('click', exportAnswers);
+      /* ---------- Marcación correcta/incorrecta ---------- */
+      function evaluateQuestion(questionEl){
+        // Q tiene data-correct (letra). Si no existe, no hace nada.
+        const correct = (questionEl.getAttribute('data-correct') || '').toString().trim().toUpperCase();
+        if (!correct) {
+          // limpiar marcas si antes existían
+          questionEl.querySelectorAll(OPTION_LABEL_SELECTOR).forEach(l => l.classList.remove('correct','incorrect'));
+          return;
+        }
+        const checked = questionEl.querySelector(RADIO_SELECTOR + ':checked');
+        // limpiar marcas anteriores
+        questionEl.querySelectorAll(OPTION_LABEL_SELECTOR).forEach(l => l.classList.remove('correct','incorrect'));
+        if (!checked) return;
+        const selectedVal = (checked.value || '').toString().trim().toUpperCase();
 
-  // initial render
-  renderQuestion();
+        // marca la correcta siempre (si existe)
+        const correctInput = questionEl.querySelector(RADIO_SELECTOR + `[value="${correct}"]`);
+        if (correctInput) {
+          const correctLabel = correctInput.closest('label') || correctInput.parentElement;
+          if (correctLabel) correctLabel.classList.add('correct');
+        }
 
-})();
-</script>
+        // si seleccionó incorrecta, marca la seleccionada como incorrecta
+        if (selectedVal !== correct) {
+          const selectedLabel = checked.closest('label') || checked.parentElement;
+          if (selectedLabel) selectedLabel.classList.add('incorrect');
+        } else {
+          // si seleccionó la correcta, la etiqueta seleccionada ya tiene .correct por la línea anterior
+          const selectedLabel = checked.closest('label') || checked.parentElement;
+          if (selectedLabel) selectedLabel.classList.add('correct');
+        }
+      }
+
+      /* Recalcula para todas las preguntas (útil en init y en import)*/
+      function evaluateAllQuestions(){
+        const questions = Array.from(document.querySelectorAll(QUESTION_SELECTOR));
+        questions.forEach(q => evaluateQuestion(q));
+      }
+
+      /* ---------- Evento: cuando cambia una opción ---------- */
+      document.addEventListener('change', function(e){
+        if (!e.target || !e.target.matches(RADIO_SELECTOR)) return;
+        const q = e.target.closest(QUESTION_SELECTOR);
+        if (!q) return;
+        evaluateQuestion(q);
+        updateProgress();
+      }, true);
+
+      /* Also update when page navigation buttons used (if exist) */
+      document.addEventListener('click', function(e){
+        const t = e.target;
+        if (!t) return;
+        const txt = (t.innerText || '').toLowerCase();
+        if (txt.includes('siguiente') || txt.includes('anterior') || txt.includes('next') || txt.includes('prev')) {
+          setTimeout(() => { evaluateAllQuestions(); updateProgress(); }, 250);
+        }
+      });
+
+      /* ---------- Ocultar controles peligrosos (si quieres) ---------- */
+      function hideButtonsByText(texts) {
+        const buttons = Array.from(document.querySelectorAll('button, a, input[type="button"], .btn, .button'));
+        texts.forEach(txt => {
+          buttons.forEach(b => {
+            if (!b) return;
+            const label = (b.innerText || b.value || '').trim().toLowerCase();
+            if (label.includes(txt.toLowerCase())) {
+              b.style.display = 'none';
+              b.disabled = true;
+              b.onclick = (ev)=>{ ev.preventDefault(); ev.stopPropagation(); return false; };
+            }
+          });
+        });
+      }
+      function hideModeControls(){
+        hideButtonsByText(['modo edición','modo edicion','editar','importar respuestas','importar']);
+      }
+
+      /* ---------- Lock simple (localStorage) ---------- */
+      function isLocked(){ const val = localStorage.getItem(LOCK_KEY); return val === null ? true : (val === '1'); }
+      function setLocked(val){ localStorage.setItem(LOCK_KEY, val ? '1' : '0'); renderLockBtn(); if (val) hideModeControls(); }
+      function renderLockBtn(){
+        if (!lockToggleBtn) return;
+        const locked = isLocked();
+        lockToggleBtn.textContent = locked ? '🔒 Modo solo lectura (bloqueado)' : '🔓 Edición ACTIVA';
+        lockToggleBtn.setAttribute('aria-pressed', (!locked).toString());
+      }
+      function promptToUnlock(){
+        const stored = localStorage.getItem(PASS_KEY);
+        if (!stored) { alert('No hay contraseña configurada. Usa "Set pass" para crearla.'); return; }
+        const pass = prompt('Introduce la contraseña para desbloquear la edición:');
+        if (pass === null) return;
+        if (pass === stored) { setLocked(false); alert('Edición desbloqueada.'); }
+        else alert('Contraseña incorrecta.');
+      }
+      function setPasswordFlow(){
+        const newPass = prompt('Define la contraseña de edición (guárdala en un lugar seguro).');
+        if (!newPass) return;
+        localStorage.setItem(PASS_KEY, newPass);
+        alert('Contraseña guardada en este navegador.');
+      }
+
+      /* ---------- Inicialización ---------- */
+      function init(){
+        evaluateAllQuestions();
+        updateProgress();
+        setInterval(updateProgress, 1000);
+
+        if (lockToggleBtn) {
+          lockToggleBtn.addEventListener('click', function(){
+            if (isLocked()) promptToUnlock();
+            else if (confirm('¿Quieres bloquear la edición?')) setLocked(true);
+          });
+        }
+        if (setPassBtn) setPassBtn.addEventListener('click', setPasswordFlow);
+
+        // hide possible edit/import controls
+        hideModeControls();
+        renderLockBtn();
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else init();
+
+    })();
+  </script>
+
 </body>
 </html>
