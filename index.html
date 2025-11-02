@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="es">
 <head>
@@ -10,7 +11,6 @@
 <body>
   <main class="container">
     <h1>Quiz — Emergencias2025</h1>
-    <p class="muted">Ya viene con <code>questions.json</code> generado desde tu Excel. Si quieres, puedes cargar otro .xlsx para reemplazarlo.</p>
 
     <div class="controls">
       <label class="file-label">
@@ -35,7 +35,10 @@
       </div>
 
       <div class="footer">
-        <div id="result" class="result muted"></div>
+        <div class="left">
+          <div id="result" class="result muted"></div>
+          <div id="live-stats" class="live-stats">Correctas: 0 · Incorrectas: 0</div>
+        </div>
         <div class="actions">
           <button id="btn-prev" class="btn ghost" disabled>Anterior</button>
           <button id="btn-next" class="btn" disabled>Siguiente</button>
@@ -43,8 +46,6 @@
         </div>
       </div>
     </section>
-
-    <footer class="muted small">Versión con datos embebidos. Pruébala y luego iteramos.</footer>
   </main>
 
   <script src="script.js"></script>

@@ -1,3 +1,4 @@
+
 (() => {
   const fileInput = document.getElementById('file-input');
   const quizArea = document.getElementById('quiz-area');
@@ -8,6 +9,7 @@
   const progressBar = document.getElementById('progress-bar');
   const progressText = document.getElementById('progress-text');
   const resultEl = document.getElementById('result');
+  const liveStatsEl = document.getElementById('live-stats');
   const scoreEl = document.getElementById('score');
   const btnGenerateJSON = document.getElementById('btn-generate-json');
   const btnReset = document.getElementById('btn-reset');
@@ -15,7 +17,9 @@
   let questions = [];
   let current = 0;
   let correctCount = 0;
+  let incorrectCount = 0;
   let answered = false;
+  let selections = []; // track selected index per question
 
   // Try auto-load questions.json
   fetch('questions.json', {cache:'no-store'}).then(r => {
@@ -37,13 +41,15 @@
   });
 
   btnReset.addEventListener('click', () => {
-    questions = []; current = 0; correctCount = 0; answered = false;
+    questions = []; current = 0; correctCount = 0; incorrectCount = 0; answered = false;
+    selections = [];
     quizArea.classList.add('hidden');
     resultEl.textContent = '';
     optionsEl.innerHTML = '';
     progressBar.style.width = '0%';
     progressText.textContent = 'Pregunta 0 / 0';
     scoreEl.textContent = '0 / 0';
+    liveStatsEl.textContent = 'Correctas: 0 · Incorrectas: 0';
     fileInput.value = '';
   });
 
@@ -64,7 +70,8 @@
   btnPrev.addEventListener('click', () => {
     if (!questions.length) return;
     if (current > 0) {
-      current--; answered = true; // bloqueo para no recontar
+      current--;
+      // no recalc counts when solo navegamos atrás; solo mostrar estado
       renderQuestion(true);
     }
   });
@@ -81,7 +88,8 @@
   });
 
   function startQuiz() {
-    current = 0; correctCount = 0; answered = false;
+    current = 0; correctCount = 0; incorrectCount = 0; answered = false;
+    selections = new Array(questions.length).fill(null);
     quizArea.classList.remove('hidden');
     renderQuestion();
   }
@@ -157,12 +165,18 @@
     btnNext.disabled = true;
     btnPrev.disabled = current === 0;
     scoreEl.textContent = correctCount + ' / ' + questions.length;
+    liveStatsEl.textContent = 'Correctas: ' + correctCount + ' · Incorrectas: ' + incorrectCount;
 
-    if (showAsAnswered) {
-      // Mostrar estado de correcta al volver atrás, pero sin recontar
+    // If already answered this one, show state
+    const sel = selections[current];
+    if (showAsAnswered && sel !== null) {
       const buttons = Array.from(optionsEl.querySelectorAll('.option-btn'));
-      const correctBtn = buttons.find(b => Number(b.dataset.index) === questions[current].answerIndex);
+      buttons.forEach(b => b.classList.add('disabled'));
+      const correctIdx = item.answerIndex;
+      const correctBtn = buttons.find(b => Number(b.dataset.index) === correctIdx);
       if (correctBtn) correctBtn.classList.add('correct');
+      const selectedBtn = buttons.find(b => Number(b.dataset.index) === sel);
+      if (selectedBtn && sel !== correctIdx) selectedBtn.classList.add('incorrect');
       btnNext.disabled = false;
     }
   }
@@ -172,9 +186,12 @@
     answered = true;
     const idx = Number(ev.currentTarget.dataset.index);
     const item = questions[current];
+    selections[current] = idx;
     const buttons = Array.from(optionsEl.querySelectorAll('.option-btn'));
     buttons.forEach(b => b.classList.add('disabled'));
     const correctIdx = item.answerIndex;
+    const correctText = item.options[correctIdx] || '';
+
     if (idx === correctIdx) {
       ev.currentTarget.classList.add('correct');
       resultEl.textContent = 'Correcto ✅';
@@ -183,11 +200,23 @@
       ev.currentTarget.classList.add('incorrect');
       const correctBtn = buttons.find(b => Number(b.dataset.index) === correctIdx);
       if (correctBtn) correctBtn.classList.add('correct');
-      resultEl.textContent = 'Incorrecto — se muestra la respuesta correcta.';
+      resultEl.textContent = 'Incorrecto, la respuesta correcta es: ' + correctText;
+      incorrectCount++;
     }
     btnNext.disabled = false;
-    btnNext.textContent = (current === questions.length - 1) ? 'Finalizar' : 'Siguiente';
+    btnNext.textContent = (current === questions.length - 1) ? 'Descargar preguntas, respuestas seleccionadas y respuesta correcta' : 'Siguiente';
     scoreEl.textContent = correctCount + ' / ' + questions.length;
+    liveStatsEl.textContent = 'Correctas: ' + correctCount + ' · Incorrectas: ' + incorrectCount;
+
+    // If last question, clicking will download results
+    if (current === questions.length - 1) {
+      btnNext.onclick = () => {
+        downloadResults();
+      };
+    } else {
+      // restore default handler
+      btnNext.onclick = null;
+    }
   }
 
   function updateProgress() {
@@ -197,13 +226,63 @@
   }
 
   function showSummary() {
+    // Render donut summary replacing question card
+    const total = questions.length || 1;
+    const pct = Math.round((correctCount / total) * 100);
+    const radius = 70;
+    const circumference = 2 * Math.PI * radius;
+    const dash = (pct/100) * circumference;
+    const gap = circumference - dash;
+
+    const summaryHTML = `
+      <div class="summary">
+        <svg class="donut" viewBox="0 0 180 180" width="180" height="180" aria-label="Resumen">
+          <circle cx="90" cy="90" r="${radius}" fill="none" stroke="#e5e7eb" stroke-width="18"></circle>
+          <circle cx="90" cy="90" r="${radius}" fill="none" stroke="#10b981" stroke-width="18"
+                  stroke-dasharray="${dash} ${gap}" transform="rotate(-90 90 90)"></circle>
+          <text x="90" y="90">${pct}%</text>
+        </svg>
+        <div class="muted">Resumen: ${correctCount} correctas de ${total} preguntas</div>
+        <div class="muted">Incorrectas: ${incorrectCount}</div>
+        <button id="btn-download" class="btn">Descargar preguntas, respuestas seleccionadas y respuesta correcta</button>
+      </div>
+    `;
     questionTitle.textContent = 'Resumen';
-    optionsEl.innerHTML = '<div class="muted">Has respondido ' + correctCount + ' de ' + questions.length + ' preguntas.</div>';
+    optionsEl.innerHTML = summaryHTML;
     resultEl.textContent = '';
+    btnPrev.disabled = true;
     btnNext.disabled = true;
-    btnNext.textContent = 'Hecho';
     progressBar.style.width = '100%';
     progressText.textContent = 'Finalizado';
-    scoreEl.textContent = correctCount + ' / ' + questions.length;
+    scoreEl.textContent = correctCount + ' / ' + total;
+    const dl = document.getElementById('btn-download');
+    dl.addEventListener('click', downloadResults);
   }
+
+  function downloadResults() {
+    // build CSV with columns: #, Pregunta, Opción Seleccionada, Correcta, ¿Acertó?
+    const rows = [];
+    rows.push(['N°','Pregunta','Respuesta seleccionada','Respuesta correcta','¿Acertó?']);
+    questions.forEach((q, i) => {
+      const selIdx = selections[i];
+      const selText = selIdx !== null && selIdx >= 0 ? q.options[selIdx] : '';
+      const corText = q.options[q.answerIndex];
+      const ok = selIdx === q.answerIndex ? 'Sí' : 'No';
+      rows.push([i+1, q.question, selText, corText, ok]);
+    });
+    const csv = rows.map(r => r.map(v => {
+      const s = String(v).replace(/"/g,'""');
+      return `"${s}"`;
+    }).join(',')).join('\n');
+    const blob = new Blob([csv], {type:'text/csv;charset=utf-8'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'resultado_quiz.csv';
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  // Expose for debugging
+  window.__quiz = { get questions(){ return questions; }, get selections(){ return selections; } };
 })();
