@@ -22,7 +22,7 @@
 
   let questions = [];
   let current = 0;
-  let selections = []; // índice seleccionado por pregunta
+  let selections = []; // guarda el TEXTO seleccionado por pregunta (para preservar al reordenar)
 
   // Cargar preguntas desde questions.json
   fetch('questions.json', {cache:'no-store'})
@@ -47,18 +47,12 @@
     if (current > 0) { current--; renderQuestion(true); }
   });
 
-  // Un solo handler para "Siguiente"/"Ver resultados" vía data-state
+  // Un solo handler para "Siguiente"/"Ver resultados"
   btnNext.addEventListener('click', () => {
     if (btnNext.disabled) return;
     const state = btnNext.getAttribute('data-state') || 'next';
-    if (state === 'results') {
-      showSummary();
-      return;
-    }
-    if (current < questions.length - 1) {
-      current++;
-      renderQuestion();
-    }
+    if (state === 'results') { showSummary(); return; }
+    if (current < questions.length - 1) { current++; renderQuestion(); }
   });
 
   function startQuiz() {
@@ -82,22 +76,37 @@
     const totalAnswered = selections.filter(x => x !== null).length;
     let correct = 0;
     selections.forEach((sel, i) => {
-      if (sel !== null && sel === questions[i].answerIndex) correct++;
+      if (sel !== null && sel === questions[i].options[questions[i].answerIndex]) correct++;
     });
     const incorrect = totalAnswered - correct;
     return { correct, incorrect, totalAnswered };
   }
 
+  // Fisher-Yates shuffle
+  function shuffle(arr){
+    const a = arr.slice();
+    for(let i=a.length-1;i>0;i--){
+      const j = Math.floor(Math.random()*(i+1));
+      [a[i],a[j]] = [a[j],a[i]];
+    }
+    return a;
+  }
+
   function renderQuestion(showAsAnswered=false) {
     const item = questions[current];
     questionTitle.textContent = item.question;
+
+    // Crear pares {text, correct} y mezclarlos SIEMPRE
+    const entries = item.options.map((t, i) => ({ text: t, correct: i === item.answerIndex }));
+    const mixed = shuffle(entries);
+
     optionsEl.innerHTML = '';
-    item.options.forEach((opt, i) => {
+    mixed.forEach((entry, i) => {
       const btn = document.createElement('button');
       btn.className = 'option-btn';
       btn.type = 'button';
-      btn.innerHTML = opt;
-      btn.dataset.index = i;
+      btn.innerHTML = entry.text;
+      btn.dataset.correct = entry.correct ? '1' : '0';
       btn.addEventListener('click', onSelect);
       optionsEl.appendChild(btn);
     });
@@ -109,52 +118,52 @@
     resultEl.textContent = '';
     btnPrev.disabled = current === 0;
 
+    // Contadores
     const {correct, incorrect} = counts();
     scoreEl.textContent = correct + ' / ' + questions.length;
     liveStatsEl.textContent = 'Correctas: ' + correct + ' · Incorrectas: ' + incorrect;
 
-    const sel = selections[current];
-    if (sel !== null || showAsAnswered) {
-      // Mostrar estado bloqueado
+    // Si ya respondió esta, reflejar su selección incluso con orden mezclado
+    const selText = selections[current];
+    if (selText !== null || showAsAnswered) {
       const buttons = Array.from(optionsEl.querySelectorAll('.option-btn'));
       buttons.forEach(b => b.classList.add('disabled'));
-      const correctIdx = item.answerIndex;
-      const correctBtn = buttons.find(b => Number(b.dataset.index) === correctIdx);
+      const correctBtn = buttons.find(b => b.dataset.correct === '1');
       if (correctBtn) correctBtn.classList.add('correct');
-      if (sel !== null && sel !== correctIdx) {
-        const selectedBtn = buttons.find(b => Number(b.dataset.index) === sel);
-        if (selectedBtn) selectedBtn.classList.add('incorrect');
+      if (selText !== null) {
+        const selectedBtn = buttons.find(b => b.innerHTML === selText);
+        if (selectedBtn && selectedBtn.dataset.correct !== '1') selectedBtn.classList.add('incorrect');
       }
       // Habilitar siguiente
-      if (current === questions.length - 1 && sel !== null) {
+      if (current === questions.length - 1 && selText !== null) {
         setNextState('results', false, 'Ver resultados');
       } else {
-        setNextState('next', false, 'Siguiente');
+        setNextState('next', selText === null, 'Siguiente');
       }
     } else {
-      // Aún sin respuesta
       setNextState('next', true, 'Siguiente');
     }
   }
 
   function onSelect(ev) {
-    const idx = Number(ev.currentTarget.dataset.index);
-    if (selections[current] !== null) return; // no recontar
-    selections[current] = idx;
+    const btn = ev.currentTarget;
+    const isCorrect = btn.dataset.correct === '1';
+    const selectedText = btn.innerHTML;
+    if (selections[current] !== null) return;
+    selections[current] = selectedText;
 
-    const item = questions[current];
     const buttons = Array.from(optionsEl.querySelectorAll('.option-btn'));
     buttons.forEach(b => b.classList.add('disabled'));
-    const correctIdx = item.answerIndex;
-    const correctText = item.options[correctIdx] || '';
+    const correctBtn = buttons.find(b => b.dataset.correct === '1');
 
-    if (idx === correctIdx) {
-      ev.currentTarget.classList.add('correct');
+    if (isCorrect) {
+      btn.classList.add('correct');
       resultEl.textContent = 'Correcto ✅';
     } else {
-      ev.currentTarget.classList.add('incorrect');
-      const correctBtn = buttons.find(b => Number(b.dataset.index) === correctIdx);
+      btn.classList.add('incorrect');
       if (correctBtn) correctBtn.classList.add('correct');
+      // Mostrar texto correcto desde datos originales
+      const correctText = questions[current].options[questions[current].answerIndex] || '';
       resultEl.textContent = 'Incorrecto, la respuesta correcta es: ' + correctText;
     }
 
@@ -162,7 +171,7 @@
     scoreEl.textContent = correct + ' / ' + questions.length;
     liveStatsEl.textContent = 'Correctas: ' + correct + ' · Incorrectas: ' + incorrect;
 
-    // Habilitar siguiente tras responder
+    // Habilitar "Siguiente" o "Ver resultados"
     if (current === questions.length - 1) {
       setNextState('results', false, 'Ver resultados');
     } else {
@@ -222,9 +231,9 @@
                   ['N°','Pregunta','Respuesta seleccionada','Respuesta correcta','¿Acertó?']];
     selections.forEach((sel, i) => {
       const q = questions[i];
-      const selText = sel !== null && sel >= 0 ? q.options[sel] : '';
+      const selText = sel !== null ? sel : '';
       const corText = q.options[q.answerIndex] || '';
-      const ok = sel === q.answerIndex ? 'Sí' : 'No';
+      const ok = selText === corText ? 'Sí' : 'No';
       rows.push([i+1, q.question, selText, corText, ok]);
     });
     const wb = XLSX.utils.book_new();
