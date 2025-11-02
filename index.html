@@ -3,237 +3,100 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Quiz - Mejorado</title>
+<title>Quiz - Import/Export JSON</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#061422;
-    --card:#092433;
-    --card-2:#0c3040;
-    --muted:#a9c0d6;
-    --accent1:#4db6ac; /* verde-azulado */
-    --accent2:#4a90e2; /* azul */
-    --danger:#ff6b6b;
-    --success:#2ecc71;
-    --option-bg: rgba(255,255,255,0.02);
-    --option-border: rgba(255,255,255,0.04);
-    --glass: rgba(255,255,255,0.03);
+    --bg:#061422; --card:#092433; --muted:#a9c0d6; --accent1:#4db6ac; --accent2:#4a90e2;
+    --danger:#ff6b6b; --success:#2ecc71; --option-bg: rgba(255,255,255,0.02); --glass: rgba(255,255,255,0.03);
     --radius:12px;
   }
   *{box-sizing:border-box}
-  body {
-    margin:0;
-    min-height:100vh;
-    background: linear-gradient(180deg,#04101a 0%, #061422 60%);
-    color:#d6e9f6;
-    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    padding:30px;
-    display:flex;
-    justify-content:center;
-  }
+  body{ margin:0; min-height:100vh; background:linear-gradient(180deg,#04101a 0%, #061422 60%); color:#d6e9f6;
+    font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial; padding:20px; display:flex; justify-content:center;}
+  .wrap{ width:100%; max-width:1100px; }
 
-  .wrap {
-    width:100%;
-    max-width:980px;
-  }
+  header{ display:flex; justify-content:space-between; gap:12px; margin-bottom:14px; align-items:center; }
+  header h1{ margin:0; font-size:16px; font-weight:700; color:#eaf6ff;}
+  header .controls{ display:flex; gap:8px; align-items:center; }
 
-  /* Header pequeño */
-  header#quiz-header {
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:12px;
-    margin-bottom:18px;
-  }
-  header h1 {
-    font-size:16px;
-    margin:0;
-    font-weight:600;
-    color:#eaf6ff;
-    letter-spacing:0.2px;
-  }
-  header p { margin:0; color:var(--muted); font-size:13px; }
+  /* area import/export */
+  .io { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; flex-wrap:wrap; }
+  .io textarea{ width:520px; max-width:100%; height:110px; padding:10px; border-radius:8px; background:#061f2a; color:#dfeeef; border:1px solid var(--glass); font-family:monospace; font-size:13px; }
+  .io .btn { padding:10px 12px; border-radius:8px; background:linear-gradient(180deg,#0f2b38,#092a33); border:1px solid rgba(255,255,255,0.03); color:#eaffff; cursor:pointer; }
+  .io .btn.warn{ background:linear-gradient(90deg,#d65b4a,#c7383e); }
+  .io .btn.ghost{ background:transparent; border:1px solid rgba(255,255,255,0.06); color:var(--muted); }
 
-  /* Card pregunta */
-  .question {
-    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));
-    border-radius: var(--radius);
-    padding:14px;
-    margin-bottom:14px;
-    border: 1px solid var(--glass);
-    box-shadow: 0 6px 18px rgba(2,8,12,0.45);
-  }
-  .q-head {
-    display:flex;
-    gap:12px;
-    align-items:flex-start;
-    margin-bottom:12px;
-  }
-  .q-num {
-    background: linear-gradient(90deg,var(--accent1),var(--accent2));
-    color:#022428;
-    font-weight:700;
-    padding:6px 10px;
-    border-radius:9px;
-    font-size:13px;
-    min-width:44px;
-    text-align:center;
-    box-shadow: 0 6px 20px rgba(10,25,30,0.45);
-  }
-  .q-text { font-size:14px; line-height:1.35; color:#e9f5ff; font-weight:600; }
+  /* Questions */
+  .question { background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02)); border-radius:12px; padding:14px; margin-bottom:12px; border:1px solid var(--glass); }
+  .q-head{ display:flex; gap:12px; align-items:flex-start; margin-bottom:10px; }
+  .q-num{ background:linear-gradient(90deg,var(--accent1),var(--accent2)); color:#022428; font-weight:700; padding:6px 10px; border-radius:9px; font-size:13px; min-width:44px; text-align:center; }
+  .q-text{ font-size:14px; line-height:1.35; color:#e9f5ff; font-weight:600; }
 
-  /* Opciones como cajas grandes */
-  .options { display:flex; flex-direction:column; gap:10px; margin-top:6px; }
-  .option-label {
-    display:flex;
-    align-items:center;
-    gap:14px;
-    padding:14px 16px;
-    border-radius:10px;
-    background:var(--option-bg);
-    border: 1px solid var(--option-border);
-    cursor:pointer;
-    transition: transform .08s ease, box-shadow .14s ease, background .14s ease, border-color .14s ease;
-    user-select:none;
-  }
-  .option-label:hover { transform:translateY(-3px); box-shadow: 0 10px 28px rgba(2,8,12,0.45); }
+  .options{ display:flex; flex-direction:column; gap:8px; margin-top:6px; }
+  .option-label{ display:flex; align-items:center; gap:12px; padding:12px 14px; border-radius:10px; background:var(--option-bg); border:1px solid rgba(255,255,255,0.04); cursor:pointer; transition:all .12s ease; user-select:none; }
+  .option-label:hover{ transform:translateY(-2px); box-shadow:0 10px 28px rgba(2,8,12,0.45); }
+  .radio{ width:18px; height:18px; border-radius:50%; border:2px solid rgba(255,255,255,0.16); display:flex; align-items:center; justify-content:center; flex:0 0 18px; }
+  .radio::after{ content:""; width:10px; height:10px; border-radius:50%; background:transparent; transform:scale(0.75); transition:background .12s ease, transform .12s ease; }
+  .option-text{ font-size:15px; color:#dff2ff; }
 
-  /* Radio personalizado */
-  .radio {
-    width:18px;
-    height:18px;
-    border-radius:50%;
-    border: 2px solid rgba(255,255,255,0.16);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    flex:0 0 18px;
-    background:transparent;
-  }
-  .radio::after {
-    content:"";
-    width:10px;
-    height:10px;
-    border-radius:50%;
-    background:transparent;
-    transition: background .12s ease, transform .12s ease;
-    transform:scale(0.8);
-  }
-  .option-label input[type="radio"]{ display:none; }
-
-  /* Checked state - shown on label */
-  .option-label.selected { border-color: rgba(255,255,255,0.16); box-shadow: 0 6px 30px rgba(2,8,12,0.55); }
-  .option-label.selected .radio{ border-color: rgba(255,255,255,0.9); }
+  .option-label.selected{ border-color:rgba(255,255,255,0.16); }
+  .option-label.selected .radio{ border-color:rgba(255,255,255,0.9); }
   .option-label.selected .radio::after{ background:rgba(255,255,255,0.92); transform:scale(1); }
 
-  /* Correct / Incorrect */
-  .option-label.correct {
-    background: linear-gradient(90deg, rgba(46,204,113,0.08), rgba(52,152,219,0.03));
-    border-color: rgba(46,204,113,0.8);
-    box-shadow: 0 10px 30px rgba(46,204,113,0.06);
-  }
+  .option-label.correct{ background: linear-gradient(90deg, rgba(46,204,113,0.08), rgba(52,152,219,0.03)); border-color: rgba(46,204,113,0.8); }
   .option-label.correct .radio{ border-color: rgba(46,204,113,0.95); }
   .option-label.correct .radio::after{ background: rgba(46,204,113,0.95); }
 
-  .option-label.incorrect {
-    background: linear-gradient(90deg, rgba(255,107,107,0.08), rgba(255,107,107,0.03));
-    border-color: rgba(255,107,107,0.9);
-    box-shadow: 0 10px 30px rgba(255,107,107,0.06);
-  }
+  .option-label.incorrect{ background: linear-gradient(90deg, rgba(255,107,107,0.08), rgba(255,107,107,0.03)); border-color: rgba(255,107,107,0.9); }
   .option-label.incorrect .radio{ border-color: rgba(255,107,107,0.95); }
   .option-label.incorrect .radio::after{ background: rgba(255,107,107,0.95); }
 
-  /* Texto de opción */
-  .option-text { font-size:15px; color:#dff2ff; line-height:1.25; }
+  .progress-wrap{ margin-top:18px; background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.02)); padding:12px; border-radius:10px; border:1px solid var(--glass); display:flex; gap:12px; align-items:center; justify-content:space-between; }
+  .bar{ width:68%; height:12px; background: rgba(255,255,255,0.04); border-radius:10px; overflow:hidden; position:relative; border:1px solid rgba(255,255,255,0.02); }
+  .bar-fill{ height:100%; width:0%; transition: width 420ms cubic-bezier(.2,.9,.2,1); background:linear-gradient(90deg,var(--accent1),var(--accent2)); }
+  .progress-percent{ font-weight:700; color:#eaffff; font-size:13px; min-width:60px; text-align:right; }
+  .small{ font-size:13px; color:var(--muted); }
 
-  /* Progreso */
-  .progress-wrap {
-    margin-top:18px;
-    background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.02));
-    padding:12px;
-    border-radius:10px;
-    border:1px solid var(--glass);
-    display:flex;
-    gap:12px;
-    align-items:center;
-    justify-content:space-between;
-  }
-  .progress-left { display:flex; flex-direction:column; gap:6px; }
-  .progress-stats { font-size:13px; color:var(--muted); }
-  .bar {
-    width:420px;
-    max-width:62%;
-    height:12px;
-    background: rgba(255,255,255,0.04);
-    border-radius:10px;
-    overflow:hidden;
-    position:relative;
-    border:1px solid rgba(255,255,255,0.02);
-  }
-  .bar-fill {
-    height:100%;
-    width:0%;
-    transition: width 420ms cubic-bezier(.2,.9,.2,1);
-    background: linear-gradient(90deg, var(--accent1), var(--accent2));
-    box-shadow: 0 6px 18px rgba(74,144,226,0.12) inset;
-  }
-  .progress-percent {
-    font-weight:700;
-    color:#eaffff;
-    font-size:13px;
-    min-width:60px;
-    text-align:right;
-  }
+  .tools { display:flex; gap:8px; margin-top:8px; align-items:center; flex-wrap:wrap; }
+  .tools .btn{ padding:8px 10px; border-radius:8px; cursor:pointer; background:linear-gradient(180deg,#0f2b38,#092a33); color:#eaffff; border:1px solid rgba(255,255,255,0.03); }
+  .tools .btn.export{ background:linear-gradient(90deg,#3a8bd8,#6ad3c7); }
+  .tools .btn.lock{ background:linear-gradient(90deg,#b08bff,#6ab3ff); }
 
-  /* Responsive */
-  @media (max-width:720px){
-    .bar{ max-width:50%; width:50%;}
-    .wrap{ padding:0 12px; }
-    .q-text{ font-size:13px; }
-  }
+  @media (max-width:760px){ .io textarea{ height:100px; } .bar{ width:55%; } .wrap{ padding:0 12px; } }
 </style>
 </head>
 <body>
   <div class="wrap">
-
-    <header id="quiz-header">
-      <div>
-        <h1>Quiz TAC - Práctica</h1>
-        <p>Progreso visual, respuestas con marcación inmediata.</p>
-      </div>
-      <div style="text-align:right">
-        <p style="margin:0;color:var(--muted);font-size:13px">Preguntas: <span id="total-qs">0</span></p>
+    <header>
+      <h1>Quiz TAC - con import/export (JSON)</h1>
+      <div class="controls small">
+        <div id="total-qs">Preguntas: 0</div>
       </div>
     </header>
 
-    <!-- EJEMPLO: Reemplaza cada .question con tu pregunta real y ajusta data-correct="A" -->
-    <div class="question" data-qid="11" data-correct="A">
-      <div class="q-head">
-        <div class="q-num">11</div>
-        <div class="q-text">CUANDO A UN TRIPULANTE LE CORRESPONDE UN DESCANSO MÍNIMO (10 HORAS), SE DEBERÁ CONSIDERAR UN TIEMPO ADICIONAL DE 45 MINUTOS PARA EFECTOS DE TRASLADO...</div>
-      </div>
-      <div class="options">
-        <label class="option-label"><div class="radio"></div><input type="radio" name="q11" value="A"><div class="option-text">VERDADERO</div></label>
-        <label class="option-label"><div class="radio"></div><input type="radio" name="q11" value="B"><div class="option-text">FALSO</div></label>
-      </div>
-    </div>
-
-    <div class="question" data-qid="12" data-correct="B">
-      <div class="q-head">
-        <div class="q-num">12</div>
-        <div class="q-text">Otra pregunta de ejemplo</div>
-      </div>
-      <div class="options">
-        <label class="option-label"><div class="radio"></div><input type="radio" name="q12" value="A"><div class="option-text">Opción A</div></label>
-        <label class="option-label"><div class="radio"></div><input type="radio" name="q12" value="B"><div class="option-text">Opción B</div></label>
-        <label class="option-label"><div class="radio"></div><input type="radio" name="q12" value="C"><div class="option-text">Opción C</div></label>
+    <!-- Import / Export -->
+    <div class="io">
+      <textarea id="json-in" placeholder='Pega aquí tu JSON de preguntas. Formato: [{"qid":"11","text":"Pregunta...","options":["A","B","C"],"correct":"A"}, ...]'></textarea>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <button class="btn" id="btn-import-replace">Importar (reemplazar)</button>
+        <button class="btn" id="btn-import-append">Importar (añadir)</button>
+        <button class="btn export" id="btn-export">Exportar JSON</button>
+        <button class="btn lock" id="btn-toggle-lock">Bloquear respuestas</button>
+        <button class="btn ghost" id="btn-clear">Limpiar (¡cuidado!)</button>
       </div>
     </div>
 
-    <!-- PROGRESO -->
+    <!-- CONTENEDOR preguntas -->
+    <div id="questions-container">
+      <!-- Si tienes preguntas estáticas ya en tu HTML, mantenlas aquí; el import puede agregarlas o reemplazar -->
+      <!-- Ejemplo mínimo (puedes borrar): -->
+      <!-- <div class="question" data-qid="11" data-correct="A"> ... </div> -->
+    </div>
+
     <div class="progress-wrap" aria-live="polite">
-      <div class="progress-left">
-        <div class="progress-stats" id="progress-text">Respondido: 0/0 — Falta: 0</div>
+      <div style="display:flex;flex-direction:column;">
+        <div class="small" id="progress-text">Respondido: 0/0 — Falta: 0</div>
         <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
           <div class="bar-fill" id="bar-fill" style="width:0%"></div>
         </div>
@@ -244,102 +107,213 @@
   </div>
 
 <script>
+/*
+Formato JSON esperado (ejemplo):
+[
+  {
+    "qid":"11",
+    "text":"CUANDO A UN TRIPULANTE ...",
+    "options":["VERDADERO","FALSO"],
+    "correct":"A"   // A,B,C...
+  },
+  ...
+]
+*/
 (function(){
-  const QUESTION_SELECTOR = '.question';
-  const RADIO_SELECTOR = 'input[type="radio"]';
+  const container = document.getElementById('questions-container');
+  const jsonIn = document.getElementById('json-in');
+  const btnImportReplace = document.getElementById('btn-import-replace');
+  const btnImportAppend = document.getElementById('btn-import-append');
+  const btnExport = document.getElementById('btn-export');
+  const btnToggleLock = document.getElementById('btn-toggle-lock');
+  const btnClear = document.getElementById('btn-clear');
+  const totalQsEl = document.getElementById('total-qs');
   const progressText = document.getElementById('progress-text');
   const barFill = document.getElementById('bar-fill');
   const progressPercent = document.getElementById('progress-percent');
-  const totalQsEl = document.getElementById('total-qs');
 
-  function init(){
-    const qs = Array.from(document.querySelectorAll(QUESTION_SELECTOR));
-    totalQsEl.innerText = qs.length;
-    qs.forEach(q => {
-      // marcar click en label -> marcar clase selected
-      q.querySelectorAll('label.option-label').forEach(lbl => {
-        const radio = lbl.querySelector('input[type="radio"]');
-        lbl.addEventListener('click', (ev)=>{
-          // si el radio ya estaba seleccionado, allow change (no bloqueo)
-          // actualizar estados visuales
-          q.querySelectorAll('label.option-label').forEach(l=> l.classList.remove('selected'));
-          lbl.classList.add('selected');
-          // marcar el input manualmente (por si el click vino en el container)
-          if (radio) radio.checked = true;
-          evaluateQuestion(q);
-          updateProgress();
-        });
-      });
+  let locked = false;
 
-      // also allow keyboard change (listen to inputs)
-      q.querySelectorAll(RADIO_SELECTOR).forEach(r => {
-        r.addEventListener('change', ()=> {
-          q.querySelectorAll('label.option-label').forEach(l=> l.classList.remove('selected'));
-          const sel = r.closest('label.option-label'); if (sel) sel.classList.add('selected');
-          evaluateQuestion(q);
-          updateProgress();
-        });
-      });
-    });
-
-    // init progress
-    updateProgress();
+  // Render a single question object to DOM (returns element)
+  function renderQuestionObj(q, insertBefore=null){
+    // q: {qid, text, options[], correct}
+    const qEl = document.createElement('div');
+    qEl.className = 'question';
+    qEl.setAttribute('data-qid', q.qid ?? '');
+    qEl.setAttribute('data-correct', (q.correct||'').toString().toUpperCase());
+    qEl.innerHTML = `
+      <div class="q-head">
+        <div class="q-num">${escapeHtml(q.qid ?? '')}</div>
+        <div class="q-text">${escapeHtml(q.text ?? '')}</div>
+      </div>
+      <div class="options"></div>
+    `;
+    const opts = q.options || [];
+    const optContainer = qEl.querySelector('.options');
+    // label values: A,B,C...
+    const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    for (let i=0;i<opts.length;i++){
+      const val = letters[i] || ('O'+i);
+      const lbl = document.createElement('label');
+      lbl.className = 'option-label';
+      lbl.innerHTML = `<div class="radio"></div><input type="radio" name="q_${q.qid || Math.random().toString(36).slice(2,6)}" value="${val}"><div class="option-text">${escapeHtml(opts[i])}</div>`;
+      optContainer.appendChild(lbl);
+    }
+    // attach events
+    attachEventsToQuestion(qEl);
+    if (insertBefore) container.insertBefore(qEl, insertBefore);
+    else container.appendChild(qEl);
+    updateTotals();
+    return qEl;
   }
 
-  function evaluateQuestion(questionEl){
-    const correct = (questionEl.getAttribute('data-correct')||'').toString().trim().toUpperCase();
-    // limpiar
-    questionEl.querySelectorAll('.option-label').forEach(l=> l.classList.remove('correct','incorrect'));
+  // escape helper
+  function escapeHtml(s){ return String(s||'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;'); }
+
+  // attach click/change listeners to question element
+  function attachEventsToQuestion(qEl){
+    qEl.querySelectorAll('label.option-label').forEach(lbl=>{
+      const radio = lbl.querySelector('input[type="radio"]');
+      lbl.addEventListener('click', ()=>{
+        if (locked) return;
+        qEl.querySelectorAll('label.option-label').forEach(l=> l.classList.remove('selected'));
+        lbl.classList.add('selected');
+        if (radio) radio.checked = true;
+        evaluateQuestion(qEl);
+        updateProgress();
+        if (locked) lockAnswered(); // enforce after change if locked
+      });
+      radio && radio.addEventListener('change', ()=>{
+        if (locked) return;
+        qEl.querySelectorAll('label.option-label').forEach(l=> l.classList.remove('selected'));
+        const sel = radio.closest('label.option-label'); sel && sel.classList.add('selected');
+        evaluateQuestion(qEl);
+        updateProgress();
+      });
+    });
+  }
+
+  function evaluateQuestion(qEl){
+    const correct = (qEl.getAttribute('data-correct')||'').toUpperCase();
+    qEl.querySelectorAll('.option-label').forEach(l=> l.classList.remove('correct','incorrect'));
     if (!correct) return;
-    const checked = questionEl.querySelector(RADIO_SELECTOR + ':checked');
-    // marcar la correcta aunque no se haya seleccionado
-    const correctInput = questionEl.querySelector(RADIO_SELECTOR + `[value="${correct}"]`);
-    if (correctInput){
-      const corrLabel = correctInput.closest('label.option-label');
-      if (corrLabel) corrLabel.classList.add('correct');
+    // mark correct label
+    const corrInput = qEl.querySelector('input[type="radio"][value="'+correct+'"]');
+    if (corrInput){
+      const corrLabel = corrInput.closest('label.option-label');
+      corrLabel && corrLabel.classList.add('correct');
     }
+    const checked = qEl.querySelector('input[type="radio"]:checked');
     if (!checked) return;
-    const selectedVal = (checked.value||'').toString().trim().toUpperCase();
-    if (selectedVal !== correct) {
+    if (checked.value.toUpperCase() !== correct){
       const selLabel = checked.closest('label.option-label');
-      if (selLabel) selLabel.classList.add('incorrect');
+      selLabel && selLabel.classList.add('incorrect');
     } else {
-      // if selected correct, ensure it's visually correct
       const selLabel = checked.closest('label.option-label');
-      if (selLabel) selLabel.classList.add('correct');
+      selLabel && selLabel.classList.add('correct');
     }
   }
 
   function updateProgress(){
-    const qs = Array.from(document.querySelectorAll(QUESTION_SELECTOR));
+    const qs = container.querySelectorAll('.question');
     const total = qs.length;
     let answered = 0;
-    qs.forEach(q => {
-      if (q.querySelector(RADIO_SELECTOR + ':checked')) answered++;
+    qs.forEach(q=>{
+      if (q.querySelector('input[type="radio"]:checked')) answered++;
     });
     const pct = total === 0 ? 0 : Math.round((answered/total)*100);
     const remaining = total - answered;
     progressText.innerText = `Respondido: ${answered}/${total} — Falta: ${remaining}`;
     barFill.style.width = pct + '%';
     progressPercent.innerText = pct + '%';
-    // update accessible attr
-    const bar = barFill.parentElement;
-    if (bar) bar.setAttribute('aria-valuenow', pct);
+    totalQsEl.innerText = `Preguntas: ${total}`;
   }
 
-  // inicializa al cargar
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else init();
+  // read JSON and create questions
+  function importJSON(txt, mode='append'){
+    let arr;
+    try { arr = JSON.parse(txt); if (!Array.isArray(arr)) throw 1; }
+    catch(e){ alert('JSON inválido. Asegúrate que sea un array de objetos.'); return; }
+    if (mode === 'replace') container.innerHTML = '';
+    arr.forEach(qObj => {
+      // validation fallback: ensure fields exist
+      if (!qObj.qid) qObj.qid = Math.random().toString(36).slice(2,8);
+      if (!qObj.options || !Array.isArray(qObj.options) || qObj.options.length===0) qObj.options = ['Opción 1','Opción 2'];
+      renderQuestionObj(qObj);
+    });
+    // evaluate all after import
+    container.querySelectorAll('.question').forEach(q=> evaluateQuestion(q));
+    updateProgress();
+  }
 
-  // si necesitas que las preguntas se evalúen cuando alguien use botones "Siguiente" externos,
-  // mantuve un listener que re-evalúa tras clicks en el documento (suavemente).
-  document.addEventListener('click', (e)=>{
-    const txt = (e.target.innerText || '').toLowerCase();
-    if (txt.includes('siguiente') || txt.includes('anterior') || txt.includes('next') || txt.includes('prev')) {
-      setTimeout(()=>{ document.querySelectorAll(QUESTION_SELECTOR).forEach(q=> evaluateQuestion(q)); updateProgress(); }, 220);
-    }
+  // export current DOM questions as JSON
+  function exportToJSON(){
+    const qs = Array.from(container.querySelectorAll('.question'));
+    const out = qs.map(q=>{
+      const qid = q.getAttribute('data-qid') || '';
+      const text = q.querySelector('.q-text')?.innerText || '';
+      const opts = Array.from(q.querySelectorAll('.option-text')).map(o=> o.innerText);
+      const correct = (q.getAttribute('data-correct')||'').toUpperCase();
+      return { qid, text, options: opts, correct };
+    });
+    const blob = new Blob([JSON.stringify(out, null, 2)], {type: 'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a'); a.href = url; a.download = 'preguntas_export.json'; document.body.appendChild(a); a.click();
+    a.remove(); URL.revokeObjectURL(url);
+  }
+
+  // Attach global events
+  btnImportReplace.addEventListener('click', ()=> {
+    const txt = jsonIn.value.trim(); if (!txt) return alert('Pega el JSON primero');
+    importJSON(txt, 'replace');
   });
+  btnImportAppend.addEventListener('click', ()=> {
+    const txt = jsonIn.value.trim(); if (!txt) return alert('Pega el JSON primero');
+    importJSON(txt, 'append');
+  });
+  btnExport.addEventListener('click', exportToJSON);
+
+  btnToggleLock.addEventListener('click', ()=>{
+    locked = !locked;
+    btnToggleLock.innerText = locked ? 'Desbloquear respuestas' : 'Bloquear respuestas';
+    btnToggleLock.style.opacity = locked ? '0.95' : '1';
+    lockAnswered();
+  });
+
+  // lockAnswered: si locked=true, desactiva inputs de preguntas que ya tengan respuesta
+  function lockAnswered(){
+    container.querySelectorAll('.question').forEach(q=>{
+      const inputs = q.querySelectorAll('input[type="radio"]');
+      inputs.forEach(inp => {
+        if (!locked) { inp.disabled = false; return; }
+        // si la pregunta tiene respuesta, deshabilita los radios
+        if (q.querySelector('input[type="radio"]:checked')) inp.disabled = true;
+      });
+    });
+  }
+
+  // clear container (cuidado)
+  btnClear.addEventListener('click', ()=>{
+    if (!confirm('¿Borrar todas las preguntas del contenedor? Esto no se puede deshacer en este paso.')) return;
+    container.innerHTML = '';
+    updateProgress();
+  });
+
+  // If there are existing question elements in the page already, attach events (safe)
+  function initExisting(){
+    // Attach events to any pre-existing questions (useful si pegaste tu HTML original antes)
+    container.querySelectorAll('.question').forEach(q => attachEventsToQuestion(q));
+    updateProgress();
+  }
+
+  // expose a function to programmatically add single question (si prefieres editar manu)
+  window.addQuestion = function(qobj){ return renderQuestionObj(qobj); };
+
+  // init
+  initExisting();
+
+  // small helper: periodically re-evaluate in case external nav buttons used
+  setInterval(()=> { container.querySelectorAll('.question').forEach(q=> evaluateQuestion(q)); updateProgress(); }, 800);
 
 })();
 </script>
