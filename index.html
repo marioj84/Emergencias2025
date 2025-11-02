@@ -12,15 +12,24 @@
   <main class="container">
     <h1>Quiz — Emergencias2025</h1>
 
-    <div class="controls">
-      <label class="file-label">
-        Cargar archivo .xlsx
-        <input id="file-input" type="file" accept=".xlsx,.xls" />
-      </label>
-      <button id="btn-generate-json" class="btn" title="Descargar el JSON actual">Descargar JSON</button>
-      <button id="btn-reset" class="btn ghost">Limpiar</button>
-    </div>
+    <!-- Pantalla inicial para pedir nombre y apellido -->
+    <section id="welcome" class="card">
+      <h2 style="margin-top:0">Identifícate para comenzar</h2>
+      <div class="form-row">
+        <label>
+          Nombre
+          <input id="first-name" type="text" placeholder="Tu nombre" autocomplete="given-name">
+        </label>
+        <label>
+          Apellido
+          <input id="last-name" type="text" placeholder="Tu apellido" autocomplete="family-name">
+        </label>
+        <button id="btn-start" class="btn">Comenzar</button>
+      </div>
+      <div id="welcome-error" class="small muted"></div>
+    </section>
 
+    <!-- Área del quiz (oculta hasta que se ingrese el nombre) -->
     <section id="quiz-area" class="card hidden">
       <div class="progress-row">
         <div id="progress-text">Pregunta 0 / 0</div>
