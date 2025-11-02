@@ -1,8 +1,8 @@
 
 (() => {
   // ====== CONFIG ======
-  // Reemplaza esta URL con el despliegue de tu Apps Script (Web App) para guardar en Google Sheets:
-  const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbymfQEX_oXWMxqY_aKAx3erV6Vtmoz-hGMtGe1IQswEOheNjTpXK2v6qAE2smctoouDeA/exec"; // <-- pega aquí tu URL de implementación (https://script.google.com/macros/s/XXXXX/exec)
+  // URL de tu Apps Script (Web App) para guardar en Google Sheets:
+  const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbwdN2RIoJlPL3uSaod85ugRNXFiJD9-Gb3aUdAYWfdcuV633a7cc0K6_TxGTrCHDbu-gg/exec";
 
   // ====== ELEMENTOS ======
   const welcome = document.getElementById('welcome');
@@ -90,7 +90,7 @@
   startBtn.addEventListener('click', () => {
     const f = (firstNameInput.value || '').trim();
     const l = (lastNameInput.value || '').trim();
-    selModule = moduleSelect.value || 'SKY · Prueba 1';
+    selModule = moduleSelect ? (moduleSelect.value || 'SKY · Prueba 1') : 'SKY · Prueba 1';
     if (!f || !l) { welcomeError.textContent = 'Por favor, escribe tu nombre y apellido.'; return; }
     firstName = f; lastName = l;
     welcome.classList.add('hidden');
@@ -329,7 +329,7 @@
       if (donut) donut.style.strokeDashoffset = String(2*Math.PI*radius - dash);
     });
 
-    // Envía a Google Sheets (Apps Script) si hay URL configurada
+    // Envía a Google Sheets (Apps Script) en form-urlencoded
     sendResultToSheets({
       attemptId,
       module: selModule,
@@ -369,18 +369,25 @@
     XLSX.writeFile(wb, 'resultado_quiz.xlsx');
   }
 
-  // ====== ENVIAR A SHEETS (Apps Script) ======
+  // ====== ENVIAR A SHEETS (Apps Script) - form-urlencoded ======
   async function sendResultToSheets(payload){
-    if (!WEBAPP_URL) return; // no configurado => no envía
+    if (!WEBAPP_URL) return;
     try{
-      await fetch(WEBAPP_URL, {
+      const form = new URLSearchParams();
+      Object.entries(payload).forEach(([k,v]) => form.append(k, String(v ?? '')));
+      const resp = await fetch(WEBAPP_URL, {
         method: 'POST',
         mode: 'cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+        body: form.toString()
       });
-    }catch(e){
-      // Silencioso para no romper UX
+      if (!resp.ok) {
+        console.warn('Sheets: HTTP', resp.status, await resp.text());
+      } else {
+        const txt = await resp.text();
+        console.log('Sheets OK:', txt);
+      }
+    } catch(e){
       console.warn('No se pudo enviar a Sheets:', e);
     }
   }
@@ -403,7 +410,6 @@
     let t = 0;
     const maxT = 200;
     function step(){
-      const ctx = confettiCanvas.getContext('2d');
       ctx.clearRect(0,0,confettiCanvas.width,confettiCanvas.height);
       particles.forEach(p => {
         p.x += p.vx;
