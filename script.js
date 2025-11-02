@@ -9,15 +9,14 @@
   const progressBar = document.getElementById('progress-bar');
   const progressText = document.getElementById('progress-text');
   const resultEl = document.getElementById('result');
+  const liveStatsEl = document.getElementById('live-stats');
   const scoreEl = document.getElementById('score');
   const btnGenerateJSON = document.getElementById('btn-generate-json');
   const btnReset = document.getElementById('btn-reset');
 
   let questions = [];
   let current = 0;
-  let correctCount = 0;
-  let answered = false;
-  let selections = [];
+  let selections = []; // track selected index per question
 
   // Auto-cargar questions.json si existe
   fetch('questions.json', {cache:'no-store'})
@@ -36,14 +35,14 @@
   });
 
   btnReset.addEventListener('click', () => {
-    questions = []; current = 0; correctCount = 0; answered = false;
-    selections = [];
+    questions = []; current = 0; selections = [];
     quizArea.classList.add('hidden');
     resultEl.textContent = '';
     optionsEl.innerHTML = '';
     progressBar.style.width = '0%';
     progressText.textContent = 'Pregunta 0 / 0';
     scoreEl.textContent = '0 / 0';
+    liveStatsEl.textContent = 'Correctas: 0 · Incorrectas: 0';
     fileInput.value = '';
   });
 
@@ -65,28 +64,25 @@
     if (!questions.length) return;
     if (current > 0) {
       current--;
-      answered = false;
-      renderQuestion();
+      renderQuestion(true);
     }
   });
 
   btnNext.addEventListener('click', () => {
     if (!questions.length) return;
-    // Si estamos en la última pregunta y ya está respondida, mostrar resumen
+    // Si estamos en la última pregunta y ya está respondida, ir al resumen (Ver resultados)
     if (current >= questions.length - 1 && selections[current] !== null) {
       showSummary();
       return;
     }
-    // Avanzar si no es la última
     if (current < questions.length - 1) {
       current++;
-      answered = false;
       renderQuestion();
     }
   });
 
   function startQuiz() {
-    current = 0; correctCount = 0; answered = false;
+    current = 0;
     selections = new Array(questions.length).fill(null);
     quizArea.classList.remove('hidden');
     renderQuestion();
@@ -145,7 +141,17 @@
     startQuiz();
   }
 
-  function renderQuestion() {
+  function counts(){
+    const totalAnswered = selections.filter(x => x !== null).length;
+    let correct = 0;
+    selections.forEach((sel, i) => {
+      if (sel !== null && sel === questions[i].answerIndex) correct++;
+    });
+    const incorrect = totalAnswered - correct;
+    return { correct, incorrect, totalAnswered };
+  }
+
+  function renderQuestion(showAsAnswered=false) {
     const item = questions[current];
     questionTitle.textContent = item.question;
     optionsEl.innerHTML = '';
@@ -167,37 +173,49 @@
     resultEl.textContent = '';
     btnNext.disabled = true;
     btnPrev.disabled = current === 0;
-    scoreEl.textContent = correctCount + ' / ' + questions.length;
+
+    // Actualizar contadores en vivo
+    const {correct, incorrect} = counts();
+    scoreEl.textContent = correct + ' / ' + questions.length;
+    liveStatsEl.textContent = 'Correctas: ' + correct + ' · Incorrectas: ' + incorrect;
 
     // Si ya respondió esta, bloquear y mostrar estado
     const sel = selections[current];
-    if (sel !== null) {
+    if (sel !== null || showAsAnswered) {
       const buttons = Array.from(optionsEl.querySelectorAll('.option-btn'));
       buttons.forEach(b => b.classList.add('disabled'));
       const correctIdx = item.answerIndex;
       const correctBtn = buttons.find(b => Number(b.dataset.index) === correctIdx);
       if (correctBtn) correctBtn.classList.add('correct');
-      const selectedBtn = buttons.find(b => Number(b.dataset.index) === sel);
-      if (selectedBtn && sel !== correctIdx) selectedBtn.classList.add('incorrect');
+      if (sel !== null && sel !== correctIdx) {
+        const selectedBtn = buttons.find(b => Number(b.dataset.index) === sel);
+        if (selectedBtn) selectedBtn.classList.add('incorrect');
+      }
       btnNext.disabled = false;
+      // Si es la última y está respondida: "Ver resultados"
+      if (current === questions.length - 1 && sel !== null) {
+        btnNext.textContent = 'Ver resultados';
+        btnNext.onclick = showSummary;
+      } else {
+        btnNext.textContent = 'Siguiente';
+        btnNext.onclick = null;
+      }
+    } else {
+      btnNext.textContent = 'Siguiente';
+      btnNext.onclick = null;
     }
   }
 
   function onSelect(ev) {
-    if (answered) return;
-    answered = true;
     const idx = Number(ev.currentTarget.dataset.index);
     const item = questions[current];
+    if (selections[current] !== null) return; // no recontar
+    selections[current] = idx;
+
     const buttons = Array.from(optionsEl.querySelectorAll('.option-btn'));
     buttons.forEach(b => b.classList.add('disabled'));
     const correctIdx = item.answerIndex;
     const correctText = item.options[correctIdx] || '';
-
-    // si es la primera vez que responde esta, registrar selección y puntaje
-    if (selections[current] === null) {
-      selections[current] = idx;
-      if (idx === correctIdx) correctCount++;
-    }
 
     if (idx === correctIdx) {
       ev.currentTarget.classList.add('correct');
@@ -208,22 +226,26 @@
       if (correctBtn) correctBtn.classList.add('correct');
       resultEl.textContent = 'Incorrecto, la respuesta correcta es: ' + correctText;
     }
+
+    // Actualizar contadores en vivo
+    const {correct, incorrect} = counts();
+    scoreEl.textContent = correct + ' / ' + questions.length;
+    liveStatsEl.textContent = 'Correctas: ' + correct + ' · Incorrectas: ' + incorrect;
+
     btnNext.disabled = false;
-    // Si estamos en la última, cambiar texto del botón
     if (current === questions.length - 1) {
-      btnNext.textContent = 'Descargar respuestas';
-      // Al hacer clic, muestra el resumen con descarga y reintento
-      btnNext.onclick = () => showSummary();
+      btnNext.textContent = 'Ver resultados';
+      btnNext.onclick = showSummary;
     } else {
       btnNext.textContent = 'Siguiente';
       btnNext.onclick = null;
     }
-    scoreEl.textContent = correctCount + ' / ' + questions.length;
   }
 
   function showSummary() {
+    const {correct, incorrect} = counts();
     const total = questions.length || 1;
-    const pct = Math.round((correctCount / total) * 100);
+    const pct = Math.round((correct / total) * 100);
     const radius = 70;
     const circumference = 2 * Math.PI * radius;
     const dash = (pct/100) * circumference;
@@ -237,7 +259,8 @@
                   stroke-dasharray="${dash} ${gap}" transform="rotate(-90 90 90)"></circle>
           <text x="90" y="90">${pct}%</text>
         </svg>
-        <div class="muted">Resumen: ${correctCount} correctas de ${total} preguntas</div>
+        <div class="muted">Resumen: ${correct} correctas de ${total} preguntas</div>
+        <div class="muted">Incorrectas: ${incorrect}</div>
         <div class="buttons">
           <button id="btn-download" class="btn">Descargar respuestas</button>
           <button id="btn-retry" class="btn ghost">Volver a intentar</button>
@@ -251,32 +274,24 @@
     btnNext.disabled = true;
     progressBar.style.width = '100%';
     progressText.textContent = 'Finalizado';
-    scoreEl.textContent = correctCount + ' / ' + total;
+    scoreEl.textContent = correct + ' / ' + total;
 
-    document.getElementById('btn-download').addEventListener('click', downloadResults);
+    document.getElementById('btn-download').addEventListener('click', downloadResultsXLSX);
     document.getElementById('btn-retry').addEventListener('click', startQuiz);
   }
 
-  function downloadResults() {
-    const rows = [];
-    rows.push(['N°','Pregunta','Respuesta seleccionada','Respuesta correcta','¿Acertó?']);
-    questions.forEach((q, i) => {
-      const selIdx = selections[i];
-      const selText = selIdx !== null && selIdx >= 0 ? q.options[selIdx] : '';
-      const corText = q.options[q.answerIndex];
-      const ok = selIdx === q.answerIndex ? 'Sí' : 'No';
+  function downloadResultsXLSX(){
+    const rows = [['N°','Pregunta','Respuesta seleccionada','Respuesta correcta','¿Acertó?']];
+    selections.forEach((sel, i) => {
+      const q = questions[i];
+      const selText = sel !== null && sel >= 0 ? q.options[sel] : '';
+      const corText = q.options[q.answerIndex] || '';
+      const ok = sel === q.answerIndex ? 'Sí' : 'No';
       rows.push([i+1, q.question, selText, corText, ok]);
     });
-    const csv = rows.map(r => r.map(v => {
-      const s = String(v).replace(/"/g,'""');
-      return `"${s}"`;
-    }).join(',')).join('\n');
-    const blob = new Blob([csv], {type:'text/csv;charset=utf-8'});
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'resultado_quiz.csv';
-    a.click();
-    URL.revokeObjectURL(url);
+    const wb = XLSX.utils.book_new();
+    const ws = XLSX.utils.aoa_to_sheet(rows);
+    XLSX.utils.book_append_sheet(wb, ws, 'Resultados');
+    XLSX.writeFile(wb, 'resultado_quiz.xlsx');
   }
 })();

@@ -27,11 +27,14 @@ h1{margin:0 0 8px;font-size:20px}
 .option-btn.disabled{opacity:.7;pointer-events:none}
 .option-btn.correct{background:rgba(16,185,129,0.12);border-color:rgba(16,185,129,0.25)}
 .option-btn.incorrect{background:rgba(239,68,68,0.07);border-color:rgba(239,68,68,0.18)}
-.footer{display:flex;justify-content:space-between;align-items:center;margin-top:14px}
+.footer{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-top:14px}
 .actions{display:flex;gap:8px;align-items:center}
+.left{display:flex;flex-direction:column;gap:6px}
 .result{min-height:18px}
+.live-stats{font-size:13px;color:var(--muted)}
 .score{font-weight:600;color:var(--muted)}
 .summary{display:grid;gap:16px;align-items:center;justify-items:center;padding:24px}
+.summary .buttons{display:flex;gap:10px}
 .donut{width:160px;height:160px}
 .donut text{font-family: inherit; fill: var(--accent); font-size: 16px; dominant-baseline: middle; text-anchor: middle;}
 @media(max-width:520px){.container{padding:14px}.controls{flex-direction:column;align-items:stretch}}
