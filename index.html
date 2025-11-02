@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Quiz TAC - Práctica</title>
+<style>
+  :root{font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;}
+  body{margin:0;background:#0f1724;color:#e6eef8;display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px}
+  .card{width:100%;max-width:900px;background:#0b1220;border-radius:12px;box-shadow:0 10px 30px rgba(2,6,23,.6);padding:20px}
+  header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;gap:12px;flex-wrap:wrap}
+  h1{font-size:1.1rem;margin:0}
+  .controls{display:flex;gap:8px;align-items:center}
+  .progress{font-size:.9rem;color:#9fb0c8}
+  .question{font-size:1.05rem;margin:12px 0;padding:12px;background:rgba(255,255,255,0.02);border-radius:8px}
+  .options{display:grid;grid-template-columns:1fr;gap:10px;margin-top:12px}
+  button.opt{padding:12px 14px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:inherit;font-size:1rem;cursor:pointer;text-align:left}
+  button.opt:disabled{opacity:.7;cursor:not-allowed}
+  .correct{outline:3px solid rgba(34,197,94,0.15);background:rgba(34,197,94,0.06)}
+  .wrong{outline:3px solid rgba(239,68,68,0.12);background:rgba(239,68,68,0.04)}
+  .feedback{margin-top:12px;font-weight:600}
+  .footer{display:flex;justify-content:space-between;align-items:center;margin-top:16px}
+  .small{font-size:.9rem;color:#9fb0c8}
+  .summary{text-align:center}
+  .btn{background:#1f6feb;border:none;padding:8px 12px;border-radius:8px;color:white;cursor:pointer}
+  .btn.secondary{background:transparent;border:1px solid rgba(255,255,255,0.06)}
+  .btn.ghost{background:transparent;border:none;color:#9fb0c8}
+  .admin-panel{margin-top:12px;background:rgba(255,255,255,0.02);padding:10px;border-radius:8px}
+  .admin-row{display:flex;gap:8px;align-items:center;padding:6px 0;border-bottom:1px dashed rgba(255,255,255,0.03)}
+  .admin-row:last-child{border-bottom:none}
+  .label-chip{background:rgba(255,255,255,0.04);padding:4px 8px;border-radius:6px;font-size:.9rem}
+  input[type=file]{display:none}
+  .hint{font-size:.85rem;color:#9fb0c8}
+  @media(max-width:680px){.card{padding:14px}}
+</style>
+</head>
+<body>
+  <div class="card" id="app">
+    <header>
+      <div style="display:flex;flex-direction:column">
+        <h1>Quiz TAC - Práctica</h1>
+        <div class="hint">Carga: <span id="loaded-count">0</span> preguntas — Modo: <span id="mode-label">Usuario</span></div>
+      </div>
+      <div class="controls">
+        <div class="progress" id="progress">Cargando...</div>
+        <button class="btn secondary" id="toggle-mode">Modo edición</button>
+        <button class="btn" id="export-answers" title="Exportar respuestas configuradas">Exportar respuestas</button>
+        <label class="btn secondary" for="importFile" style="cursor:pointer;margin-left:6px">Importar respuestas</label>
+        <input id="importFile" type="file" accept="application/json">
+      </div>
+    </header>
+
+    <main id="main">
+      <div id="question-area">
+        <div class="question" id="qtext">...</div>
+        <div class="options" id="opts"></div>
+        <div class="feedback" id="feedback"></div>
+      </div>
+
+      <div class="summary" id="summary" style="display:none">
+        <h2 id="final-title">¡Terminaste!</h2>
+        <p id="final-score"></p>
+        <button class="btn" id="restart">Volver a empezar</button>
+      </div>
+
+      <div class="admin-panel" id="admin" style="display:none">
+        <strong>Edición rápida de respuestas</strong>
+        <div id="admin-list" style="margin-top:8px;max-height:320px;overflow:auto"></div>
+        <div style="margin-top:8px;display:flex;gap:8px">
+          <button class="btn" id="save-admin">Guardar en Local</button>
+          <button class="btn secondary" id="clear-admin">Borrar guardado</button>
+        </div>
+      </div>
+    </main>
+
+    <div class="footer">
+      <div class="small" id="timer">Avanza automático después de seleccionar</div>
+      <div>
+        <button class="btn secondary" id="prev" style="display:none">Anterior</button>
+        <button class="btn" id="next" style="display:none">Siguiente</button>
+      </div>
+    </div>
+  </div>
+
+<script>
+(async function(){
+  const dataUrl = './questions.json';
+  let questions = [];
+  try {
+    const r = await fetch(dataUrl);
+    questions = await r.json();
+  } catch(err){
+    document.getElementById('qtext').textContent = 'No se pudo cargar questions.json. Asegúrate de subir questions.json en el mismo directorio.';
+    console.error(err);
+    return;
+  }
+
+  // Normalize options to array of strings; original has {label,text}
+  questions = questions.map(q=>{
+    const opts = (q.options||[]).map(o => (typeof o === 'string') ? o : (o.text || o.label || ''));
+    return {...q, options: opts};
+  });
+
+  const app = {
+    questions,
+    idx: 0,
+    score: 0,
+    autoAdvanceMs: 900,
+    mode: 'user', // or 'admin'
+    answersMap: {} // { id : correctIndex }
+  };
+
+  // Load saved answers from localStorage (if any)
+  const SAVED_KEY = 'tac_quiz_answers_v1';
+  const saved = localStorage.getItem(SAVED_KEY);
+  if(saved){
+    try{ app.answersMap = JSON.parse(saved); }catch(e){ app.answersMap = {}; }
+  }
+
+  // DOM refs
+  const qtext = document.getElementById('qtext');
+  const opts = document.getElementById('opts');
+  const feedback = document.getElementById('feedback');
+  const progress = document.getElementById('progress');
+  const loadedCount = document.getElementById('loaded-count');
+  const modeLabel = document.getElementById('mode-label');
+  const adminPanel = document.getElementById('admin');
+  const adminList = document.getElementById('admin-list');
+  const exportBtn = document.getElementById('export-answers');
+  const importFile = document.getElementById('importFile');
+
+  document.getElementById('loaded-count').innerText = app.questions.length;
+  progress.textContent = `Pregunta 1 / ${app.questions.length}`;
+
+  function updateProgress(){
+    progress.textContent = `Pregunta ${app.idx+1} / ${app.questions.length}`;
+  }
+
+  function getCorrectIndex(q){
+    // Priority: a) q.correctIndex if exists b) app.answersMap by id c) undefined
+    if(typeof q.correctIndex === 'number') return q.correctIndex;
+    if(app.answersMap && (q.id in app.answersMap)) return app.answersMap[q.id];
+    return undefined;
+  }
+
+  function renderQuestion(){
+    feedback.textContent = '';
+    document.getElementById('question-area').style.display = '';
+    adminPanel.style.display = app.mode === 'admin' ? 'block' : 'none';
+    modeLabel.textContent = app.mode === 'admin' ? 'Edición' : 'Usuario';
+    updateProgress();
+
+    const q = app.questions[app.idx];
+    qtext.innerHTML = `<strong>${q.id}.</strong> ${escapeHtml((q.text||'').trim())}`;
+    opts.innerHTML = '';
+    q.options.forEach((optText, i)=>{
+      const btn = document.createElement('button');
+      btn.className = 'opt';
+      btn.innerHTML = `<span class="label-chip">${String.fromCharCode(65+i)}</span>&nbsp; ${escapeHtml(optText)}`;
+      btn.dataset.index = i;
+      btn.onclick = () => onSelect(i, btn, q);
+      opts.appendChild(btn);
+    });
+
+    // In admin mode, highlight currently configured answer
+    if(app.mode === 'admin'){
+      Array.from(opts.children).forEach(b=>{
+        const idx = parseInt(b.dataset.index,10);
+        const c = getCorrectIndex(app.questions[app.idx]);
+        b.style.outline = (c === idx) ? '3px solid rgba(34,197,94,0.15)' : '';
+      });
+    }
+  }
+
+  function escapeHtml(s){ return s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;'); }
+
+  function disableOptions(){
+    const buttons = opts.querySelectorAll('button.opt');
+    buttons.forEach(b => b.disabled = true);
+  }
+
+  function onSelect(i, btn, q){
+    if(app.mode === 'admin'){
+      // Set this option as correct for this question
+      app.answersMap[q.id] = i;
+      // persist immediately
+      localStorage.setItem(SAVED_KEY, JSON.stringify(app.answersMap));
+      feedback.textContent = `Guardado: pregunta ${q.id} → ${String.fromCharCode(65+i)}`;
+      // refresh admin list visuals
+      renderAdminList();
+      // update visual on options
+      Array.from(opts.children).forEach(b=>{
+        const idx = parseInt(b.dataset.index,10);
+        b.style.outline = (idx===i) ? '3px solid rgba(34,197,94,0.15)' : '';
+      });
+      return;
+    }
+
+    // user mode: check correctness (if known), show feedback, advance
+    disableOptions();
+    const correctIdx = getCorrectIndex(q);
+    const correctBtn = opts.querySelector(`button[data-index="${correctIdx}"]`);
+    if(correctIdx === undefined){
+      // No answer key: only show selected highlight and offer to continue
+      btn.classList.add('correct');
+      feedback.textContent = 'Respuesta registrada (aún no hay clave para evaluar).';
+    } else if(i === correctIdx){
+      btn.classList.add('correct');
+      feedback.textContent = 'Correcto ✅';
+      app.score += 1;
+    } else {
+      btn.classList.add('wrong');
+      if(correctBtn) correctBtn.classList.add('correct');
+      feedback.textContent = `Incorrecto ✖️ — respuesta correcta: ${String.fromCharCode(65+correctIdx)}`;
+    }
+
+    // Auto-advance
+    setTimeout(()=>{ nextQuestion(); }, app.autoAdvanceMs);
+  }
+
+  function nextQuestion(){
+    if(app.idx < app.questions.length - 1){
+      app.idx += 1;
+      renderQuestion();
+    } else {
+      showSummary();
+    }
+  }
+  function prevQuestion(){
+    if(app.idx > 0){
+      app.idx -= 1;
+      renderQuestion();
+    }
+  }
+  function showSummary(){
+    document.getElementById('question-area').style.display = 'none';
+    document.getElementById('summary').style.display = 'block';
+    document.getElementById('final-score').textContent = `Obtuviste ${app.score} de ${app.questions.length} (${Math.round(app.score/app.questions.length*100)}%)`;
+  }
+
+  // Admin list rendering: show all questions with current mapping (paginated-ish)
+  function renderAdminList(){
+    adminList.innerHTML = '';
+    for(const q of app.questions){
+      const row = document.createElement('div');
+      row.className = 'admin-row';
+      const left = document.createElement('div');
+      left.style.flex = '1';
+      left.innerHTML = `<strong>${q.id}.</strong> ${escapeHtml(q.text||'').slice(0,120)}`;
+      const right = document.createElement('div');
+      right.style.display = 'flex';
+      right.style.gap = '6px';
+      q.options.forEach((opt, idx)=>{
+        const b = document.createElement('button');
+        b.textContent = String.fromCharCode(65+idx);
+        b.title = opt;
+        b.onclick = ()=> {
+          app.answersMap[q.id] = idx;
+          localStorage.setItem(SAVED_KEY, JSON.stringify(app.answersMap));
+          renderAdminList();
+        };
+        if(app.answersMap[q.id] === idx) b.style.outline = '3px solid rgba(34,197,94,0.15)';
+        right.appendChild(b);
+      });
+      row.appendChild(left);
+      row.appendChild(right);
+      adminList.appendChild(row);
+    }
+  }
+
+  // Export answers as JSON download
+  function exportAnswers(){
+    const payload = {generatedAt: new Date().toISOString(), answers: app.answersMap};
+    const blob = new Blob([JSON.stringify(payload, null, 2)], {type: 'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'tac_answers.json';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  }
+
+  // Import answers file (expects {answers: {id: index}})
+  importFile.addEventListener('change', (e)=>{
+    const f = e.target.files[0];
+    if(!f) return;
+    const reader = new FileReader();
+    reader.onload = (ev)=>{
+      try{
+        const js = JSON.parse(ev.target.result);
+        const map = js.answers || js;
+        app.answersMap = map;
+        localStorage.setItem(SAVED_KEY, JSON.stringify(app.answersMap));
+        alert('Respuestas importadas.');
+        renderAdminList();
+        renderQuestion();
+      }catch(err){
+        alert('Archivo inválido: debe ser JSON con formato { "answers": { "1":0, "2":1 } } o similar.');
+        console.error(err);
+      }
+    };
+    reader.readAsText(f);
+  });
+
+  // UI bindings
+  document.getElementById('toggle-mode').addEventListener('click', ()=>{
+    app.mode = app.mode === 'user' ? 'admin' : 'user';
+    document.getElementById('mode-label').textContent = app.mode === 'admin' ? 'Edición' : 'Usuario';
+    document.getElementById('toggle-mode').textContent = app.mode === 'admin' ? 'Modo usuario' : 'Modo edición';
+    renderQuestion();
+    if(app.mode === 'admin') renderAdminList();
+  });
+  document.getElementById('prev').addEventListener('click', ()=>{
+    prevQuestion();
+  });
+  document.getElementById('next').addEventListener('click', ()=>{
+    nextQuestion();
+  });
+  document.getElementById('restart').addEventListener('click', ()=>{
+    app.idx = 0; app.score = 0; document.getElementById('question-area').style.display=''; document.getElementById('summary').style.display='none'; renderQuestion();
+  });
+  document.getElementById('save-admin').addEventListener('click', ()=>{
+    localStorage.setItem(SAVED_KEY, JSON.stringify(app.answersMap));
+    alert('Guardado en localStorage.');
+  });
+  document.getElementById('clear-admin').addEventListener('click', ()=>{
+    if(confirm('Borrar las respuestas guardadas en local?')){
+      localStorage.removeItem(SAVED_KEY);
+      app.answersMap = {};
+      renderAdminList();
+      alert('Guardado borrado.');
+    }
+  });
+  exportBtn.addEventListener('click', exportAnswers);
+
+  // initial render
+  renderQuestion();
+
+})();
+</script>
+</body>
+</html>
