@@ -1,8 +1,7 @@
-
 (() => {
   // ====== CONFIG ======
   // URL de tu Apps Script (Web App) para guardar en Google Sheets:
-  const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbwdN2RIoJlPL3uSaod85ugRNXFiJD9-Gb3aUdAYWfdcuV633a7cc0K6_TxGTrCHDbu-gg/exec";
+  const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbx_TalXqDvJQLodJ7XPTYbgndNRq76ipdGY4e0DQNIgXZK05-KMd4AHqBobznhOVhS18w/exec";
 
   // ====== ELEMENTOS ======
   const welcome = document.getElementById('welcome');
@@ -35,11 +34,15 @@
   let baseQuestions = [];
   let questions = [];
   let current = 0;
-  let selections = []; // TEXTO seleccionado por pregunta
+  let selections = [];     // TEXTO seleccionado por pregunta
   let startTime = 0;
   let timerId = null;
   let particles = [];
   let attemptId = '';
+
+  // NUEVO: detalle por pregunta
+  let details = [];        // array con el detalle por pregunta
+  let questionStart = 0;   // timestamp al mostrar cada pregunta
 
   // ====== UTILIDADES ======
   function shuffle(arr){
@@ -151,6 +154,7 @@
     current = 0;
     selections = new Array(questions.length).fill(null);
     attemptId = uid();
+    details = []; // reset detalle
     buildSteps();
     quizArea.classList.remove('hidden');
     startTimer();
@@ -219,6 +223,9 @@
 
     updateSteps();
 
+    // NUEVO: arranca cronómetro por pregunta
+    questionStart = Date.now();
+
     const selText = selections[current];
     if (selText !== null || showAsAnswered) {
       const buttons = Array.from(optionsEl.querySelectorAll('.option-btn'));
@@ -250,15 +257,32 @@
     buttons.forEach(b => b.classList.add('disabled'));
     const correctBtn = buttons.find(b => b.dataset.correct === '1');
 
+    const correctText = questions[current].options[questions[current].answerIndex] || '';
+
     if (isCorrect) {
       btn.classList.add('correct');
       resultEl.textContent = '✅ Correcto';
     } else {
       btn.classList.add('incorrect');
       if (correctBtn) correctBtn.classList.add('correct');
-      const correctText = questions[current].options[questions[current].answerIndex] || '';
       resultEl.textContent = '❌ Incorrecto — La correcta es: ' + correctText;
     }
+
+    // NUEVO: capturar detalle por pregunta
+    const timeMs = Date.now() - questionStart;
+    details.push({
+      attemptId,
+      module: selModule,
+      firstName,
+      lastName,
+      qNumber: current + 1,
+      question: questions[current].question,
+      selected: selectedText,
+      correctAnswer: correctText,
+      isCorrect: isCorrect ? 1 : 0,
+      timeMs,
+      timestamp: new Date().toISOString()
+    });
 
     const {correct, incorrect} = counts();
     scoreEl.textContent = correct + ' / ' + questions.length;
@@ -280,7 +304,7 @@
 
   function showSummary(){
     stopTimer();
-    const {correct, incorrect} = counts();
+    const {correct} = counts();
     const total = questions.length || 1;
     const pct = Math.round((correct / total) * 100);
     const elapsed = Date.now()-startTime;
@@ -288,8 +312,7 @@
     if (pct >= 80) fireConfetti();
 
     const radius = 80;
-    const circumference = 2 * Math.PI * radius;
-    const dash = (pct/100) * circumference;
+    const dash = (pct/100) * (2 * Math.PI * radius);
 
     const summaryHTML = `
       <div class="summary">
@@ -329,7 +352,7 @@
       if (donut) donut.style.strokeDashoffset = String(2*Math.PI*radius - dash);
     });
 
-    // Envía a Google Sheets (Apps Script) en form-urlencoded
+    // Envía RESUMEN
     sendResultToSheets({
       attemptId,
       module: selModule,
@@ -341,6 +364,9 @@
       elapsedMs: elapsed,
       timestamp: new Date().toISOString()
     });
+
+    // Envía DETALLE (lote)
+    sendResultDetailsToSheets(details);
 
     document.getElementById('btn-download').addEventListener('click', () => downloadResultsXLSX(elapsed));
     document.getElementById('btn-retry').addEventListener('click', () => {
@@ -354,14 +380,15 @@
       ['Módulo','Nombre','Apellido','Tiempo total','Intento'],
       [selModule, firstName,lastName,fmtTime(elapsedMs),attemptId],
       [],
-      ['N°','Pregunta','Respuesta seleccionada','Respuesta correcta','¿Acertó?']
+      ['N°','Pregunta','Respuesta seleccionada','Respuesta correcta','¿Acertó?','Tiempo (ms)']
     ];
     selections.forEach((sel, i) => {
       const q = questions[i];
       const selText = sel !== null ? sel : '';
       const corText = q.options[q.answerIndex] || '';
       const ok = selText === corText ? 'Sí' : 'No';
-      rows.push([i+1, q.question, selText, corText, ok]);
+      const rowDetail = details.find(d => d.qNumber === (i+1));
+      rows.push([i+1, q.question, selText, corText, ok, rowDetail ? rowDetail.timeMs : '']);
     });
     const wb = XLSX.utils.book_new();
     const ws = XLSX.utils.aoa_to_sheet(rows);
@@ -371,7 +398,7 @@
 
   // ====== ENVIAR A SHEETS (Apps Script) - form-urlencoded ======
   async function sendResultToSheets(payload){
-    if (!WEBAPP_URL) return;
+    if (!WEBAPP_URL) return; // si no configuraste la URL, no intenta enviar
     try{
       const form = new URLSearchParams();
       Object.entries(payload).forEach(([k,v]) => form.append(k, String(v ?? '')));
@@ -389,6 +416,27 @@
       }
     } catch(e){
       console.warn('No se pudo enviar a Sheets:', e);
+    }
+  }
+
+  async function sendResultDetailsToSheets(rows){
+    if (!WEBAPP_URL || !Array.isArray(rows) || rows.length === 0) return;
+    try{
+      const form = new URLSearchParams();
+      form.append('details', JSON.stringify(rows));
+      const resp = await fetch(WEBAPP_URL, {
+        method: 'POST',
+        mode: 'cors',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+        body: form.toString()
+      });
+      if (!resp.ok) {
+        console.warn('Sheets detalle: HTTP', resp.status, await resp.text());
+      } else {
+        console.log('Sheets detalle OK');
+      }
+    } catch(e){
+      console.warn('No se pudo enviar detalle a Sheets:', e);
     }
   }
 
