@@ -3,319 +3,311 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Quiz - Import/Export JSON</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<title>Quiz Emergencias 2025</title>
 <style>
   :root{
-    --bg:#061422; --card:#092433; --muted:#a9c0d6; --accent1:#4db6ac; --accent2:#4a90e2;
-    --danger:#ff6b6b; --success:#2ecc71; --option-bg: rgba(255,255,255,0.02); --glass: rgba(255,255,255,0.03);
-    --radius:12px;
+    --bg:#0f1724; --card:#0b1220; --muted:#9aa6b2;
+    --accent:#06b6d4; --success:#1a7f37; --danger:#9b1e2a;
+    font-family:system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   }
-  *{box-sizing:border-box}
-  body{ margin:0; min-height:100vh; background:linear-gradient(180deg,#04101a 0%, #061422 60%); color:#d6e9f6;
-    font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial; padding:20px; display:flex; justify-content:center;}
-  .wrap{ width:100%; max-width:1100px; }
-
-  header{ display:flex; justify-content:space-between; gap:12px; margin-bottom:14px; align-items:center; }
-  header h1{ margin:0; font-size:16px; font-weight:700; color:#eaf6ff;}
-  header .controls{ display:flex; gap:8px; align-items:center; }
-
-  /* area import/export */
-  .io { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; flex-wrap:wrap; }
-  .io textarea{ width:520px; max-width:100%; height:110px; padding:10px; border-radius:8px; background:#061f2a; color:#dfeeef; border:1px solid var(--glass); font-family:monospace; font-size:13px; }
-  .io .btn { padding:10px 12px; border-radius:8px; background:linear-gradient(180deg,#0f2b38,#092a33); border:1px solid rgba(255,255,255,0.03); color:#eaffff; cursor:pointer; }
-  .io .btn.warn{ background:linear-gradient(90deg,#d65b4a,#c7383e); }
-  .io .btn.ghost{ background:transparent; border:1px solid rgba(255,255,255,0.06); color:var(--muted); }
-
-  /* Questions */
-  .question { background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02)); border-radius:12px; padding:14px; margin-bottom:12px; border:1px solid var(--glass); }
-  .q-head{ display:flex; gap:12px; align-items:flex-start; margin-bottom:10px; }
-  .q-num{ background:linear-gradient(90deg,var(--accent1),var(--accent2)); color:#022428; font-weight:700; padding:6px 10px; border-radius:9px; font-size:13px; min-width:44px; text-align:center; }
-  .q-text{ font-size:14px; line-height:1.35; color:#e9f5ff; font-weight:600; }
-
-  .options{ display:flex; flex-direction:column; gap:8px; margin-top:6px; }
-  .option-label{ display:flex; align-items:center; gap:12px; padding:12px 14px; border-radius:10px; background:var(--option-bg); border:1px solid rgba(255,255,255,0.04); cursor:pointer; transition:all .12s ease; user-select:none; }
-  .option-label:hover{ transform:translateY(-2px); box-shadow:0 10px 28px rgba(2,8,12,0.45); }
-  .radio{ width:18px; height:18px; border-radius:50%; border:2px solid rgba(255,255,255,0.16); display:flex; align-items:center; justify-content:center; flex:0 0 18px; }
-  .radio::after{ content:""; width:10px; height:10px; border-radius:50%; background:transparent; transform:scale(0.75); transition:background .12s ease, transform .12s ease; }
-  .option-text{ font-size:15px; color:#dff2ff; }
-
-  .option-label.selected{ border-color:rgba(255,255,255,0.16); }
-  .option-label.selected .radio{ border-color:rgba(255,255,255,0.9); }
-  .option-label.selected .radio::after{ background:rgba(255,255,255,0.92); transform:scale(1); }
-
-  .option-label.correct{ background: linear-gradient(90deg, rgba(46,204,113,0.08), rgba(52,152,219,0.03)); border-color: rgba(46,204,113,0.8); }
-  .option-label.correct .radio{ border-color: rgba(46,204,113,0.95); }
-  .option-label.correct .radio::after{ background: rgba(46,204,113,0.95); }
-
-  .option-label.incorrect{ background: linear-gradient(90deg, rgba(255,107,107,0.08), rgba(255,107,107,0.03)); border-color: rgba(255,107,107,0.9); }
-  .option-label.incorrect .radio{ border-color: rgba(255,107,107,0.95); }
-  .option-label.incorrect .radio::after{ background: rgba(255,107,107,0.95); }
-
-  .progress-wrap{ margin-top:18px; background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.02)); padding:12px; border-radius:10px; border:1px solid var(--glass); display:flex; gap:12px; align-items:center; justify-content:space-between; }
-  .bar{ width:68%; height:12px; background: rgba(255,255,255,0.04); border-radius:10px; overflow:hidden; position:relative; border:1px solid rgba(255,255,255,0.02); }
-  .bar-fill{ height:100%; width:0%; transition: width 420ms cubic-bezier(.2,.9,.2,1); background:linear-gradient(90deg,var(--accent1),var(--accent2)); }
-  .progress-percent{ font-weight:700; color:#eaffff; font-size:13px; min-width:60px; text-align:right; }
-  .small{ font-size:13px; color:var(--muted); }
-
-  .tools { display:flex; gap:8px; margin-top:8px; align-items:center; flex-wrap:wrap; }
-  .tools .btn{ padding:8px 10px; border-radius:8px; cursor:pointer; background:linear-gradient(180deg,#0f2b38,#092a33); color:#eaffff; border:1px solid rgba(255,255,255,0.03); }
-  .tools .btn.export{ background:linear-gradient(90deg,#3a8bd8,#6ad3c7); }
-  .tools .btn.lock{ background:linear-gradient(90deg,#b08bff,#6ab3ff); }
-
-  @media (max-width:760px){ .io textarea{ height:100px; } .bar{ width:55%; } .wrap{ padding:0 12px; } }
+  body { background: linear-gradient(180deg,#071025 0%, #07182a 100%); color:#e6eef6; margin:0; padding:20px; min-height:100vh; display:flex; justify-content:center; align-items:flex-start; }
+  .wrap { width:100%; max-width:820px; }
+  header { display:flex; gap:12px; align-items:center; margin-bottom:18px; }
+  header h1 { margin:0; font-size:20px; letter-spacing:0.2px; }
+  .controls { margin-left:auto; display:flex; gap:8px; align-items:center; }
+  .card { background:var(--card); padding:22px; border-radius:12px; box-shadow:0 8px 30px rgba(2,6,23,0.6); }
+  .meta { display:flex; gap:12px; align-items:center; color:var(--muted); margin-bottom:14px; }
+  .question { font-size:18px; margin:10px 0 18px; }
+  .options { display:flex; flex-direction:column; gap:10px; }
+  .option { text-align:left; padding:12px 14px; border-radius:10px; border:1px solid rgba(255,255,255,0.06); background:rgba(255,255,255,0.02); cursor:pointer; transition:all .15s; }
+  .option:hover { transform:translateY(-2px); box-shadow:0 6px 18px rgba(0,0,0,0.5); }
+  .option.disabled { pointer-events:none; opacity:0.9; transform:none; }
+  .option.correct { background:rgba(26,127,55,0.12); border-color:rgba(26,127,55,0.6); color:var(--success); font-weight:600; }
+  .option.incorrect { background:rgba(155,30,42,0.12); border-color:rgba(155,30,42,0.5); color:var(--danger); font-weight:600; }
+  .buttons { display:flex; gap:8px; margin-top:16px; }
+  button { padding:10px 14px; border-radius:8px; border:0; cursor:pointer; background:var(--accent); color:#042026; font-weight:700; }
+  button.ghost { background:transparent; border:1px solid rgba(255,255,255,0.06); color:var(--muted); }
+  .progress-wrap { margin-top:18px; }
+  .progress { height:12px; background:rgba(255,255,255,0.04); border-radius:999px; overflow:hidden; }
+  .progress > i { display:block; height:100%; width:0%; background:linear-gradient(90deg,var(--accent), #6ee7b7); transition:width .35s; }
+  .small { font-size:13px; color:var(--muted); }
+  .file-input { display:flex; gap:8px; align-items:center; }
+  input[type=file] { color:var(--muted); }
+  .score { margin-left:12px; font-weight:700; color:#dbeafe; }
+  footer.note { margin-top:10px; color:var(--muted); font-size:13px; }
+  @media (max-width:600px){
+    .meta { flex-direction:column; align-items:flex-start; gap:6px; }
+    header { gap:8px; }
+  }
 </style>
 </head>
 <body>
   <div class="wrap">
     <header>
-      <h1>Quiz TAC - con import/export (JSON)</h1>
-      <div class="controls small">
-        <div id="total-qs">Preguntas: 0</div>
+      <h1>Quiz — Emergencias 2025</h1>
+      <div class="controls">
+        <div class="file-input">
+          <label class="small" for="file">Cargar archivo (.json/.csv):</label>
+          <input id="file" type="file" accept=".json,.csv" />
+        </div>
+        <button id="loadSample" class="ghost">Cargar ejemplo</button>
+        <div class="score small" id="score">Aciertos: 0 / 0</div>
       </div>
     </header>
 
-    <!-- Import / Export -->
-    <div class="io">
-      <textarea id="json-in" placeholder='Pega aquí tu JSON de preguntas. Formato: [{"qid":"11","text":"Pregunta...","options":["A","B","C"],"correct":"A"}, ...]'></textarea>
-      <div style="display:flex;flex-direction:column;gap:8px;">
-        <button class="btn" id="btn-import-replace">Importar (reemplazar)</button>
-        <button class="btn" id="btn-import-append">Importar (añadir)</button>
-        <button class="btn export" id="btn-export">Exportar JSON</button>
-        <button class="btn lock" id="btn-toggle-lock">Bloquear respuestas</button>
-        <button class="btn ghost" id="btn-clear">Limpiar (¡cuidado!)</button>
+    <div class="card" id="card">
+      <div class="meta">
+        <div class="small" id="qIndex">Pregunta 0 / 0</div>
+        <div class="small" id="qType">—</div>
       </div>
-    </div>
 
-    <!-- CONTENEDOR preguntas -->
-    <div id="questions-container">
-      <!-- Si tienes preguntas estáticas ya en tu HTML, mantenlas aquí; el import puede agregarlas o reemplazar -->
-      <!-- Ejemplo mínimo (puedes borrar): -->
-      <!-- <div class="question" data-qid="11" data-correct="A"> ... </div> -->
-    </div>
+      <div class="question" id="question">Cargue preguntas para empezar</div>
 
-    <div class="progress-wrap" aria-live="polite">
-      <div style="display:flex;flex-direction:column;">
-        <div class="small" id="progress-text">Respondido: 0/0 — Falta: 0</div>
-        <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-          <div class="bar-fill" id="bar-fill" style="width:0%"></div>
-        </div>
+      <div class="options" id="options"></div>
+
+      <div class="buttons">
+        <button id="nextBtn" disabled>Siguiente ►</button>
+        <button id="restartBtn" class="ghost">Reiniciar</button>
       </div>
-      <div class="progress-percent" id="progress-percent">0%</div>
-    </div>
 
+      <div class="progress-wrap">
+        <div class="small" id="progressText">Progreso: 0%</div>
+        <div class="progress" aria-hidden="true"><i id="progressBar"></i></div>
+      </div>
+
+      <footer class="note">
+        Por defecto si la pregunta no tiene `correctIndex`, se considera correcta la primera opción (índice 0). Puedes añadir `correctIndex` en el JSON más tarde.
+      </footer>
+    </div>
   </div>
 
 <script>
-/*
-Formato JSON esperado (ejemplo):
+/* Estructura esperada para JSON:
 [
   {
-    "qid":"11",
-    "text":"CUANDO A UN TRIPULANTE ...",
-    "options":["VERDADERO","FALSO"],
-    "correct":"A"   // A,B,C...
+    "question":"¿Cuál es...?",
+    "options":["A","B","C","D"],
+    "correctIndex":0   // opcional, 0-based
   },
   ...
 ]
 */
-(function(){
-  const container = document.getElementById('questions-container');
-  const jsonIn = document.getElementById('json-in');
-  const btnImportReplace = document.getElementById('btn-import-replace');
-  const btnImportAppend = document.getElementById('btn-import-append');
-  const btnExport = document.getElementById('btn-export');
-  const btnToggleLock = document.getElementById('btn-toggle-lock');
-  const btnClear = document.getElementById('btn-clear');
-  const totalQsEl = document.getElementById('total-qs');
-  const progressText = document.getElementById('progress-text');
-  const barFill = document.getElementById('bar-fill');
-  const progressPercent = document.getElementById('progress-percent');
+let questions = [];
+let current = 0;
+let score = 0;
+const qIndexEl = document.getElementById('qIndex');
+const qTypeEl = document.getElementById('qType');
+const questionEl = document.getElementById('question');
+const optionsEl = document.getElementById('options');
+const nextBtn = document.getElementById('nextBtn');
+const restartBtn = document.getElementById('restartBtn');
+const progressBar = document.getElementById('progressBar');
+const progressText = document.getElementById('progressText');
+const scoreEl = document.getElementById('score');
+const fileInput = document.getElementById('file');
+const loadSample = document.getElementById('loadSample');
 
-  let locked = false;
-
-  // Render a single question object to DOM (returns element)
-  function renderQuestionObj(q, insertBefore=null){
-    // q: {qid, text, options[], correct}
-    const qEl = document.createElement('div');
-    qEl.className = 'question';
-    qEl.setAttribute('data-qid', q.qid ?? '');
-    qEl.setAttribute('data-correct', (q.correct||'').toString().toUpperCase());
-    qEl.innerHTML = `
-      <div class="q-head">
-        <div class="q-num">${escapeHtml(q.qid ?? '')}</div>
-        <div class="q-text">${escapeHtml(q.text ?? '')}</div>
-      </div>
-      <div class="options"></div>
-    `;
-    const opts = q.options || [];
-    const optContainer = qEl.querySelector('.options');
-    // label values: A,B,C...
-    const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    for (let i=0;i<opts.length;i++){
-      const val = letters[i] || ('O'+i);
-      const lbl = document.createElement('label');
-      lbl.className = 'option-label';
-      lbl.innerHTML = `<div class="radio"></div><input type="radio" name="q_${q.qid || Math.random().toString(36).slice(2,6)}" value="${val}"><div class="option-text">${escapeHtml(opts[i])}</div>`;
-      optContainer.appendChild(lbl);
-    }
-    // attach events
-    attachEventsToQuestion(qEl);
-    if (insertBefore) container.insertBefore(qEl, insertBefore);
-    else container.appendChild(qEl);
-    updateTotals();
-    return qEl;
+function render() {
+  const total = questions.length;
+  if (total === 0) {
+    questionEl.textContent = 'Cargue preguntas (JSON o CSV) o pulsa "Cargar ejemplo".';
+    qIndexEl.textContent = 'Pregunta 0 / 0';
+    optionsEl.innerHTML = '';
+    progressBar.style.width = '0%';
+    progressText.textContent = 'Progreso: 0%';
+    scoreEl.textContent = `Aciertos: 0 / 0`;
+    return;
   }
+  const q = questions[current];
+  qIndexEl.textContent = `Pregunta ${current + 1} / ${total}`;
+  qTypeEl.textContent = q.meta ? q.meta : '';
+  questionEl.textContent = q.question || 'Pregunta sin texto';
+  optionsEl.innerHTML = '';
+  (q.options || []).forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'option';
+    btn.type = 'button';
+    btn.innerHTML = `<span>${String.fromCharCode(65+i)}.</span> ${opt}`;
+    btn.dataset.idx = i;
+    btn.addEventListener('click', () => handleAnswer(i));
+    optionsEl.appendChild(btn);
+  });
+  // progreso
+  const pct = Math.round(((current) / total) * 100);
+  progressBar.style.width = pct + '%';
+  progressText.textContent = `Progreso: ${pct}%`;
+  // score
+  scoreEl.textContent = `Aciertos: ${score} / ${total}`;
+  nextBtn.disabled = true;
+}
 
-  // escape helper
-  function escapeHtml(s){ return String(s||'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;'); }
-
-  // attach click/change listeners to question element
-  function attachEventsToQuestion(qEl){
-    qEl.querySelectorAll('label.option-label').forEach(lbl=>{
-      const radio = lbl.querySelector('input[type="radio"]');
-      lbl.addEventListener('click', ()=>{
-        if (locked) return;
-        qEl.querySelectorAll('label.option-label').forEach(l=> l.classList.remove('selected'));
-        lbl.classList.add('selected');
-        if (radio) radio.checked = true;
-        evaluateQuestion(qEl);
-        updateProgress();
-        if (locked) lockAnswered(); // enforce after change if locked
-      });
-      radio && radio.addEventListener('change', ()=>{
-        if (locked) return;
-        qEl.querySelectorAll('label.option-label').forEach(l=> l.classList.remove('selected'));
-        const sel = radio.closest('label.option-label'); sel && sel.classList.add('selected');
-        evaluateQuestion(qEl);
-        updateProgress();
-      });
-    });
+function handleAnswer(selectedIndex) {
+  const q = questions[current];
+  const correctIndex = (typeof q.correctIndex === 'number') ? q.correctIndex : 0;
+  // pintar opciones
+  const btns = Array.from(optionsEl.children);
+  btns.forEach(b => b.classList.add('disabled'));
+  // marcar correcta
+  const correctBtn = btns[correctIndex];
+  if (correctBtn) correctBtn.classList.add('correct');
+  // si seleccionó mal marcar selección como incorrecta
+  if (selectedIndex !== correctIndex) {
+    const selBtn = btns[selectedIndex];
+    if (selBtn) selBtn.classList.add('incorrect');
+  } else {
+    score += 1;
   }
+  // actualizar puntaje visible
+  const total = questions.length;
+  scoreEl.textContent = `Aciertos: ${score} / ${total}`;
+  // habilitar siguiente
+  nextBtn.disabled = false;
+}
 
-  function evaluateQuestion(qEl){
-    const correct = (qEl.getAttribute('data-correct')||'').toUpperCase();
-    qEl.querySelectorAll('.option-label').forEach(l=> l.classList.remove('correct','incorrect'));
-    if (!correct) return;
-    // mark correct label
-    const corrInput = qEl.querySelector('input[type="radio"][value="'+correct+'"]');
-    if (corrInput){
-      const corrLabel = corrInput.closest('label.option-label');
-      corrLabel && corrLabel.classList.add('correct');
+nextBtn.addEventListener('click', () => {
+  // avanzar
+  current++;
+  if (current >= questions.length) {
+    // final: mostrar resumen en barra de progreso completa
+    progressBar.style.width = '100%';
+    progressText.textContent = `Progreso: 100% — Finalizado`;
+    questionEl.textContent = `Fin del quiz. Acertaste ${score} de ${questions.length}.`;
+    optionsEl.innerHTML = '';
+    qIndexEl.textContent = `Resultado`;
+    nextBtn.disabled = true;
+    return;
+  }
+  render();
+});
+
+restartBtn.addEventListener('click', () => {
+  current = 0; score = 0;
+  render();
+});
+
+function loadFromJsonArray(arr) {
+  // normalizar preguntas mínimo
+  questions = arr.map(item => {
+    const opts = item.options || item.answers || [];
+    return {
+      question: item.question || item.pregunta || ('Pregunta ' + (Math.random().toString(36).slice(2,6))),
+      options: opts,
+      correctIndex: typeof item.correctIndex === 'number' ? item.correctIndex :
+                    (typeof item.correct === 'number' ? item.correct : undefined),
+      meta: item.meta || ''
+    };
+  });
+  current = 0; score = 0;
+  render();
+}
+
+// simple CSV parser that handles quoted fields
+function parseCSV(text) {
+  const rows = [];
+  const re = /(?:,|\n|^)(?:"([^"]*(?:""[^"]*)*)"|([^",\n]*))/g;
+  let match;
+  let row = [];
+  let lastIndex = 0;
+  re.lastIndex = 0;
+  while ((match = re.exec(text)) !== null) {
+    const val = match[1] !== undefined ? match[1].replace(/""/g, '"') : match[2];
+    row.push(val === undefined ? '' : val);
+    const sep = text[match.index + match[0].length - 1];
+    // if separator was newline then push row
+    const c = text[re.lastIndex - 1];
+    if (c === '\n' || re.lastIndex === text.length) {
+      rows.push(row);
+      row = [];
     }
-    const checked = qEl.querySelector('input[type="radio"]:checked');
-    if (!checked) return;
-    if (checked.value.toUpperCase() !== correct){
-      const selLabel = checked.closest('label.option-label');
-      selLabel && selLabel.classList.add('incorrect');
+    lastIndex = re.lastIndex;
+    if (re.lastIndex >= text.length) break;
+  }
+  // fallback naive split if parser fails
+  if (rows.length === 0) {
+    const lines = text.split(/\r?\n/).filter(l => l.trim() !== '');
+    lines.forEach(l => rows.push(l.split(',').map(s=>s.trim())));
+  }
+  return rows;
+}
+
+// Interpreta CSV con columnas:
+// question, option1, option2, option3, option4, correctIndex (opcional)
+function csvToQuestions(csvText) {
+  const rows = parseCSV(csvText).filter(r => r.length && r.some(c => c !== ''));
+  if (rows.length === 0) return [];
+  // si primera fila parece cabecera, detectarlo conservadoramente
+  const header = rows[0].map(c => c.toLowerCase());
+  const hasHeader = header.some(h => /question|pregunta|option|opci/i.test(h[0] || h));
+  const dataRows = hasHeader ? rows.slice(1) : rows;
+  const result = dataRows.map(r => {
+    const q = r[0] || '';
+    const options = r.slice(1,5).filter(x => x !== undefined && x !== '');
+    let correctIndex;
+    if (r[5] !== undefined && r[5] !== '') {
+      const v = r[5].trim();
+      // aceptar "0", "1" o "A","B"
+      if (!isNaN(Number(v))) correctIndex = Number(v);
+      else if (/^[A-Da-d]$/.test(v)) correctIndex = v.toUpperCase().charCodeAt(0) - 65;
+    }
+    return { question: q, options, correctIndex };
+  });
+  return result;
+}
+
+// carga de archivo (input)
+fileInput.addEventListener('change', (e) => {
+  const f = e.target.files[0];
+  if (!f) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    const txt = reader.result;
+    if (f.name.toLowerCase().endsWith('.json')) {
+      try {
+        const arr = JSON.parse(txt);
+        if (!Array.isArray(arr)) throw new Error('JSON debe ser un array');
+        loadFromJsonArray(arr);
+      } catch (err) {
+        alert('Error parseando JSON: ' + err.message);
+      }
+    } else if (f.name.toLowerCase().endsWith('.csv')) {
+      try {
+        const arr = csvToQuestions(txt);
+        if (!arr || arr.length === 0) throw new Error('CSV vacío o mal formado');
+        loadFromJsonArray(arr);
+      } catch (err) {
+        alert('Error parseando CSV: ' + err.message);
+      }
     } else {
-      const selLabel = checked.closest('label.option-label');
-      selLabel && selLabel.classList.add('correct');
+      alert('Formato no soportado. Usa .json o .csv');
     }
-  }
+  };
+  reader.readAsText(f, 'utf-8');
+});
 
-  function updateProgress(){
-    const qs = container.querySelectorAll('.question');
-    const total = qs.length;
-    let answered = 0;
-    qs.forEach(q=>{
-      if (q.querySelector('input[type="radio"]:checked')) answered++;
-    });
-    const pct = total === 0 ? 0 : Math.round((answered/total)*100);
-    const remaining = total - answered;
-    progressText.innerText = `Respondido: ${answered}/${total} — Falta: ${remaining}`;
-    barFill.style.width = pct + '%';
-    progressPercent.innerText = pct + '%';
-    totalQsEl.innerText = `Preguntas: ${total}`;
-  }
+// cargar ejemplo para probar
+loadSample.addEventListener('click', () => {
+  const sample = [
+    { question: "¿Qué hacer primero ante una fuga de gas?", options: ["Cerrar la llave de paso", "Llamar sin moverse", "Encender un ventilador", "Buscar el medidor"], correctIndex: 0 },
+    { question: "Síntoma típico de una fuga en ambiente cerrado:", options: ["Olor a huevos podridos", "Luz intermitente", "Aumento de presión eléctrica", "Vibración en tubería"], correctIndex: 0 },
+    { question: "¿Qué NO debes hacer cerca de una fuga?", options: ["Encender fuego o chispa", "Ventilar el lugar", "Abrir puertas", "Evacuar a personas"], correctIndex: 0 }
+  ];
+  loadFromJsonArray(sample);
+});
 
-  // read JSON and create questions
-  function importJSON(txt, mode='append'){
-    let arr;
-    try { arr = JSON.parse(txt); if (!Array.isArray(arr)) throw 1; }
-    catch(e){ alert('JSON inválido. Asegúrate que sea un array de objetos.'); return; }
-    if (mode === 'replace') container.innerHTML = '';
-    arr.forEach(qObj => {
-      // validation fallback: ensure fields exist
-      if (!qObj.qid) qObj.qid = Math.random().toString(36).slice(2,8);
-      if (!qObj.options || !Array.isArray(qObj.options) || qObj.options.length===0) qObj.options = ['Opción 1','Opción 2'];
-      renderQuestionObj(qObj);
-    });
-    // evaluate all after import
-    container.querySelectorAll('.question').forEach(q=> evaluateQuestion(q));
-    updateProgress();
-  }
+// intenta cargar 'questions.json' si está disponible en la misma carpeta (útil en GitHub Pages)
+fetch('questions.json').then(r => {
+  if (!r.ok) throw new Error('no file');
+  return r.json();
+}).then(arr => {
+  if (Array.isArray(arr) && arr.length) loadFromJsonArray(arr);
+}).catch(()=> {
+  // no se encontró questions.json, se queda vacío hasta que el usuario cargue
+  render();
+});
 
-  // export current DOM questions as JSON
-  function exportToJSON(){
-    const qs = Array.from(container.querySelectorAll('.question'));
-    const out = qs.map(q=>{
-      const qid = q.getAttribute('data-qid') || '';
-      const text = q.querySelector('.q-text')?.innerText || '';
-      const opts = Array.from(q.querySelectorAll('.option-text')).map(o=> o.innerText);
-      const correct = (q.getAttribute('data-correct')||'').toUpperCase();
-      return { qid, text, options: opts, correct };
-    });
-    const blob = new Blob([JSON.stringify(out, null, 2)], {type: 'application/json'});
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a'); a.href = url; a.download = 'preguntas_export.json'; document.body.appendChild(a); a.click();
-    a.remove(); URL.revokeObjectURL(url);
-  }
+// inicializa vista
+render();
 
-  // Attach global events
-  btnImportReplace.addEventListener('click', ()=> {
-    const txt = jsonIn.value.trim(); if (!txt) return alert('Pega el JSON primero');
-    importJSON(txt, 'replace');
-  });
-  btnImportAppend.addEventListener('click', ()=> {
-    const txt = jsonIn.value.trim(); if (!txt) return alert('Pega el JSON primero');
-    importJSON(txt, 'append');
-  });
-  btnExport.addEventListener('click', exportToJSON);
-
-  btnToggleLock.addEventListener('click', ()=>{
-    locked = !locked;
-    btnToggleLock.innerText = locked ? 'Desbloquear respuestas' : 'Bloquear respuestas';
-    btnToggleLock.style.opacity = locked ? '0.95' : '1';
-    lockAnswered();
-  });
-
-  // lockAnswered: si locked=true, desactiva inputs de preguntas que ya tengan respuesta
-  function lockAnswered(){
-    container.querySelectorAll('.question').forEach(q=>{
-      const inputs = q.querySelectorAll('input[type="radio"]');
-      inputs.forEach(inp => {
-        if (!locked) { inp.disabled = false; return; }
-        // si la pregunta tiene respuesta, deshabilita los radios
-        if (q.querySelector('input[type="radio"]:checked')) inp.disabled = true;
-      });
-    });
-  }
-
-  // clear container (cuidado)
-  btnClear.addEventListener('click', ()=>{
-    if (!confirm('¿Borrar todas las preguntas del contenedor? Esto no se puede deshacer en este paso.')) return;
-    container.innerHTML = '';
-    updateProgress();
-  });
-
-  // If there are existing question elements in the page already, attach events (safe)
-  function initExisting(){
-    // Attach events to any pre-existing questions (useful si pegaste tu HTML original antes)
-    container.querySelectorAll('.question').forEach(q => attachEventsToQuestion(q));
-    updateProgress();
-  }
-
-  // expose a function to programmatically add single question (si prefieres editar manu)
-  window.addQuestion = function(qobj){ return renderQuestionObj(qobj); };
-
-  // init
-  initExisting();
-
-  // small helper: periodically re-evaluate in case external nav buttons used
-  setInterval(()=> { container.querySelectorAll('.question').forEach(q=> evaluateQuestion(q)); updateProgress(); }, 800);
-
-})();
 </script>
 </body>
 </html>
