@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Quiz TAC - Práctica</title>
+<title>Quiz TAC - Práctica (Manual advance)</title>
 <style>
   :root{font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;}
   body{margin:0;background:#0f1724;color:#e6eef8;display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px}
@@ -25,6 +25,7 @@
   .btn{background:#1f6feb;border:none;padding:8px 12px;border-radius:8px;color:white;cursor:pointer}
   .btn.secondary{background:transparent;border:1px solid rgba(255,255,255,0.06)}
   .btn.ghost{background:transparent;border:none;color:#9fb0c8}
+  .btn[disabled]{opacity:0.6;cursor:not-allowed}
   .admin-panel{margin-top:12px;background:rgba(255,255,255,0.02);padding:10px;border-radius:8px}
   .admin-row{display:flex;gap:8px;align-items:center;padding:6px 0;border-bottom:1px dashed rgba(255,255,255,0.03)}
   .admin-row:last-child{border-bottom:none}
@@ -74,10 +75,10 @@
     </main>
 
     <div class="footer">
-      <div class="small" id="timer">Avanza automático después de seleccionar</div>
+      <div class="small" id="timer">Selecciona una opción, revisa y pulsa "Siguiente".</div>
       <div>
         <button class="btn secondary" id="prev" style="display:none">Anterior</button>
-        <button class="btn" id="next" style="display:none">Siguiente</button>
+        <button class="btn" id="next" disabled>Siguiente</button>
       </div>
     </div>
   </div>
@@ -105,9 +106,10 @@
     questions,
     idx: 0,
     score: 0,
-    autoAdvanceMs: 900,
     mode: 'user', // or 'admin'
-    answersMap: {} // { id : correctIndex }
+    answersMap: {}, // { id : correctIndex }
+    selectionMade: false, // control manual advance
+    lastSelection: null
   };
 
   // Load saved answers from localStorage (if any)
@@ -128,6 +130,8 @@
   const adminList = document.getElementById('admin-list');
   const exportBtn = document.getElementById('export-answers');
   const importFile = document.getElementById('importFile');
+  const nextBtn = document.getElementById('next');
+  const prevBtn = document.getElementById('prev');
 
   document.getElementById('loaded-count').innerText = app.questions.length;
   progress.textContent = `Pregunta 1 / ${app.questions.length}`;
@@ -145,6 +149,9 @@
 
   function renderQuestion(){
     feedback.textContent = '';
+    app.selectionMade = false;
+    app.lastSelection = null;
+    nextBtn.disabled = true;
     document.getElementById('question-area').style.display = '';
     adminPanel.style.display = app.mode === 'admin' ? 'block' : 'none';
     modeLabel.textContent = app.mode === 'admin' ? 'Edición' : 'Usuario';
@@ -162,6 +169,8 @@
       opts.appendChild(btn);
     });
 
+    prevBtn.style.display = app.idx>0 ? 'inline-block' : 'none';
+
     // In admin mode, highlight currently configured answer
     if(app.mode === 'admin'){
       Array.from(opts.children).forEach(b=>{
@@ -177,6 +186,11 @@
   function disableOptions(){
     const buttons = opts.querySelectorAll('button.opt');
     buttons.forEach(b => b.disabled = true);
+  }
+
+  function enableOptions(){
+    const buttons = opts.querySelectorAll('button.opt');
+    buttons.forEach(b => b.disabled = false);
   }
 
   function onSelect(i, btn, q){
@@ -196,29 +210,34 @@
       return;
     }
 
-    // user mode: check correctness (if known), show feedback, advance
+    // User mode: mark selection visually, show feedback, enable Siguiente
     disableOptions();
+    app.selectionMade = true;
+    app.lastSelection = i;
+    nextBtn.disabled = false;
+
     const correctIdx = getCorrectIndex(q);
     const correctBtn = opts.querySelector(`button[data-index="${correctIdx}"]`);
     if(correctIdx === undefined){
-      // No answer key: only show selected highlight and offer to continue
+      // No answer key: only show selected highlight and a neutral message
       btn.classList.add('correct');
-      feedback.textContent = 'Respuesta registrada (aún no hay clave para evaluar).';
+      feedback.textContent = 'Respuesta registrada (aún no hay clave para evaluar). Pulsa Siguiente para avanzar.';
     } else if(i === correctIdx){
       btn.classList.add('correct');
-      feedback.textContent = 'Correcto ✅';
+      feedback.textContent = 'Correcto ✅ — Pulsa Siguiente para continuar.';
       app.score += 1;
     } else {
       btn.classList.add('wrong');
       if(correctBtn) correctBtn.classList.add('correct');
-      feedback.textContent = `Incorrecto ✖️ — respuesta correcta: ${String.fromCharCode(65+correctIdx)}`;
+      feedback.textContent = `Incorrecto ✖️ — respuesta correcta: ${String.fromCharCode(65+correctIdx)}. Pulsa Siguiente.`;
     }
-
-    // Auto-advance
-    setTimeout(()=>{ nextQuestion(); }, app.autoAdvanceMs);
   }
 
   function nextQuestion(){
+    if(!app.selectionMade && app.mode === 'user'){
+      // Prevent advancing without selecting in user mode
+      return;
+    }
     if(app.idx < app.questions.length - 1){
       app.idx += 1;
       renderQuestion();
@@ -227,6 +246,7 @@
     }
   }
   function prevQuestion(){
+    // allow moving back; reset score is not retroactive (simple behaviour)
     if(app.idx > 0){
       app.idx -= 1;
       renderQuestion();
@@ -238,7 +258,7 @@
     document.getElementById('final-score').textContent = `Obtuviste ${app.score} de ${app.questions.length} (${Math.round(app.score/app.questions.length*100)}%)`;
   }
 
-  // Admin list rendering: show all questions with current mapping (paginated-ish)
+  // Admin list rendering: show all questions with current mapping
   function renderAdminList(){
     adminList.innerHTML = '';
     for(const q of app.questions){
@@ -312,10 +332,10 @@
     renderQuestion();
     if(app.mode === 'admin') renderAdminList();
   });
-  document.getElementById('prev').addEventListener('click', ()=>{
+  prevBtn.addEventListener('click', ()=>{
     prevQuestion();
   });
-  document.getElementById('next').addEventListener('click', ()=>{
+  nextBtn.addEventListener('click', ()=>{
     nextQuestion();
   });
   document.getElementById('restart').addEventListener('click', ()=>{
