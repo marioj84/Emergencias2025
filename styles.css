@@ -31,4 +31,7 @@ h1{margin:0 0 8px;font-size:20px}
 .actions{display:flex;gap:8px;align-items:center}
 .result{min-height:18px}
 .score{font-weight:600;color:var(--muted)}
+.summary{display:grid;gap:16px;align-items:center;justify-items:center;padding:24px}
+.donut{width:160px;height:160px}
+.donut text{font-family: inherit; fill: var(--accent); font-size: 16px; dominant-baseline: middle; text-anchor: middle;}
 @media(max-width:520px){.container{padding:14px}.controls{flex-direction:column;align-items:stretch}}
