@@ -1,7 +1,6 @@
 (() => {
   // ====== CONFIG ======
-  // URL de tu Apps Script (Web App) para guardar en Google Sheets:
-  const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbyRvGoF37xLrs22EMAPZAfqFKdYW4n9i-3PU0hGMqGh0KRPeUgFZxkTwIdjTL4i5YT9IQ/exec";
+  const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbx_TalXqDvJQLodJ7XPTYbgndNRq76ipdGY4e0DQNIgXZK05-KMd4AHqBobznhOVhS18w/exec";
 
   // ====== ELEMENTOS ======
   const welcome = document.getElementById('welcome');
@@ -34,17 +33,17 @@
   let baseQuestions = [];
   let questions = [];
   let current = 0;
-  let selections = [];     // TEXTO seleccionado por pregunta
+  let selections = [];
   let startTime = 0;
   let timerId = null;
   let particles = [];
   let attemptId = '';
 
-  // NUEVO: detalle por pregunta
-  let details = [];        // array con el detalle por pregunta
-  let questionStart = 0;   // timestamp al mostrar cada pregunta
+  // Detalle por pregunta
+  let details = [];
+  let questionStart = 0;
 
-  // ====== UTILIDADES ======
+  // ====== UTIL ======
   function shuffle(arr){
     const a = arr.slice();
     for(let i=a.length-1;i>0;i--){
@@ -64,7 +63,7 @@
     return Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,8);
   }
 
-  // ====== CANVAS CONFETTI ======
+  // ====== CANVAS ======
   function sizeCanvas(){
     confettiCanvas.width = window.innerWidth;
     confettiCanvas.height = window.innerHeight;
@@ -154,9 +153,11 @@
     current = 0;
     selections = new Array(questions.length).fill(null);
     attemptId = uid();
-    details = []; // reset detalle
+    details = [];
     buildSteps();
     quizArea.classList.remove('hidden');
+    btnNext.classList.remove('hidden');
+    btnPrev.classList.remove('hidden');
     startTimer();
     renderQuestion();
   }
@@ -195,7 +196,6 @@
     const card = document.getElementById('question-card');
     card.classList.remove('fade-in'); void card.offsetWidth; card.classList.add('fade-in');
 
-    // Mezcla opciones en cada render
     const entries = item.options.map((t, i) => ({ text: t, correct: i === item.answerIndex }));
     const mixed = shuffle(entries);
 
@@ -222,9 +222,10 @@
     liveStatsEl.textContent = 'Correctas: ' + correct + ' · Incorrectas: ' + incorrect;
 
     updateSteps();
-
-    // NUEVO: arranca cronómetro por pregunta
     questionStart = Date.now();
+
+    btnNext.classList.remove('hidden');
+    btnPrev.classList.remove('hidden');
 
     const selText = selections[current];
     if (selText !== null || showAsAnswered) {
@@ -268,7 +269,6 @@
       resultEl.textContent = '❌ Incorrecto — La correcta es: ' + correctText;
     }
 
-    // NUEVO: capturar detalle por pregunta
     const timeMs = Date.now() - questionStart;
     details.push({
       attemptId,
@@ -334,14 +334,18 @@
         <div class="buttons">
           <button id="btn-download" class="btn primary">📥 Descargar respuestas</button>
           <button id="btn-retry" class="btn ghost">🔁 Volver a intentar</button>
+          <button id="btn-close" class="btn">🏁 Finalizar</button>
         </div>
       </div>
     `;
     questionTitle.textContent = 'Resumen';
     optionsEl.innerHTML = summaryHTML;
     resultEl.textContent = '';
-    btnPrev.disabled = true;
-    setNextState('next', true, '⏭ Siguiente');
+
+    // Ocultar navegación en resumen
+    btnPrev.classList.add('hidden');
+    btnNext.classList.add('hidden');
+
     progressBar.style.width = '100%';
     progressText.textContent = 'Finalizado';
     scoreEl.textContent = correct + ' / ' + total;
@@ -352,7 +356,7 @@
       if (donut) donut.style.strokeDashoffset = String(2*Math.PI*radius - dash);
     });
 
-    // Envía RESUMEN
+    // Sheets
     sendResultToSheets({
       attemptId,
       module: selModule,
@@ -364,12 +368,15 @@
       elapsedMs: elapsed,
       timestamp: new Date().toISOString()
     });
-
-    // Envía DETALLE (lote)
     sendResultDetailsToSheets(details);
 
+    // Acciones
     document.getElementById('btn-download').addEventListener('click', () => downloadResultsXLSX(elapsed));
     document.getElementById('btn-retry').addEventListener('click', () => {
+      welcome.classList.remove('hidden');
+      quizArea.classList.add('hidden');
+    });
+    document.getElementById('btn-close').addEventListener('click', () => {
       welcome.classList.remove('hidden');
       quizArea.classList.add('hidden');
     });
@@ -396,9 +403,9 @@
     XLSX.writeFile(wb, 'resultado_quiz.xlsx');
   }
 
-  // ====== ENVIAR A SHEETS (Apps Script) - form-urlencoded ======
+  // ====== ENVIOS A SHEETS ======
   async function sendResultToSheets(payload){
-    if (!WEBAPP_URL) return; // si no configuraste la URL, no intenta enviar
+    if (!WEBAPP_URL) return;
     try{
       const form = new URLSearchParams();
       Object.entries(payload).forEach(([k,v]) => form.append(k, String(v ?? '')));
