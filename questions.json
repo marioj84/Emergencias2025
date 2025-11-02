@@ -19,7 +19,8 @@
         "label": "D",
         "text": "SUSPENSIÓN DE UNA LICENCIA"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 2,
@@ -41,7 +42,8 @@
         "label": "D",
         "text": "TODAS LAS ALTERNATIVAS ANTERIORES SON CORRECTAS."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 3,
@@ -59,7 +61,8 @@
         "label": "C",
         "text": "LIMITE LA VISIÓN DE LA SEÑAL \"CINTURONES DE SEGURIDAD, \"NO FUMAR\" O CUALQUIER SEÑALIZACIÓN DE ESCAPE."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 4,
@@ -77,7 +80,8 @@
         "label": "C",
         "text": "NO FUMAR, LA UBICACIÓN DE LAS SALIDAS DE EMERGENCIA, EL USO DE LOS CINTURONES DE SEGURIDAD INCLUYENDO INSTRUCCIONES ACERCA DE COMO ABROCHARLOS, AJUSTARLOS Y DESABROCHARLOS, LA UBICACIÓN Y USO DEL SISTEMA DE OXIGENO A PASAJERO, EL CHALECO SALVAVIDAS Y LA ILUMINACIÓN DE EMERGENCIA."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 5,
@@ -99,7 +103,8 @@
         "label": "D",
         "text": "LIQUIDO INFLAMABLE."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 6,
@@ -113,7 +118,8 @@
         "label": "B",
         "text": "FALSO"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 7,
@@ -131,7 +137,8 @@
         "label": "C",
         "text": "EN TODOS LOS AVIONES DE PASAJEROS, EXCEPTUANDO LOS BAÑOS."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 8,
@@ -149,7 +156,8 @@
         "label": "C",
         "text": "DAR 06"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 9,
@@ -167,7 +175,8 @@
         "label": "C",
         "text": "LAS ALTERNATIVAS A Y B SON CORRECTAS."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 10,
@@ -185,7 +194,8 @@
         "label": "C",
         "text": "12 HORAS"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 11,
@@ -199,7 +209,8 @@
         "label": "B",
         "text": "FALSO"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 12,
@@ -221,7 +232,8 @@
         "label": "D",
         "text": "RESPUESTAS B Y C SON CORRECTAS."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 13,
@@ -239,7 +251,8 @@
         "label": "C",
         "text": "5 DÍAS"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 14,
@@ -261,7 +274,8 @@
         "label": "D",
         "text": "TRES DE TIPO MÁS UNA DE FAMILIA"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 15,
@@ -283,7 +297,8 @@
         "label": "D",
         "text": "RESPUESTAS A Y B SON CORRECTAS"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 16,
@@ -305,7 +320,8 @@
         "label": "D",
         "text": "NINGUNA DE LAS ANTERIORES"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 17,
@@ -323,7 +339,8 @@
         "label": "C",
         "text": "450 HORAS"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 18,
@@ -345,7 +362,8 @@
         "label": "D",
         "text": "ES LA ENCARGADA DEL CUIDADO Y SEGURIDAD DE LAS PERSONAS O COSAS QUE SE TRANSPORTAN EN LA AERONAVE."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 19,
@@ -367,7 +385,8 @@
         "label": "D",
         "text": "PILOTO DESIGNADO POR EL OPERADOR, O POR EL PROPIETARIO EN EL CASO DE LA AVIACIÓN GENERAL, PARA ESTAR AL MANDO Y ENCARGARSE DE LA REALIZACIÓN SEGURA DE UN VUELO."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 20,
@@ -389,7 +408,8 @@
         "label": "D",
         "text": "LAS ALTERNATIVAS ANTERIORES A Y B SON CORRECTAS."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 21,
@@ -407,7 +427,8 @@
         "label": "C",
         "text": "TIEMPO TOTAL TRANSCURRIDO DESDE QUE EL TRIPULANTE DE CABINA SE PRESENTA EN EL AEROPUERTO HASTA QUE ES RELEVADO DE TODA FUNCIÓN CON SU EMPLEADOR."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 22,
@@ -425,7 +446,8 @@
         "label": "C",
         "text": "ES EL TIEMPO TRANSCURRIDO ENTRE LAS 20:00 HORAS Y LAS 06:00 HORAS LOCAL, CORRESPONDIENTES AL LUGAR DONDE SE ENCUENTRA OPERANDO EL TRIPULANTE."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 23,
@@ -447,7 +469,8 @@
         "label": "D",
         "text": "2 HORAS EL PERÍODO DE DESCANSO CORRESPONDIENTE. EN FORMA PROGRESIVA Y EN TREINTA MINUTOS, POR CADA QUINCE GRADOS DE LONGITUD GEOGRÁFICA ADICIONAL"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 24,
@@ -469,7 +492,8 @@
         "label": "D",
         "text": "TODAS LAS ALTERNATIVAS SON CORRECTAS."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 25,
@@ -487,7 +511,8 @@
         "label": "C",
         "text": "TRES BOTIQUINES DE PRIMEROS AUXILIOS"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 26,
@@ -505,7 +530,8 @@
         "label": "C",
         "text": "CONTINGENCIAS METEOROLÓGICAS, CAMBIO DE ROL DE VUELO DE LOS TRIPULANTES DE MANDO, CAMBIO DE AVIÓN POR NECESIDADES DE LA OPERACIÓN Y CUANDO EL PILOTO AL MANDO LO DETERMINE POR RAZONES DE SEGURIDAD"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 27,
@@ -523,7 +549,8 @@
         "label": "C",
         "text": "AERONAVES DE TRANSPORTE DE PASAJEROS DE MÁS DE 19 ASIENTOS Y PESO MAX. DE DESPEGUE SUPERIOR A 5.700 KGS."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 28,
@@ -545,7 +572,8 @@
         "label": "D",
         "text": "ESTADO EN EL CUAL ESTÁ REGISTRADA UNA AERONAVE."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 29,
@@ -563,7 +591,8 @@
         "label": "C",
         "text": "CONTINUAR CON EL SERVICIO NORMAL."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 30,
@@ -577,7 +606,8 @@
         "label": "B",
         "text": "FALSO"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 31,
@@ -595,7 +625,8 @@
         "label": "C",
         "text": "PLATAFORMA."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 32,
@@ -617,7 +648,8 @@
         "label": "D",
         "text": "TODAS LAS RESPUESTAS SON CORRECTAS"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 33,
@@ -631,7 +663,8 @@
         "label": "B",
         "text": "FALSO"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 34,
@@ -645,7 +678,8 @@
         "label": "B",
         "text": "FALSO"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 35,
@@ -667,7 +701,8 @@
         "label": "D",
         "text": "NINGUNA DE LAS ANTERIORES."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 36,
@@ -685,7 +720,8 @@
         "label": "C",
         "text": "180 HORAS"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 37,
@@ -707,7 +743,8 @@
         "label": "D",
         "text": "TODAS LAS ANTERIORES."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 38,
@@ -721,7 +758,8 @@
         "label": "B",
         "text": "FALSO"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 39,
@@ -739,7 +777,8 @@
         "label": "C",
         "text": "45 MINUTOS CUANDO SE OPERA EN LA BASE PRINCIPAL Y 20 EN LA BASE AUXILIAR (POSTAS) DE OPERACIONES."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 40,
@@ -761,7 +800,8 @@
         "label": "D",
         "text": "PERÍODO DE VUELO CON TRIPULACIÓN DE RELEVO."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 41,
@@ -779,7 +819,8 @@
         "label": "C",
         "text": "DAR 51"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 42,
@@ -793,7 +834,8 @@
         "label": "B",
         "text": "FALSO"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 43,
@@ -807,7 +849,8 @@
         "label": "B",
         "text": "FALSO"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 44,
@@ -825,7 +868,8 @@
         "label": "C",
         "text": "EN EL CASO DE CERRAR UNA DE LAS DOS PUERTAS DE ACCESO A LA AERONAVE, SE ARMARÁ EL TOBOGÁN DE LA PUERTA 4R Y SE MANTENDRÁ UN TRIPULANTE DE CABINA RESGUARDÁNDOLA HASTA EL TÉRMINO DEL APROVISIONAMIENTO DE COMBUSTIBLE."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 45,
@@ -843,7 +887,8 @@
         "label": "C",
         "text": "DAN 121"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 46,
@@ -865,7 +910,8 @@
         "label": "D",
         "text": "NO EXISTE DISTANCIA DETERMINADA."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 47,
@@ -883,7 +929,8 @@
         "label": "C",
         "text": "CADA PERSONA MAYOR DE 02 AÑOS."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 48,
@@ -901,7 +948,8 @@
         "label": "C",
         "text": "TODO LO ANTERIOR ES CORRECTO."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 49,
@@ -923,7 +971,8 @@
         "label": "D",
         "text": "LAS ALTERNATIVAS B Y C SON CORRECTAS."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 50,
@@ -941,7 +990,8 @@
         "label": "C",
         "text": "MÁS DE 30 PASAJEROS"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 51,
@@ -955,7 +1005,8 @@
         "label": "B",
         "text": "FALSO"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 52,
@@ -969,7 +1020,8 @@
         "label": "B",
         "text": "FALSO"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 53,
@@ -983,7 +1035,8 @@
         "label": "B",
         "text": "FALSO"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 54,
@@ -997,7 +1050,8 @@
         "label": "B",
         "text": "FALSO"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 55,
@@ -1015,7 +1069,8 @@
         "label": "C",
         "text": "29 ASIENTOS"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 56,
@@ -1033,7 +1088,8 @@
         "label": "C",
         "text": "4 EXTINTORES"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 57,
@@ -1055,7 +1111,8 @@
         "label": "D",
         "text": "LOS TRIPULANTES DE VUELO Y LOS TRIPULANTES AUXILIARES DE AERONAVES COMERCIALES Y/O CARGA, CUYO PESO MÁXIMO DE DESPEGUE SEA SUPERIOR A 5.700 KGS."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 58,
@@ -1073,7 +1130,8 @@
         "label": "C",
         "text": "TODO TIEMPO EN TIERRA DURANTE EL CUAL EL OPERADOR RELEVA A UN MIEMBRO DE LA TRIPULACIÓN DE TODA FUNCIÓN RELACIONADA CON SU TRABAJO, CON EL OBJETO QUE ESTE SE MANTENGA EN DESCANSO PARA RECUPERARSE FÍSICA Y PSÍQUICAMENTE LUEGO DE UN PERÍODO DE SERVICIO (P.S.) O UN PERÍODO DE SERVICIO DE VUELO (P.S.V.)"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 59,
@@ -1087,7 +1145,8 @@
         "label": "B",
         "text": "FALSO"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 60,
@@ -1105,7 +1164,8 @@
         "label": "C",
         "text": "CON EL TIPO DE FUEGO QUE PUEDE OCURRIR EN EL COMPARTIMENTO DONDE DE INTENTA UTILIZAR EL EXTINTOR."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 61,
@@ -1123,7 +1183,8 @@
         "label": "C",
         "text": "TIPO MICRÓFONO ALIMENTADO DESDE LA BATERÍA DEL AVIÓN."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 62,
@@ -1137,7 +1198,8 @@
         "label": "B",
         "text": "FALSO"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 63,
@@ -1151,7 +1213,8 @@
         "label": "B",
         "text": "FALSO"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 64,
@@ -1173,7 +1236,8 @@
         "label": "D",
         "text": "TODAS LAS RESPUESTAS SON CORRECTAS."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 65,
@@ -1195,7 +1259,8 @@
         "label": "D",
         "text": "RESPUESTA B Y C SON CORRECTAS."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 66,
@@ -1217,7 +1282,8 @@
         "label": "D",
         "text": "EL TITULAR DE UNA LICENCIA A QUIEN SE CONFÍA LABORES NO ESENCIALES EN LA AERONAVE DURANTE EL VUELO."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 67,
@@ -1239,7 +1305,8 @@
         "label": "D",
         "text": "RESPUESTA A Y B SON CORRECTAS"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 68,
@@ -1257,7 +1324,8 @@
         "label": "C",
         "text": "23 AÑOS"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 69,
@@ -1279,7 +1347,8 @@
         "label": "D",
         "text": "RESPUESTAS A Y B SON CORRECTAS."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 70,
@@ -1301,7 +1370,8 @@
         "label": "D",
         "text": "RESPUESTAS B Y C SON CORRECTAS."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 71,
@@ -1319,7 +1389,8 @@
         "label": "C",
         "text": "NO ESTÁ PERMITIDO SÓLO SI LOS PASAJEROS SON ACOMPAÑADOS EN GRUPOS PEQUEÑOS POR PERSONAL RESPONSABLE DESDE EL AVIÓN Y HASTA ÉL."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 72,
@@ -1333,7 +1404,8 @@
         "label": "B",
         "text": "FALSO"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 73,
@@ -1351,7 +1423,8 @@
         "label": "C",
         "text": "36 HORAS ANTES DE INICIARSE EL VUELO."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 74,
@@ -1369,7 +1442,8 @@
         "label": "C",
         "text": "BALSAS SALVAVIDAS, CHALECOS SALVAVIDAS Y EQUIPO DE RADIO PORTÁTIL AUTÓNOMO."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 75,
@@ -1387,7 +1461,8 @@
         "label": "C",
         "text": "EN TERRITORIO NACIONAL O EXTRANJERO."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 76,
@@ -1409,7 +1484,8 @@
         "label": "D",
         "text": "Todas las anteriores."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 77,
@@ -1427,7 +1503,8 @@
         "label": "C",
         "text": "DAP"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 78,
@@ -1445,7 +1522,8 @@
         "label": "C",
         "text": "UNA TRIPULACIÓN AUXILIAR DE CABINA, EVACUA EL AVIÓN EN FORMA COMPLETA Y SEGURA EN UN TIEMPO MÁXIMO DE 99 SEG."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 79,
@@ -1463,7 +1541,8 @@
         "label": "C",
         "text": "CINTURÓN DE SEGURIDAD, SALIDA POR TOBOGANES, CHALECO Y BALSA SALVAVIDAS, POSICIÓN DE PROTECCIÓN O IMPACTO, SI CORRESPONDE."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 80,
@@ -1481,7 +1560,8 @@
         "label": "C",
         "text": "02 AÑOS."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 81,
@@ -1499,7 +1579,8 @@
         "label": "C",
         "text": "REGLAMENTO DE LICENCIAS DEL PERSONAL AERONÁUTICO."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 82,
@@ -1521,7 +1602,8 @@
         "label": "D",
         "text": "M.P. OCULTAS."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 83,
@@ -1543,7 +1625,8 @@
         "label": "D",
         "text": "TODAS LAS ALTERNATIVAS SON CORRECTAS."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 84,
@@ -1561,7 +1644,8 @@
         "label": "C",
         "text": "NO PARARSE PARA IR AL BAÑO."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 85,
@@ -1583,7 +1667,8 @@
         "label": "D",
         "text": "48 MESES."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 86,
@@ -1601,7 +1686,8 @@
         "label": "C",
         "text": "HABER EFECTUADO LA PRÁCTICA DE EVACUACIÓN EN UNA DE LAS AERONAVES QUE FIGURAN EN SU LICENCIA, TANTO EN TIERRA Y AGUA."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 87,
@@ -1623,7 +1709,8 @@
         "label": "D",
         "text": "TODAS LAS ANTERIORES SON CORRECTAS."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 88,
@@ -1645,7 +1732,8 @@
         "label": "D",
         "text": "EL PILOTO AL MANDO."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 89,
@@ -1667,7 +1755,8 @@
         "label": "D",
         "text": "CLASE 5"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 90,
@@ -1681,7 +1770,8 @@
         "label": "B",
         "text": "FALSO"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 91,
@@ -1695,7 +1785,8 @@
         "label": "B",
         "text": "FALSO"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 92,
@@ -1713,7 +1804,8 @@
         "label": "C",
         "text": "NÚMERO DE LA ONU."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 93,
@@ -1731,7 +1823,8 @@
         "label": "C",
         "text": "SER AUTORIZADO POR LA GERENCIA DE OPERACIONES."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 94,
@@ -1749,7 +1842,8 @@
         "label": "C",
         "text": "CLASE TRES"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 95,
@@ -1771,7 +1865,8 @@
         "label": "D",
         "text": "NINGUNA DE LAS ANTERIORES"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 96,
@@ -1793,7 +1888,8 @@
         "label": "D",
         "text": "DOCE HORAS"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 97,
@@ -1811,7 +1907,8 @@
         "label": "C",
         "text": "LOS TRIPULANTES EXTRAS DE OTRAS COMPAÑÍAS."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 98,
@@ -1829,7 +1926,8 @@
         "label": "C",
         "text": "TRES BOTIQUINES DE PRIMEROS AUXILIOS."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 99,
@@ -1851,7 +1949,8 @@
         "label": "D",
         "text": "RESPUESTA A Y B SON CORRECTAS"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 100,
@@ -1869,7 +1968,8 @@
         "label": "C",
         "text": "SE PODRÁ AUTORIZAR EL USO DE CUALQUIER EQUIPO ELECTRÓNICO (OPERADO EN MODO AVIÓN, O MODO AVIÓN Y WI-FI ENCENDIDO PARA CONECTARSE A UNA RED DE LA AERONAVE) UNA VEZ QUE EL OPERADOR HAYA DETERMINADO Y DEMOSTRADO A DGAC QUE ESTE NO CAUSA INTERFERENCIA CON ALGÚN SISTEMA DE LA AERONAVE."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 101,
@@ -1883,7 +1983,8 @@
         "label": "B",
         "text": "FALSO"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 102,
@@ -1901,7 +2002,8 @@
         "label": "C",
         "text": "TODAS LAS ALTERNATIVAS ANTERIORES SON CORRECTAS."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 103,
@@ -1915,7 +2017,8 @@
         "label": "B",
         "text": "FALSO"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 104,
@@ -1937,7 +2040,8 @@
         "label": "D",
         "text": "TODAS LAS RESPUESTAS SON CORRECTAS."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 105,
@@ -1955,7 +2059,8 @@
         "label": "C",
         "text": "PUEDEN SER IGUALES ENTRE SÍ, PERO CONSUMIRSE EN DIFERENTES TIEMPOS."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 106,
@@ -1973,7 +2078,8 @@
         "label": "C",
         "text": "CINCO TRIPULANTES DE CABINA"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 107,
@@ -1995,7 +2101,8 @@
         "label": "D",
         "text": "TODAS LAS RESPUESTAS SON CORRECTAS."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 108,
@@ -2009,7 +2116,8 @@
         "label": "B",
         "text": "FALSO"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 109,
@@ -2027,7 +2135,8 @@
         "label": "C",
         "text": "1.600 HORAS."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 110,
@@ -2045,7 +2154,8 @@
         "label": "C",
         "text": "DOS BOTIQUINES MÉDICOS."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 111,
@@ -2067,7 +2177,8 @@
         "label": "D",
         "text": "TIEMPO TRANSCURRIDO, DENTRO DE UN PERÍODO DE 24 HORAS CONSECUTIVAS, DESDE EL MOMENTO EN QUE EL TRIPULANTE SE PRESENTA EN LAS DEPENDENCIAS AEROPORTUARIAS CON EL OBJETO DE PREPARAR, REALIZAR Y FINALIZAR UN VUELO."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 112,
@@ -2089,7 +2200,8 @@
         "label": "D",
         "text": "PILOTO EN LOS COMANDOS."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 113,
@@ -2111,7 +2223,8 @@
         "label": "D",
         "text": "RESPUESTAS A Y B SON CORRECTAS."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 114,
@@ -2129,7 +2242,8 @@
         "label": "C",
         "text": "GRABADORAS DE VOZ, AYUDAS AUDITIVAS ELECTRÓNICAS, MARCAPASOS Y AFEITADORAS ELÉCTRICAS."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 115,
@@ -2151,7 +2265,8 @@
         "label": "D",
         "text": "RESPUESTAS A Y C SON CORRECTAS."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 116,
@@ -2169,7 +2284,8 @@
         "label": "C",
         "text": "RENOVACIÓN."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 117,
@@ -2183,7 +2299,8 @@
         "label": "B",
         "text": "FALSO"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 118,
@@ -2205,7 +2322,8 @@
         "label": "D",
         "text": "RESPUESTAS A Y B SON CORRECTAS"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 119,
@@ -2219,7 +2337,8 @@
         "label": "B",
         "text": "VERDADERO"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 120,
@@ -2241,7 +2360,8 @@
         "label": "D",
         "text": "TODAS LAS ANTERIORES SON CORRECTAS."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 121,
@@ -2255,7 +2375,8 @@
         "label": "B",
         "text": "FALSO"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 122,
@@ -2269,7 +2390,8 @@
         "label": "B",
         "text": "FALSO"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 123,
@@ -2291,7 +2413,8 @@
         "label": "D",
         "text": "TODAS LAS RESPUESTAS SON CORRECTAS."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 124,
@@ -2313,7 +2436,8 @@
         "label": "D",
         "text": "TODAS LAS ALTERNATIVAS ANTERIORES SON CORRECTAS."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 125,
@@ -2331,7 +2455,8 @@
         "label": "C",
         "text": "CATORCE HORAS."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 126,
@@ -2349,7 +2474,8 @@
         "label": "C",
         "text": "10 HORAS"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 127,
@@ -2367,7 +2493,8 @@
         "label": "C",
         "text": "ES TODO TIEMPO EN TIERRA DURANTE EL CUAL EL OPERADOR RELEVA AL MIEMBRO DE LA TRIPULACIÓN DE CABINA DE TODA FUNCIÓN RELACIONADA CON SU TRABAJO, CON EL OBJETO QUE ÉSTE SE RECUPERE FÍSICA Y PSÍQUICAMENTE, LUEGO DE INICIAR LOS DÍAS LIBRES ASIGNADOS EN SU ROL DE VUELO."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 128,
@@ -2389,7 +2516,8 @@
         "label": "D",
         "text": "LAS ALTERNATIVAS A Y B SON CORRECTAS."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 129,
@@ -2407,7 +2535,8 @@
         "label": "C",
         "text": "TODAS LAS ALTERNATIVAS ANTERIORES SON CORRECTAS."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 130,
@@ -2429,7 +2558,8 @@
         "label": "D",
         "text": "07 HORAS"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 131,
@@ -2451,7 +2581,8 @@
         "label": "D",
         "text": "ÁREA CRÍTICA."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 132,
@@ -2465,7 +2596,8 @@
         "label": "B",
         "text": "FALSO"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 133,
@@ -2487,7 +2619,8 @@
         "label": "D",
         "text": "LAS ALTERNATIVAS A Y C SON CORRECTAS"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 134,
@@ -2505,7 +2638,8 @@
         "label": "C",
         "text": "LA TRIPULACIÓN DE CABINA, DEBERÁ REPOSAR AL MENOS 1 HORA, NO PUDE DESARROLLAR LABORES EFECTIVAS POR UN TIEMPO SUPERIOR A 14 HORAS."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 135,
@@ -2527,7 +2661,8 @@
         "label": "D",
         "text": "18:00 HORAS; 04:00 HORAS."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 136,
@@ -2541,7 +2676,8 @@
         "label": "B",
         "text": "FALSO"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 137,
@@ -2563,7 +2699,8 @@
         "label": "D",
         "text": "TODAS LAS ALTERNATIVAS ANTERIORES SON CORRECTAS."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 138,
@@ -2581,7 +2718,8 @@
         "label": "C",
         "text": "UN MANUAL DE PRIMEROS AUXILIOS, VENDAS, ELÁSTICAS, GASA ESTÉRIL ALGODÓN HIDRÓFILO AGUA OXIGENADA POVIDONA YODADA, JERINGAS ESTÉRILES DESECHABLES DE 3 Y 5 CC, AGUJAS DESECHABLES DE TRES TAMAÑOS, ETC"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 139,
@@ -2595,7 +2733,8 @@
         "label": "B",
         "text": "FALSO"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 140,
@@ -2613,7 +2752,8 @@
         "label": "C",
         "text": "VIGENCIA ."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 141,
@@ -2631,7 +2771,8 @@
         "label": "C",
         "text": "PERÍODO DE DESCANSO."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 142,
@@ -2653,7 +2794,8 @@
         "label": "D",
         "text": "PERÍODO DE DESCANSO."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 143,
@@ -2671,7 +2813,8 @@
         "label": "C",
         "text": "DURANTE LOS DESPEGUES, Y POR RAZONES DE TURBULENCIA O CUALQUIER OTRA EMERGENCIA QUE OCURRA DURANTE EL VUELO."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 144,
@@ -2689,7 +2832,8 @@
         "label": "C",
         "text": "TODAS LAS ALTERNATIVAS ANTERIORES SON CORRECTAS."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 145,
@@ -2707,7 +2851,8 @@
         "label": "C",
         "text": "UNA CÁMARA DE FLOTACIÓN CON INFLADO AUTOMÁTICO, LUZ DE LOCALIZACIÓN Y DE COLOR ROJO FOSFORESCENTE."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 146,
@@ -2725,7 +2870,8 @@
         "label": "C",
         "text": "COMBINACIÓN DE VUELOS QUE PUEDEN SER REALIZADOS POR UNA O MÁS TRIPULACIONES AUXILIARES MÍNIMA, SIN QUE SE EXCEDAN LOS LÍMITES DE PERÍODO DE SERVICIO DE VUELO."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 147,
@@ -2743,7 +2889,8 @@
         "label": "C",
         "text": "TODOS LOS TRIPULANTES Y AL 10% DE LOS PASAJEROS POR UN PERÍODO QUE EXCEDA DE 30 MINUTOS."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 148,
@@ -2765,7 +2912,8 @@
         "label": "D",
         "text": "TODAS LAS ANTERIORES SON CORRECTAS."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 149,
@@ -2787,7 +2935,8 @@
         "label": "D",
         "text": "CATORCE HORAS."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 150,
@@ -2805,7 +2954,8 @@
         "label": "C",
         "text": "14.000 PIES."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 151,
@@ -2819,7 +2969,8 @@
         "label": "B",
         "text": "FALSO"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 152,
@@ -2837,7 +2988,8 @@
         "label": "C",
         "text": "LOS TRASLADOS DEL TC DURANTE SU PERÍODO DE DESCANSO ANUAL."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 153,
@@ -2851,7 +3003,8 @@
         "label": "B",
         "text": "FALSO"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 154,
@@ -2873,7 +3026,8 @@
         "label": "D",
         "text": "MERCANCÍAS TRANSPORTADAS"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 155,
@@ -2895,7 +3049,8 @@
         "label": "D",
         "text": "TODAS LAS RESPUESTAS SON CORRECTAS."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 156,
@@ -2917,7 +3072,8 @@
         "label": "D",
         "text": "TRIPULACIÓN MÍNIMA A LA QUE SE ADICIONA UN NÚMERO DETERMINADO DE TRIPULANTES CON EL PROPÓSITO DE CUBRIR UN VUELO, EL QUE POR SU DURACIÓN, EL TIEMPO DE VUELO O EL PERÍODO DE SERVICIO DE VUELO EXCEDE EL MÁXIMO AUTORIZADO."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 157,
@@ -2931,7 +3087,8 @@
         "label": "B",
         "text": "FALSO"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 158,
@@ -2945,7 +3102,8 @@
         "label": "B",
         "text": "FALSO"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 159,
@@ -2967,7 +3125,8 @@
         "label": "D",
         "text": "CINCO"
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 160,
@@ -2985,7 +3144,8 @@
         "label": "C",
         "text": "QUE TODA LA TRIPULACIÓN PERMANEZCA A BORDO DEL AVIÓN DURANTE EL CARGUÍO."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 161,
@@ -3003,7 +3163,8 @@
         "label": "C",
         "text": "TIENE PROHIBIDO EMBARCARSE EN EL AVIÓN DE ACUERDO CON DAN 121."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 162,
@@ -3025,7 +3186,8 @@
         "label": "D",
         "text": "CERILLAS DE ENCENDIDO UNIVERSAL."
       }
-    ]
+    ],
+    "correctIndex": 0
   },
   {
     "id": 163,
@@ -3047,6 +3209,7 @@
         "label": "D",
         "text": "TODAS LAS ANTERIORES SON CORRECTAS."
       }
-    ]
+    ],
+    "correctIndex": 0
   }
 ]
