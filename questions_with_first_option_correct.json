@@ -1,0 +1,3215 @@
+[
+  {
+    "id": 1,
+    "text": "AL ACTO ADMINISTRATIVO ANTE LA DGAC, POR EL CUAL AL TITULAR DE UNA LICENCIA SE LE RESTABLECE LA O LAS ATRIBUCIONES QUE LA MISMA LE CONFIERE, UNA VEZ CUMPLIDO CON LOS REQUISITOS ESTABLECIDOS POR LA NORMA VIGENTE, SE LE DENOMINA:",
+    "options": [
+      {
+        "label": "A",
+        "text": "RENOVAR UNA LICENCIA."
+      },
+      {
+        "label": "B",
+        "text": "EXPERIENCIA RECIENTE."
+      },
+      {
+        "label": "C",
+        "text": "CONVALIDAR UNA LICENCIA"
+      },
+      {
+        "label": "D",
+        "text": "SUSPENSIÓN DE UNA LICENCIA"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 2,
+    "text": "AL EFECTUAR UN APROVISIONAMIENTO DE COMBUSTIBLE CON MOTORES DETENIDOS Y CON PASAJEROS EMBARCANDO, A BORDO O DESEMBARCANDO SE DEBE CUMPLIR CON LOS SIGUIENTES REQUISITOS ABORDO DE LA AERONAVE:",
+    "options": [
+      {
+        "label": "A",
+        "text": "NOTIFICAR A LOS PASAJEROS QUE SE VA A PROCEDER AL APROVISIONAMIENTO DE COMBUSTIBLE, RECORDÁNDOLES VERBALMENTE LA PROHIBICIÓN DE FUMAR Y DE ACCIONAR CUALQUIER DISPOSITIVOS QUE PUDIERA GENERAR CHISPAS. LOS PASAJEROS PERMANECERÁN EN SUS ASIENTOS CON LOS CINTURONES DESABROCHADOS Y SE MANTENDRÁN LAS VÍAS DE EVACUACIÓN EXPEDITAS DURANTE LA OPERACIÓN"
+      },
+      {
+        "label": "B",
+        "text": "EN LA AERONAVE SE ENCUENTRE PERSONAL CALIFICADO, UBICADO EN CADA SECTOR DE PUERTAS DE LA AERONAVE PARA VERIFICAR QUE LAS ESCALERAS ESTÉN EN POSICIÓN PARA UN FÁCIL DESEMBARQUE, INICIAR Y DIRIGIR UNA EVACUACIÓN DE EMERGENCIA POR LOS MEDIOS MÁS PRÁCTICOS Y EXPEDITOS DISPONIBLES, NOTIFICAR PRONTAMENTE SI SE DESCUBRE UNA CONCENTRACIÓN ANORMAL DE VAPORES DE COMBUSTIBLE EN LA CABINA O CUALQUIER OTRA CONDICIÓN QUE PUEDA CONSTITUIR PELIGRO."
+      },
+      {
+        "label": "C",
+        "text": "VIGILAR QUE LAS LUCES DE CABINA QUE SEAN NECESARIAS ESTÉN ENCENDIDAS ANTES DE COMENZAR LA OPERACIÓN DE APROVISIONAMIENTO DE COMBUSTIBLE EVITANDO ADEMÁS EL USO DE LOS INTERRUPTORES DE LAS LUCES INDIVIDUALES CORRESPONDIENTES A LOS ASIENTOS DE LOS PASAJEROS HASTA EL TERMINO DE LA OPERACIÓN Y SI SE ENCUENTRAN PERSONAS CON DISCAPACIDAD, MOVILIDAD REDUCIDA O ENFERMOS SERÁ NECESARIA LA PRESENCIA DE MÁS MIEMBROS DE LA TRIPULACIÓN DE CABINA ABORDO."
+      },
+      {
+        "label": "D",
+        "text": "TODAS LAS ALTERNATIVAS ANTERIORES SON CORRECTAS."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 3,
+    "text": "ALGUNOS REQUISITOS PARA EL TRANSPORTE DE CARGA EN EL COMPARTIMENTO DE PASAJEROS SON:",
+    "options": [
+      {
+        "label": "A",
+        "text": "QUE LA CARGA SEA TRANSPORTADA EN UN CONTENEDOR APROBADO."
+      },
+      {
+        "label": "B",
+        "text": "SE INSTALE EN UNA POSICIÓN QUE RESTRINJA EL ACCESO A EL USO DE CUALQUIER SALIDA DE EMERGENCIA O DEL PASILLO EN EL COMPARTIMENTO DE PASAJEROS."
+      },
+      {
+        "label": "C",
+        "text": "LIMITE LA VISIÓN DE LA SEÑAL \"CINTURONES DE SEGURIDAD, \"NO FUMAR\" O CUALQUIER SEÑALIZACIÓN DE ESCAPE."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 4,
+    "text": "ANTES DE CADA DESPEGUE LOS PASAJEROS SERÁN ORIENTADOS VERBAL O AUDIOVISUALMENTE RESPECTO DE LOS SIGUIENTES ASPECTOS. SELECCIONE LA ALTERNATIVA MAS COMPLETA.",
+    "options": [
+      {
+        "label": "A",
+        "text": "USO DE CINTURONES DE SEGURIDAD, LA UBICACIÓN DE LAS SALIDAS DE EMERGENCIA Y LA ILUMINACIÓN DE EMERGENCIA."
+      },
+      {
+        "label": "B",
+        "text": "LA UBICACIÓN DE LAS SALIDAS DE EMERGENCIA, LA MÁSCARA DE OXÍGENO, EL CHALECO SALVAVIDAS Y EL USO DEL SISTEMA DE OXIGENO A PASAJEROS."
+      },
+      {
+        "label": "C",
+        "text": "NO FUMAR, LA UBICACIÓN DE LAS SALIDAS DE EMERGENCIA, EL USO DE LOS CINTURONES DE SEGURIDAD INCLUYENDO INSTRUCCIONES ACERCA DE COMO ABROCHARLOS, AJUSTARLOS Y DESABROCHARLOS, LA UBICACIÓN Y USO DEL SISTEMA DE OXIGENO A PASAJERO, EL CHALECO SALVAVIDAS Y LA ILUMINACIÓN DE EMERGENCIA."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 5,
+    "text": "AQUELLAS MERCANCÍAS PELIGROSAS QUE DE MEZCLARSE PODRÍAN GENERAR PELIGROSAMENTE CALOR O GAS O PRODUCIR ALGUNA SUSTANCIA CORROSIVA SE DEFINE COMO, SUSTANCIA:",
+    "options": [
+      {
+        "label": "A",
+        "text": "EXPLOSIVA."
+      },
+      {
+        "label": "B",
+        "text": "INCOMPATIBLE."
+      },
+      {
+        "label": "C",
+        "text": "SOLIDA ORGÁNICA."
+      },
+      {
+        "label": "D",
+        "text": "LIQUIDO INFLAMABLE."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 6,
+    "text": "BITÁCORA PERSONAL DE VUELO DOCUMENTO PERSONAL DE REGISTRO DE VUELO, EN QUE SE CONSIGNA EN FORMA CRONOLÓGICA EL TIEMPO Y ACTIVIDADES DE VUELO DEL TITULAR DE UNA LICENCIA, DEBIENDO SER PORTADA Y EXHIBIDA CADA VEZ QUE LA DGAC ASÍ LO REQUIERA.",
+    "options": [
+      {
+        "label": "A",
+        "text": "VERDADERO"
+      },
+      {
+        "label": "B",
+        "text": "FALSO"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 7,
+    "text": "CON RESPECTO A FUMAR EN LOS AVIONES, LA REGLAMENTACIÓN AERONÁUTICA CHILENA ESTIPULA QUE ESTÁ PROHIBIDO FUMAR:",
+    "options": [
+      {
+        "label": "A",
+        "text": "EN TODOS LOS AVIONES DE TRANSPORTE DE PASAJEROS Y EN TODAS LAS CIRCUNSTANCIAS OPERACIONALES."
+      },
+      {
+        "label": "B",
+        "text": "EN TODOS LOS AVIONES DE TRANSPORTE DE PASAJEROS EN VUELOS DENTRO DEL TERRITORIO NACIONAL."
+      },
+      {
+        "label": "C",
+        "text": "EN TODOS LOS AVIONES DE PASAJEROS, EXCEPTUANDO LOS BAÑOS."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 8,
+    "text": "¿CUAL ES EL DOCUMENTO QUE REGULA LAS LICENCIAS PARA LOS MIEMBROS DE LA TRIPULACIÓN EXCEPTO PILOTOS?",
+    "options": [
+      {
+        "label": "A",
+        "text": "DAR 01."
+      },
+      {
+        "label": "B",
+        "text": "DAR 63"
+      },
+      {
+        "label": "C",
+        "text": "DAR 06"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 9,
+    "text": "¿CUÁLES SON LOS DOCUMENTOS QUE ESTABLECEN LAS LIMITACIONES DE TIEMPO DE VUELO, PERÍODOS DE SERVICIO DE VUELO Y DESCANSO PARA MIEMBROS DE TRIPULACIONES DE VUELO Y DE CABINA DE AERONAVES DE PASAJEROS Y/O CARGA, CUYO PESO MÁXIMO SEA SUPERIOR A 5.700 KGS?",
+    "options": [
+      {
+        "label": "A",
+        "text": "LA LEY 20.321"
+      },
+      {
+        "label": "B",
+        "text": "LA DAN 121"
+      },
+      {
+        "label": "C",
+        "text": "LAS ALTERNATIVAS A Y B SON CORRECTAS."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 10,
+    "text": "¿CUÁL SERÁ EL PERÍODO DE DESCANSO QUE SE DEBERÁ CUMPLIR?, SI UN TRIPULANTE DE CABINA EFECTÚA UN PERÍODO DE SERVICIO DE 8 HORAS, PARA INICIAR SU PERÍODO DE SERVICIO DE VUELO.",
+    "options": [
+      {
+        "label": "A",
+        "text": "10 HORAS."
+      },
+      {
+        "label": "B",
+        "text": "11 HORAS"
+      },
+      {
+        "label": "C",
+        "text": "12 HORAS"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 11,
+    "text": "CUANDO A UN TRIPULANTE LE CORRESPONDE UN DESCANSO MÍNIMO (10 HORAS), SE DEBERÁ CONSIDERAR UN TIEMPO ADICIONAL DE 45 MINUTOS PARA EFECTOS DE TRASLADO CUANDO SE OPERE EN BASE PRINCIPAL DE OPERACIONES Y UN TIEMPO DE 20 MINUTOS EN LAS POSTAS. ESTE TIEMPO NO CONSTITUYE P.D. NI P.S.V.",
+    "options": [
+      {
+        "label": "A",
+        "text": "VERDADERO"
+      },
+      {
+        "label": "B",
+        "text": "FALSO"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 12,
+    "text": "CUANDO EL TRIPULANTE AUXILIAR DE CABINA REQUIERA RENOVAR SU LICENCIA Y/O HABILITACIÓN:",
+    "options": [
+      {
+        "label": "A",
+        "text": "CUMPLIR CON LOS REQUISITOS ESTABLECIDOS EN DAN 121."
+      },
+      {
+        "label": "B",
+        "text": "DENTRO DEL PLAZO DE VIGENCIA DE SU HABILITACIÓN SÓLO DEBERÁ PRESENTAR SU CERTIFICACIÓN MÉDICA."
+      },
+      {
+        "label": "C",
+        "text": "CUANDO EL TRIPULANTE AUXILIAR DE CABINA TENGA MENOS DE 24 MESES DESDE EL ÚLTIMO VUELO, ADEMÁS DE LA CERTIFICACIÓN MÉDICA DEBERÁ PRESENTAR UN CERTIFICADO DE REENTRENAMIENTO DE SUS COMPETENCIAS CON UN INSTRUCTOR."
+      },
+      {
+        "label": "D",
+        "text": "RESPUESTAS B Y C SON CORRECTAS."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 13,
+    "text": "CUANDO UNA SITUACIÓN DE EMERGENCIA QUE PONGA EN PELIGRO LA SEGURIDAD DE LAS PERSONAS O DE LA AERONAVE EXIGIERE TOMAR MEDIDAS QUE INFRINJAN LOS REGLAMENTOS O PROCEDIMIENTOS LOCALES, EL PILOTO AL MANDO DE LA AERONAVE NOTIFICARÁ EL HECHO MEDIANTE UN INFORME TAN PRONTO COMO SEA POSIBLE Y DENTRO DE UN PLAZO DE:",
+    "options": [
+      {
+        "label": "A",
+        "text": "72 HORAS"
+      },
+      {
+        "label": "B",
+        "text": "10 DÍAS"
+      },
+      {
+        "label": "C",
+        "text": "5 DÍAS"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 14,
+    "text": "CUANTAS HABILITACIONES PODRÁ TENER EL TITULAR DE LICENCIA:",
+    "options": [
+      {
+        "label": "A",
+        "text": "CUATRO DE TIPO"
+      },
+      {
+        "label": "B",
+        "text": "TRES DE TIPO"
+      },
+      {
+        "label": "C",
+        "text": "DOS DE TIPO MÁS UNA DE FAMILIA"
+      },
+      {
+        "label": "D",
+        "text": "TRES DE TIPO MÁS UNA DE FAMILIA"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 15,
+    "text": "DAN 121 ESTABLECE QUÉ, EL PERIODO DE SERVICIO DE VUELO ES:",
+    "options": [
+      {
+        "label": "A",
+        "text": "ES EL TIEMPO TRANSCURRIDO, DENTRO DE UN PERÍODO DE VEINTICUATRO HORAS CONSECUTIVAS, DESDE EL MOMENTO EN QUE EL TRIPULANTE SE PRESENTA EN LAS DEPENDENCIAS AEROPORTUARIAS O LUGAR ASIGNADO POR EL OPERADOR HASTA SER LIBERADO DE SUS FUNCIONES."
+      },
+      {
+        "label": "B",
+        "text": "ES EL TIEMPO CORRESPONDIENTE A CUALQUIERA ACTIVIDAD ASIGNADA POR EL OPERADOR A UN TRIPULANTE, AJENA AL VUELO MISMO."
+      },
+      {
+        "label": "C",
+        "text": "TIEMPO TRANSCURRIDO DESDE QUE LA AERONAVE COMIENZA SU MOVIMIENTO HASTA QUE SE DETIENE."
+      },
+      {
+        "label": "D",
+        "text": "RESPUESTAS A Y B SON CORRECTAS"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 16,
+    "text": "DAN 63 ESTABLECE QUE EL TITULAR DE UNA LICENCIA DEBERÁ REGISTRAR QUE HAYA REALIZADO 3 DESPEGUES Y 3 ATERRIZAJES DESEMPEÑANDO LAS ATRIBUCIONES EN VUELO COMO TRIPULANTE AUXILIAR DE CABINA A LO MENOS:",
+    "options": [
+      {
+        "label": "A",
+        "text": "CADA 120 DÍAS"
+      },
+      {
+        "label": "B",
+        "text": "CADA 160 DÍAS"
+      },
+      {
+        "label": "C",
+        "text": "CADA 90 DÍAS"
+      },
+      {
+        "label": "D",
+        "text": "NINGUNA DE LAS ANTERIORES"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 17,
+    "text": "DE ACUERDO CON DAN 121, EL PERÍODO DE SERVICIO DE VUELO MÁXIMO ESTABLECIDO PARA LAS TRIPULACIONES DE CABINA EN UN TRIMESTRE ES DE:",
+    "options": [
+      {
+        "label": "A",
+        "text": "470 HORAS"
+      },
+      {
+        "label": "B",
+        "text": "460 HORAS"
+      },
+      {
+        "label": "C",
+        "text": "450 HORAS"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 18,
+    "text": "DE ACUERDO CON EL CÓDIGO AERONÁUTICO, ¿CUÁL ES LA DEFINICIÓN DE \"TRIPULACIÓN AUXILIAR?",
+    "options": [
+      {
+        "label": "A",
+        "text": "PERSONAL DE VUELO, TITULAR DE UNA LICENCIA, ENCARGADO DE LA OPERACIÓN, MANDO Y FUNCIONAMIENTO DE LA AERONAVE."
+      },
+      {
+        "label": "B",
+        "text": "PERSONAL DE VUELO, TITULAR DE UNA LICENCIA, ENCARGADO DE LA ATENCIÓN DE LOS PASAJEROS"
+      },
+      {
+        "label": "C",
+        "text": "PERSONAL DE VUELO, TITULAR DE UNA LICENCIA, ENCARGADO DEL CUIDADO DE LA AERONAVE, PASAJEROS Y CARGA DURANTE EL PERÍODO DE SERVICIO DE VUELO."
+      },
+      {
+        "label": "D",
+        "text": "ES LA ENCARGADA DEL CUIDADO Y SEGURIDAD DE LAS PERSONAS O COSAS QUE SE TRANSPORTAN EN LA AERONAVE."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 19,
+    "text": "DE ACUERDO CON LA DAN 121, ¿CÓMO SE DEFINE EL TÉRMINO \"PILOTO AL MANDO\"?",
+    "options": [
+      {
+        "label": "A",
+        "text": "ES EL ENCARGADO DE LA OPERACIÓN, MANDO Y FUNCIONAMIENTO DE LA AERONAVE O SUS PARTES Y DEL CUIDADO DE LAS PERSONAS O COSAS QUE SE TRANSPORTEN EN ELLA."
+      },
+      {
+        "label": "B",
+        "text": "PERSONA TITULAR DE UNA LICENCIA, AERONÁUTICA QUE LE PERMITE DIRIGIR U OPERAR LOS MANDOS DE UNA AERONAVE DURANTE EL TIEMPO DE VUELO."
+      },
+      {
+        "label": "C",
+        "text": "PERSONA TITULAR DE UNA LICENCIA, QUE PRESTA SERVICIOS DE PILOTAJE SIN ESTAR AL MANDO DE LA AERONAVE A FIN DE RECIBIR INSTRUCCIÓN DE VUELO"
+      },
+      {
+        "label": "D",
+        "text": "PILOTO DESIGNADO POR EL OPERADOR, O POR EL PROPIETARIO EN EL CASO DE LA AVIACIÓN GENERAL, PARA ESTAR AL MANDO Y ENCARGARSE DE LA REALIZACIÓN SEGURA DE UN VUELO."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 20,
+    "text": "DE ACUERDO CON LA DAN 121, ¿CUÁL ES LA DEFINICIÓN DE PERÍODO DE SERVICIO DE VUELO (PSV)?",
+    "options": [
+      {
+        "label": "A",
+        "text": "EL TIEMPO TRANSCURRIDO, DENTRO DE UN PERÍODO DE 24 HORAS CONSECUTIVAS, DESDE EL MOMENTO EN QUE EL TRIPULANTE SE PRESENTA EN LAS DEPENDENCIAS AEROPORTUARIAS O LUGAR ASIGNADO POR EL OPERADOR CON EL OBJETO DE PREPARAR, REALIZAR Y FINALIZAR OPERACIONAL Y ADMINISTRATIVAMENTE UN VUELO, HASTA QUE EL TRIPULANTE ES LIBERADO DE TODA FUNCIÓN Y PUEDE COMPRENDER UN VUELO O UNA SERIE DE VUELOS."
+      },
+      {
+        "label": "B",
+        "text": "TAMBIÉN SE COMPRENDERÁN COMO PERÍODO DE SERVICIO DE VUELO LAS HORAS DESTINADAS A REENTRENAMIENTOS PERIÓDICOS EN AVIÓN Y ENTRENADORES SINTÉTICOS DE VUELO, PRÁCTICAS PERIÓDICAS DE EVACUACIÓN EN TIERRA O EN EL MAR (DITCHING), COMO ASIMISMO TRASLADO EN VUELO POR CONVENIENCIA DEL OPERADOR"
+      },
+      {
+        "label": "C",
+        "text": "EL TIEMPO TRANSCURRIDO, DENTRO DE UN PERÍODO DE 12 HORAS CONSECUTIVAS, DESDE EL MOMENTO EN QUE EL TRIPULANTE SE PRESENTA EN LAS DEPENDENCIAS AEROPORTUARIAS O LUGAR ASIGNADO POR EL EXPLOTADOR CON EL OBJETO DE PREPARAR, REALIZAR Y FINALIZAR OPERACIONAL Y ADMINISTRATIVAMENTE UN VUELO, HASTA QUE EL TRIPULANTE ES LIBERADO DE TODA FUNCIÓN Y PUEDE COMPRENDER UN VUELO O UNA SERIE DE VUELOS."
+      },
+      {
+        "label": "D",
+        "text": "LAS ALTERNATIVAS ANTERIORES A Y B SON CORRECTAS."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 21,
+    "text": "DE ACUERDO CON LA DAN 121, ¿CUÁL ES LA DEFINICIÓN DE PERÍODO DE SERVICIO (PS)?",
+    "options": [
+      {
+        "label": "A",
+        "text": "TIEMPO CORRESPONDIENTE DESDE EL ENCENDIDO DE LAS TURBINAS HASTA QUE SE APAGAN AL FINALIZAR EL VUELO"
+      },
+      {
+        "label": "B",
+        "text": "TIEMPO CORRESPONDIENTE A CUALQUIERA ACTIVIDAD ASIGNADA POR EL OPERADOR A UN TRIPULANTE DE CABINA, AJENA AL VUELO MISMO."
+      },
+      {
+        "label": "C",
+        "text": "TIEMPO TOTAL TRANSCURRIDO DESDE QUE EL TRIPULANTE DE CABINA SE PRESENTA EN EL AEROPUERTO HASTA QUE ES RELEVADO DE TODA FUNCIÓN CON SU EMPLEADOR."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 22,
+    "text": "DE ACUERDO CON LA DAN 121, ¿CUAL ES LA DEFINICIÓN DE PERÍODO NOCTURNO?",
+    "options": [
+      {
+        "label": "A",
+        "text": "ES EL TIEMPO TRANSCURRIDO ENTRE LAS 19:00 HORAS Y LAS 06:00 HORAS LOCAL, CORRESPONDIENTES AL LUGAR DONDE SE ENCUENTRA OPERANDO EL TRIPULANTE"
+      },
+      {
+        "label": "B",
+        "text": "ES EL TIEMPO TRANSCURRIDO ENTRE LAS 21:00 HORAS Y LAS 06:00 HORAS LOCAL, CORRESPONDIENTES AL LUGAR DONDE SE ENCUENTRA OPERANDO EL TRIPULANTE."
+      },
+      {
+        "label": "C",
+        "text": "ES EL TIEMPO TRANSCURRIDO ENTRE LAS 20:00 HORAS Y LAS 06:00 HORAS LOCAL, CORRESPONDIENTES AL LUGAR DONDE SE ENCUENTRA OPERANDO EL TRIPULANTE."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 23,
+    "text": "DE ACUERDO CON LA DAN 121, DURANTE UN PERÍODO DE SERVICIO DE VUELO QUE INCLUYE UN CAMBIO DE LONGITUD GEOGRÁFICA, ¿CUÁL ES EL AUMENTO QUE CORRESPONDE ADICIONAR AL TIEMPO DE DESCANSO DE LOS TRIPULANTES DE CABINA?",
+    "options": [
+      {
+        "label": "A",
+        "text": "30 MINUTOS CADA 15 GRADOS DE LONGITUD GEOGRÁFICA QUE HAYA ENTRE EL PUNTO DE ORIGEN Y EL PUNTO DE DESTINO DEL VUELO."
+      },
+      {
+        "label": "B",
+        "text": "2 HORAS POR LOS PRIMEROS 15 GRADOS Y 30 MINUTOS POR CADA 45 GRADOS DE LONGITUD GEOGRÁFICA ADICIONAL."
+      },
+      {
+        "label": "C",
+        "text": "2 HORAS POR LOS PRIMEROS 45 GRADOS Y 30 MINUTOS POR CADA 15 GRADOS DE LONGITUD GEOGRÁFICA ADICIONAL."
+      },
+      {
+        "label": "D",
+        "text": "2 HORAS EL PERÍODO DE DESCANSO CORRESPONDIENTE. EN FORMA PROGRESIVA Y EN TREINTA MINUTOS, POR CADA QUINCE GRADOS DE LONGITUD GEOGRÁFICA ADICIONAL"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 24,
+    "text": "DE ACUERDO CON LA DAN 121, EL OPERADOR DEBERÁ EFECTUAR Y ACREDITAR EL CUMPLIMIENTO DE LOS PROGRAMAS DE INSTRUCCIÓN DE EMERGENCIA INICIAL Y DE INSTRUCCIÓN DE EMERGENCIA PERIÓDICA (RECURRENTE) CON RESPECTO A CADA TIPO, MODELO Y CONFIGURACIÓN DE AERONAVE QUE OPERE.",
+    "options": [
+      {
+        "label": "A",
+        "text": "INSTRUCCIÓN EN LOS DEBERES ASIGNADOS Y PROCEDIMIENTOS DE EMERGENCIA, INCLUYENDO LA COORDINACIÓN ENTRE LOS MIEMBROS DE LA TRIPULACIÓN."
+      },
+      {
+        "label": "B",
+        "text": "INSTRUCCIÓN INDIVIDUAL EN EL LUGAR, FUNCIÓN Y OPERACIÓN DE EQUIPO DE EMERGENCIA."
+      },
+      {
+        "label": "C",
+        "text": "INSTRUCCIÓN EN EL MANEJO DE EMERGENCIA."
+      },
+      {
+        "label": "D",
+        "text": "TODAS LAS ALTERNATIVAS SON CORRECTAS."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 25,
+    "text": "DE ACUERDO CON LA DAN 121, EN UN AVIÓN CON CAPACIDAD DE 174 ASIENTOS DE PASAJEROS, ¿CUÁNTOS BOTIQUINES DE PRIMEROS AUXILIOS SE DEBEN LLEVAR A BORDO?",
+    "options": [
+      {
+        "label": "A",
+        "text": "UN BOTIQUINES DE PRIMEROS AUXILIOS"
+      },
+      {
+        "label": "B",
+        "text": "DOS BOTIQUINES DE PRIMEROS AUXILIOS."
+      },
+      {
+        "label": "C",
+        "text": "TRES BOTIQUINES DE PRIMEROS AUXILIOS"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 26,
+    "text": "DE ACUERDO CON LA DAN 121, ¿PORQUÉ MOTIVOS PODRÍA EXTENDERSE EL PSV MÁXIMO DE 12 HORAS, EN 2 HORAS MÁS, DE UNA TRIPULACIÓN DE CABINA MÍNIMA?",
+    "options": [
+      {
+        "label": "A",
+        "text": "CONTINGENCIAS METEOROLÓGICAS, EMERGENCIAS MÉDICAS, NECESIDADES CALIFICADAS DE MANTENIMIENTO DE LA AERONAVE CONSIGNADAS EN EL MEL Y CUANDO EL PILOTO A MANDO LO DETERMINE POR RAZONES DE SEGURIDAD."
+      },
+      {
+        "label": "B",
+        "text": "CONTINGENCIAS METEOROLÓGICAS, EMERGENCIAS MÉDICAS, CANCELACIÓN DE LA JORNADA DE TRABAJO POR HUELGA DE FUNCIONARIOS DE AEROPUERTO Y CUANDO EL PILOTO A MANDO LO DETERMINE POR RAZONES DE SEGURIDAD."
+      },
+      {
+        "label": "C",
+        "text": "CONTINGENCIAS METEOROLÓGICAS, CAMBIO DE ROL DE VUELO DE LOS TRIPULANTES DE MANDO, CAMBIO DE AVIÓN POR NECESIDADES DE LA OPERACIÓN Y CUANDO EL PILOTO AL MANDO LO DETERMINE POR RAZONES DE SEGURIDAD"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 27,
+    "text": "DE ACUERDO CON LA DAN-121, ¿QUÉ AERONAVES DEBERÁN DISPONER DE UN SISTEMA DE ILUMINACIÓN DE EMERGENCIA EN CABINA INDEPENDIENTE DEL SISTEMA DE ILUMINACIÓN PRINCIPAL?",
+    "options": [
+      {
+        "label": "A",
+        "text": "AERONAVES DE TRANSPORTE DE PASAJEROS DE MÁS DE 22 ASIENTOS Y PESO MAX. DE DESPEGUE SUPERIOR A 5.700 KGS."
+      },
+      {
+        "label": "B",
+        "text": "AERONAVES DE TRANSPORTE DE PASAJEROS DE MÁS DE 50 ASIENTOS Y PESO MAX. DE DESPEGUE SUPERIOR A 5.700 KGS."
+      },
+      {
+        "label": "C",
+        "text": "AERONAVES DE TRANSPORTE DE PASAJEROS DE MÁS DE 19 ASIENTOS Y PESO MAX. DE DESPEGUE SUPERIOR A 5.700 KGS."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 28,
+    "text": "DE ACUERDO CON LO ESTABLECIDO EN LA DAN 121, ¿QUÉ ENTIENDE UD. POR ESTADO DE MATRÍCULA?",
+    "options": [
+      {
+        "label": "A",
+        "text": "REGISTRO DE MATRÍCULAS DE LICENCIAS AERONÁUTICAS."
+      },
+      {
+        "label": "B",
+        "text": "ESTADO AL CUAL PERTENECE LA TRIPULACIÓN DE UNA AERONAVE."
+      },
+      {
+        "label": "C",
+        "text": "ESTADO AL CUAL PERTENECE LA TRIPULACIÓN DE VUELO."
+      },
+      {
+        "label": "D",
+        "text": "ESTADO EN EL CUAL ESTÁ REGISTRADA UNA AERONAVE."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 29,
+    "text": "DURANTE EL VUELO, EN CASO DE EMERGENCIA, SE DEBE REALIZAR LO SIGUIENTE:",
+    "options": [
+      {
+        "label": "A",
+        "text": "OFRECER LAS DISCULPAS PERTINENTES, YA QUE NO SE CUMPLIRÁ CON EL ITINERARIO ESTABLECIDO."
+      },
+      {
+        "label": "B",
+        "text": "SE INSTRUIRÁ A LOS PASAJEROS ACERCA DE LAS MEDIDAS DE EMERGENCIA A ADOPTAR"
+      },
+      {
+        "label": "C",
+        "text": "CONTINUAR CON EL SERVICIO NORMAL."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 30,
+    "text": "EL APROVISIONAMIENTO DE COMBUSTIBLE CON PASAJEROS A BORDO NO ESTÁ PERMITIDO, SI LA AERONAVE SE ENCUENTRA CON UNO O MÁS MOTORES FUNCIONANDO.",
+    "options": [
+      {
+        "label": "A",
+        "text": "VERDADERO"
+      },
+      {
+        "label": "B",
+        "text": "FALSO"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 31,
+    "text": "EL ÁREA DE UN AERÓDROMO TERRESTRE DESTINADA AL EMBARQUE, DESEMBARQUE DE PASAJEROS, CORREO O CARGA, MANTENIMIENTO, ESTACIONAMIENTO Y CARGUÍO DE COMBUSTIBLE DE AERONAVES, SE DENOMINA:",
+    "options": [
+      {
+        "label": "A",
+        "text": "LOSA DE ESTACIONAMIENTO."
+      },
+      {
+        "label": "B",
+        "text": "ÁREA DE MANIOBRAS."
+      },
+      {
+        "label": "C",
+        "text": "PLATAFORMA."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 32,
+    "text": "EL CÓDIGO AERONÁUTICO ESTABLECE QUE, LOS DOCUMENTOS QUE DEBE PORTAR LA AERONAVE SON:",
+    "options": [
+      {
+        "label": "A",
+        "text": "CERTIFICADO DE MATRÍCULA."
+      },
+      {
+        "label": "B",
+        "text": "SI LLEVA PASAJEROS, LISTADO DE SUS NOMBRES Y LUGARES DE EMBARQUE Y DESTINO."
+      },
+      {
+        "label": "C",
+        "text": "CERTIFICADO DE AERONAVEGABILIDAD"
+      },
+      {
+        "label": "D",
+        "text": "TODAS LAS RESPUESTAS SON CORRECTAS"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 33,
+    "text": "EL COMANDANTE DE LA AERONAVE PODRÁ IMPONER LAS MEDIDAS PREVENTIVAS Y COERCITIVAS NECESARIAS PARA MANTENER LA SEGURIDAD DE LA AERONAVE, DE LAS PERSONAS O DE LOS BIENES O PARA CONSERVAR EL ORDEN Y LA DISCIPLINA A BORDO.",
+    "options": [
+      {
+        "label": "A",
+        "text": "VERDADERO"
+      },
+      {
+        "label": "B",
+        "text": "FALSO"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 34,
+    "text": "EL DAR 18 ESTABLECE QUÉ, NO SE PODRÁN OPERAR DURANTE LAS FASES DE DESPEGUE Y ATERRIZAJE U OTRAS QUE LA EMPRESA ÁREA DETERMINE EQUIPOS ELECTRÓNICOS Y DE COMUNICACIONES.",
+    "options": [
+      {
+        "label": "A",
+        "text": "VERDADERO"
+      },
+      {
+        "label": "B",
+        "text": "FALSO"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 35,
+    "text": "EL HIELO SECO PUEDE SER TRANSPORTADO POR PASAJEROS O TRIPULANTES SÓLO EN LAS SIGUIENTES CONDICIONES:",
+    "options": [
+      {
+        "label": "A",
+        "text": "MÁS DE 3 KG., SÓLO EN EL EQUIPAJE FACTURADO."
+      },
+      {
+        "label": "B",
+        "text": "HASTA 2.5 KG. EN EL EQUIPAJE DE MANO Y/O FACTURADO."
+      },
+      {
+        "label": "C",
+        "text": "MÁXIMO 3 KG. EN EL EQUIPAJE DE MANO Y/O FACTURADO."
+      },
+      {
+        "label": "D",
+        "text": "NINGUNA DE LAS ANTERIORES."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 36,
+    "text": "EL PERÍODO DE SERVICIO DE VUELO MÁXIMO ESTABLECIDO PARA LAS TRIPULACIONES AUXILIARES EN UN MES CALENDARIO ES DE:",
+    "options": [
+      {
+        "label": "A",
+        "text": "150 HORAS"
+      },
+      {
+        "label": "B",
+        "text": "160 HORAS"
+      },
+      {
+        "label": "C",
+        "text": "180 HORAS"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 37,
+    "text": "EL REGLAMENTO AERONÁUTICO ESTABLECE QUE LOS CHALECOS SALVAVIDAS O DISPOSITIVOS DE FLOTACIÓN SE EXIGIRÁN:",
+    "options": [
+      {
+        "label": "A",
+        "text": "SIEMPRE QUE SE VUELE SOBRE EL MAR."
+      },
+      {
+        "label": "B",
+        "text": "CUANDO VUELEN SOBRE EL AGUA A UNA DISTANCIA DE MÁS DE 50 MILLAS NÁUTICAS DE LA COSTA"
+      },
+      {
+        "label": "C",
+        "text": "CUANDO EN OPINIÓN DE LA DGAC HAYA PROBABILIDAD DE AMARIZAJE FORZOSO."
+      },
+      {
+        "label": "D",
+        "text": "TODAS LAS ANTERIORES."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 38,
+    "text": "EL SERVICIO DE TRANSPORTE AÉREO NACIONAL ES EL QUE SE PRESTA ENTRE DOS O MÁS PUNTOS UBICADOS EN TERRITORIO DE ESTADOS DIFERENTES.",
+    "options": [
+      {
+        "label": "A",
+        "text": "VERDADERO"
+      },
+      {
+        "label": "B",
+        "text": "FALSO"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 39,
+    "text": "EL TIEMPO ADICIONAL PARA EFECTOS DE TRASLADO DE UN TRIPULANTE CUANDO LE CORRESPONDA UN PERÍODO DE DESCANSO MÍNIMO ES EL SIGUIENTE:",
+    "options": [
+      {
+        "label": "A",
+        "text": "30 MINUTOS EN BASE PRINCIPAL O EN BASE AUXILIAR (POSTAS) DE OPERACIONES."
+      },
+      {
+        "label": "B",
+        "text": "45 MINUTOS CUANDO SE OPERE EN LA BASE PRINCIPAL DE OPERACIONES Y 25 EN LA BASE AUXILIAR (POSTAS) DE OPERACIONES."
+      },
+      {
+        "label": "C",
+        "text": "45 MINUTOS CUANDO SE OPERA EN LA BASE PRINCIPAL Y 20 EN LA BASE AUXILIAR (POSTAS) DE OPERACIONES."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 40,
+    "text": "EL TIEMPO TRANSCURRIDO, DENTRO DE UN PERÍODO DE 24 HORAS CONSECUTIVAS, DESDE EL MOMENTO EN QUE EL TRIPULANTE SE PRESENTA EN LAS DEPENDENCIAS AEROPORTUARIAS O LUGAR ASIGNADO POR EL EXPLOTADOR CON EL OBJETO DE PREPARAR, REALIZAR Y FINALIZAR OPERACIONAL Y ADMINISTRATIVAMENTE UN VUELO, HASTA QUE EL TRIPULANTE ES LIBERADO DE TODA FUNCIÓN Y PUEDE COMPRENDER UN VUELO O UNA SERIE DE VUELOS, SEGÚN LA DAN 121.",
+    "options": [
+      {
+        "label": "A",
+        "text": "PERÍODO DE VUELO (P.V.)."
+      },
+      {
+        "label": "B",
+        "text": "PERÍODO DE SERVICIO DE VUELO (P.S.V.)."
+      },
+      {
+        "label": "C",
+        "text": "ROL DE VUELO MENSUAL."
+      },
+      {
+        "label": "D",
+        "text": "PERÍODO DE VUELO CON TRIPULACIÓN DE RELEVO."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 41,
+    "text": "EL TRANSPORTE SIN RIESGOS DE MERCANCÍAS PELIGROSAS POR VÍA AÉREA ESTÁ REGULADO POR:",
+    "options": [
+      {
+        "label": "A",
+        "text": "DAR 08"
+      },
+      {
+        "label": "B",
+        "text": "DAR 18"
+      },
+      {
+        "label": "C",
+        "text": "DAR 51"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 42,
+    "text": "EL USO DE RADIOS PORTÁTILES Y/O EQUIPOS ELECTRÓNICOS ESTÁ PERMITIDO EN TODO MOMENTO A BORDO DE UN AVIÓN.",
+    "options": [
+      {
+        "label": "A",
+        "text": "VERDADERO"
+      },
+      {
+        "label": "B",
+        "text": "FALSO"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 43,
+    "text": "EN ABASTECIMIENTO DE COMBUSTIBLES CUANDO LOS PASAJEROS ESTÉN EMBARCANDO, A BORDO O DESEMBARCANDO, SI SE ENCUENTRAN A BORDO PASAJEROS INVÁLIDOS O ENFERMOS, SERÁ NECESARIA LA PRESENCIA DE MÁS MIEMBROS DE LA TRIPULACIÓN DE CABINA A BORDO A FIN DE PRESTAR ASISTENCIA EN CASO DE EVACUACIÓN:",
+    "options": [
+      {
+        "label": "A",
+        "text": "VERDADERO"
+      },
+      {
+        "label": "B",
+        "text": "FALSO"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 44,
+    "text": "EN AQUELLAS OPORTUNIDADES EN QUE EL CARGUÍO DE COMBUSTIBLE CON PASAJEROS A BORDO O, EMBARCANDO O DESEMBARCANDO SE EFECTÚE EN CONDICIONES CLIMÁTICAS ADVERSAS, EL CARGUÍO SE PODRÁ LLEVAR A CABO DE ACUERDO A:",
+    "options": [
+      {
+        "label": "A",
+        "text": "EN EL CASO DE CERRAR UNA DE LAS DOS PUERTAS DE ACCESO A LA AERONAVE, SE ARMARÁ EL TOBOGÁN Y SE MANTENDRÁ UN TRIPULANTE DE CABINA RESGUARDÁNDOLA HASTA EL TÉRMINO DEL APROVISIONAMIENTO DE COMBUSTIBLE."
+      },
+      {
+        "label": "B",
+        "text": "EN EL CASO DE CERRAR UNA DE LAS DOS PUERTAS DE ACCESO A LA AERONAVE, SE MANTENDRÁ UN TRIPULANTE DE CABINA RESGUARDÁNDOLA HASTA EL TÉRMINO DEL APROVISIONAMIENTO DE COMBUSTIBLE."
+      },
+      {
+        "label": "C",
+        "text": "EN EL CASO DE CERRAR UNA DE LAS DOS PUERTAS DE ACCESO A LA AERONAVE, SE ARMARÁ EL TOBOGÁN DE LA PUERTA 4R Y SE MANTENDRÁ UN TRIPULANTE DE CABINA RESGUARDÁNDOLA HASTA EL TÉRMINO DEL APROVISIONAMIENTO DE COMBUSTIBLE."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 45,
+    "text": "EN CHILE, LA NORMA QUE SE APLICA A LOS REQUISITOS DE OPERACIÓN, OPERACIONES NACIONALES, INTERNACIONALES, REGULARES Y NO REGULARES ES:",
+    "options": [
+      {
+        "label": "A",
+        "text": "DAN 63"
+      },
+      {
+        "label": "B",
+        "text": "DAN 382"
+      },
+      {
+        "label": "C",
+        "text": "DAN 121"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 46,
+    "text": "EN LA DAN 121 LAS MANILLAS DE APERTURA DE LAS SALIDAS DE EMERGENCIA Y LAS INSTRUCCIONES PARA OPERARLAS, DEBERÁN ESTAR EN SITIOS CONVENIENTES Y LEGIBLES DESDE UNA DISTANCIA DE _______ POR PERSONAS DE VISTA NORMAL.",
+    "options": [
+      {
+        "label": "A",
+        "text": "4 METROS."
+      },
+      {
+        "label": "B",
+        "text": "2 METROS."
+      },
+      {
+        "label": "C",
+        "text": "3 METROS"
+      },
+      {
+        "label": "D",
+        "text": "NO EXISTE DISTANCIA DETERMINADA."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 47,
+    "text": "EN LOS AVIONES SE DEBERÁ DISPONER DE UN ASIENTO CON CINTURÓN DE SEGURIDAD PARA:",
+    "options": [
+      {
+        "label": "A",
+        "text": "TODAS LAS PERSONAS ADULTAS"
+      },
+      {
+        "label": "B",
+        "text": "CADA PERSONA MAYOR DE 06 AÑOS."
+      },
+      {
+        "label": "C",
+        "text": "CADA PERSONA MAYOR DE 02 AÑOS."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 48,
+    "text": "ENTRE LAS OBLIGACIONES DEL TRIPULANTE AUXILIAR DE CABINA FIGURAN:",
+    "options": [
+      {
+        "label": "A",
+        "text": "EFECTUAR ADECUADAMENTE LAS LISTAS DE VERIFICACIÓN O CHEQUEO DE LOS ELEMENTOS DE EMERGENCIA, ANTES DE UN VUELO."
+      },
+      {
+        "label": "B",
+        "text": "PORTAR LICENCIA AERONÁUTICA CORRESPONDIENTE Y VIGENTE."
+      },
+      {
+        "label": "C",
+        "text": "TODO LO ANTERIOR ES CORRECTO."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 49,
+    "text": "EN VUELO LAS COMIDAS DEL PILOTO AL MANDO Y DEL COPILOTO DEBERÁN CUMPLIR CON:",
+    "options": [
+      {
+        "label": "A",
+        "text": "SEGÚN LA ELECCIÓN DE LOS TRIPULANTES DE VUELO."
+      },
+      {
+        "label": "B",
+        "text": "SER DISTINTAS ENTRE SI, PARA EVITAR INTOXICACIÓN SIMULTANEA."
+      },
+      {
+        "label": "C",
+        "text": "SE SUMINISTRARÁN EN DIFERENTES HORARIOS."
+      },
+      {
+        "label": "D",
+        "text": "LAS ALTERNATIVAS B Y C SON CORRECTAS."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 50,
+    "text": "EXISTEN AERONAVES QUE DEBEN ESTAR DOTADAS DE SISTEMAS DE ILUMINACIÓN DE SALIDAS DE EMERGENCIA. ESTA EXIGENCIA ES APLICABLE A LAS AERONAVES CUYA CAPACIDAD DE PASAJEROS ES DE:",
+    "options": [
+      {
+        "label": "A",
+        "text": "MÁS DE 09 PASAJEROS."
+      },
+      {
+        "label": "B",
+        "text": "MÁS DE 20 PASAJEROS."
+      },
+      {
+        "label": "C",
+        "text": "MÁS DE 30 PASAJEROS"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 51,
+    "text": "HABILITACIÓN ES: AUTORIZACIÓN INSCRITA EN UNA LICENCIA O ASOCIADA CON ELLA, Y DE LA CUAL FORMA PARTE, EN LA QUE SE ESPECIFICAN CONDICIONES ESPECIALES, ATRIBUCIONES O RESTRICCIONES REFERENTES A DICHA LICENCIA.",
+    "options": [
+      {
+        "label": "A",
+        "text": "VERDADERO"
+      },
+      {
+        "label": "B",
+        "text": "FALSO"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 52,
+    "text": "LA AUTORIDAD AERONÁUTICA ESTA FACULTADA PARA CONTROLAR O INSPECCIONAR LAS AERONAVES, A SU TRIPULACIÓN Y A LAS PERSONAS Y COSAS TRANSPORTADAS A BORDO.",
+    "options": [
+      {
+        "label": "A",
+        "text": "VERDADERO"
+      },
+      {
+        "label": "B",
+        "text": "FALSO"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 53,
+    "text": "LA AUTORIDAD AERONÁUTICA PODRÁ DETERMINAR POR RAZONES DE SEGURIDAD DE VUELO, EL NÚMERO DEL PERSONAL AERONÁUTICO QUE DEBE OPERAR CUALQUIER AERONAVE.",
+    "options": [
+      {
+        "label": "A",
+        "text": "VERDADERO"
+      },
+      {
+        "label": "B",
+        "text": "FALSO"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 54,
+    "text": "LA AUTORIDAD AERONÁUTICA PODRÁ IMPEDIR EL VUELO DE UNA AERONAVE QUE NO REÚNA LAS CONDICIONES EXIGIDAS POR LA LEY O LOS REGLAMENTOS:",
+    "options": [
+      {
+        "label": "A",
+        "text": "VERDADERO"
+      },
+      {
+        "label": "B",
+        "text": "FALSO"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 55,
+    "text": "LA AUTORIZACIÓN PARA ABASTECER DE COMBUSTIBLE A UNA AERONAVE CON PASAJEROS A BORDO ES APLICABLE A AVIONES CON UNA CAPACIDAD DE ASIENTOS SUPERIOR A:",
+    "options": [
+      {
+        "label": "A",
+        "text": "09 ASIENTOS"
+      },
+      {
+        "label": "B",
+        "text": "19 ASIENTOS"
+      },
+      {
+        "label": "C",
+        "text": "29 ASIENTOS"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 56,
+    "text": "LA CANTIDAD MÍNIMA DE EXTINTORES PORTÁTILES PARA UNA AERONAVE CON CAPACIDAD DE 120 PASAJEROS, CONVENIENTEMENTE UBICADOS Y UNIFORMEMENTE DISTRIBUIDOS EN EL COMPARTIMENTO DE PASAJEROS, ES:",
+    "options": [
+      {
+        "label": "A",
+        "text": "2 EXTINTORES"
+      },
+      {
+        "label": "B",
+        "text": "3 EXTINTORES"
+      },
+      {
+        "label": "C",
+        "text": "4 EXTINTORES"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 57,
+    "text": "LA DAN 121, CAPÍTULO G SE APLICA A:",
+    "options": [
+      {
+        "label": "A",
+        "text": "A LOS MIEMBROS DE LA TRIPULACIÓN AUXILIAR DE LAS AERONAVES MATRICULADAS EN CHILE."
+      },
+      {
+        "label": "B",
+        "text": "A LOS MIEMBROS DE LA TRIPULACIÓN DE AERONAVES COMERCIALES CHILENAS O EXTRANJERAS, DEDICADAS AL TRANSPORTE DE PASAJEROS."
+      },
+      {
+        "label": "C",
+        "text": "A LOS MIEMBROS DE LA TRIPULACIÓN DE VUELO DE AERONAVES CHILENAS."
+      },
+      {
+        "label": "D",
+        "text": "LOS TRIPULANTES DE VUELO Y LOS TRIPULANTES AUXILIARES DE AERONAVES COMERCIALES Y/O CARGA, CUYO PESO MÁXIMO DE DESPEGUE SEA SUPERIOR A 5.700 KGS."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 58,
+    "text": "LA DAN 121 DEFINE CÓMO DE PERÍODO DE DESCANSO A:",
+    "options": [
+      {
+        "label": "A",
+        "text": "TODO TIEMPO CONTINUO EN VUELO DURANTE EL CUAL UN MIEMBRO DE LA TRIPULACIÓN ES RELEVADO DE TODA FUNCIÓN RELACIONADA CON SU EMPLEO, CON EL OBJETO DE QUE ÉSTE SE MANTENGA EN DESCANSO, DURANTE UN PERÍODO DE SERVICIO DE VUELO."
+      },
+      {
+        "label": "B",
+        "text": "TODO TIEMPO CONTINUO EN TIERRA DURANTE EL CUAL EL OPERADOR ASIGNA A UN MIEMBRO DE LA TRIPULACIÓN UNA FUNCIÓN RELACIONADA CON SU EMPLEO, CON EL OBJETO DE QUE ÉSTE SE MANTENGA EN TURNO POR UN PERÍODO DE 18 DÍAS."
+      },
+      {
+        "label": "C",
+        "text": "TODO TIEMPO EN TIERRA DURANTE EL CUAL EL OPERADOR RELEVA A UN MIEMBRO DE LA TRIPULACIÓN DE TODA FUNCIÓN RELACIONADA CON SU TRABAJO, CON EL OBJETO QUE ESTE SE MANTENGA EN DESCANSO PARA RECUPERARSE FÍSICA Y PSÍQUICAMENTE LUEGO DE UN PERÍODO DE SERVICIO (P.S.) O UN PERÍODO DE SERVICIO DE VUELO (P.S.V.)"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 59,
+    "text": "LA DAN 121, ESTABLECE EL REQUISITO DE MEGÁFONO A UNA AERONAVES CON CAPACIDAD DE 174 PASAJEROS, QUE SE DEBE LLEVAR A BORDO DOS (2) MEGÁFONOS A BATERÍA PARA EL CASO DE UNA EVACUACIÓN DE EMERGENCIA.",
+    "options": [
+      {
+        "label": "A",
+        "text": "VERDADERO"
+      },
+      {
+        "label": "B",
+        "text": "FALSO"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 60,
+    "text": "LA DAN 121, ESTABLECE EL REQUISITO MÍNIMO DE EXTINTORES PORTÁTILES QUE DEBE LLEVAR UN AVIÓN, LA CUAL ESTÁ DETERMINADA POR?",
+    "options": [
+      {
+        "label": "A",
+        "text": "LA CAPACIDAD DE ASIENTOS DE PASAJEROS DEL AVIÓN."
+      },
+      {
+        "label": "B",
+        "text": "EL NÚMERO DE PASAJEROS QUE SE TRANSPORTA."
+      },
+      {
+        "label": "C",
+        "text": "CON EL TIPO DE FUEGO QUE PUEDE OCURRIR EN EL COMPARTIMENTO DONDE DE INTENTA UTILIZAR EL EXTINTOR."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 61,
+    "text": "LA DAN 121 ESTABLECE QUE: DEBERÁ PROVEERSE DE UN SISTEMA DE COMUNICACIÓN, PARA SER USADO PARA LA DIRECCIÓN DE LA EVACUACIÓN DE LA AERONAVE EN CASO DE EMERGENCIA:",
+    "options": [
+      {
+        "label": "A",
+        "text": "TIPO MEGÁFONO CON BATERÍA INDEPENDIENTE."
+      },
+      {
+        "label": "B",
+        "text": "LLAMADO P.A. (PUBLIC ADDRESS) ALIMENTADO DEL SISTEMA ELÉCTRICO DEL AVIÓN."
+      },
+      {
+        "label": "C",
+        "text": "TIPO MICRÓFONO ALIMENTADO DESDE LA BATERÍA DEL AVIÓN."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 62,
+    "text": "LA DAN 121 ESTABLECE QUE, EL OPERADOR SE DEBERÁ ASEGURAR QUE TODO EQUIPAJE DE MANO EMBARCADO EN LA CABINA DE PASAJEROS SE COLOQUE EN UN LUGAR DONDE QUEDE BIEN ASEGURADO.",
+    "options": [
+      {
+        "label": "A",
+        "text": "VERDADERO"
+      },
+      {
+        "label": "B",
+        "text": "FALSO"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 63,
+    "text": "LA DAN 121 ESTABLECE QUE: LA PUERTA DE ACCESO A LA CABINA DE PILOTAJE DEBERÁ PODER SER TRABADA O DESTRABADA DESDE EL INTERIOR DE LA CABINA DESDE CUALQUIER PUESTO DE PILOTAJE.",
+    "options": [
+      {
+        "label": "A",
+        "text": "VERDADERO"
+      },
+      {
+        "label": "B",
+        "text": "FALSO"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 64,
+    "text": "LA DAN 121 ESTABLECE QUE LAS AERONAVES DEBERÁN ESTAR EQUIPADAS CON UN SISTEMA DE DIFUSIÓN DE INFORMACIÓN A LOS PASAJEROS QUE:",
+    "options": [
+      {
+        "label": "A",
+        "text": "SEA AUDIBLE EN TODOS LOS ASIENTOS DE PASAJEROS, BAÑOS, ASIENTOS Y ESTACIONES DE TRABAJO DE LOS TRIPULANTES AUXILIARES."
+      },
+      {
+        "label": "B",
+        "text": "QUE SE ENCUENTRE DISPONIBLE UN MICRÓFONO QUE SEA DE FÁCIL ACCESO PARA EL TRIPULANTE, EN LAS PUERTAS DE ACCESO A LA AERONAVE QUE TENGA ADYACENTE UN ASIENTO DE TRIPULANTE AUXILIAR."
+      },
+      {
+        "label": "C",
+        "text": "PUEDA SER OPERADO DENTRO DE 10 SEGUNDOS POR UN TRIPULANTE AUXILIAR."
+      },
+      {
+        "label": "D",
+        "text": "TODAS LAS RESPUESTAS SON CORRECTAS."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 65,
+    "text": "LA DAN 121 ESTABLECE QUE, PARA TODAS LAS AERONAVES, EN TODOS LOS VUELOS ESTARÁ EQUIPADA CON SISTEMAS AUTÓNOMOS DE RESPIRACIÓN PARA EL COMBATE INCENDIO (PBE) DE ACUERDO CON:",
+    "options": [
+      {
+        "label": "A",
+        "text": "1 PBE POR CADA TRIPULANTE DE CABINA."
+      },
+      {
+        "label": "B",
+        "text": "1 PBE EN EL COMPARTIMENTO DE LA TRIPULACIÓN DE VUELO."
+      },
+      {
+        "label": "C",
+        "text": "1 PBE POR CADA EXTINTOR PORTÁTIL INSTALADA EN LA AERONAVE"
+      },
+      {
+        "label": "D",
+        "text": "RESPUESTA B Y C SON CORRECTAS."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 66,
+    "text": "LA DAN 121 ESTABLECE QUÉ: TRIPULACIÓN AUXILIAR O DE CABINA MÍNIMA ES:",
+    "options": [
+      {
+        "label": "A",
+        "text": "AQUELLA QUE PERMITE, EN CASO DE EMERGENCIA EFECTUAR LA EVACUACIÓN TOTAL DE LA AERONAVE EN UN TIEMPO DETERMINADO, LA QUE EN TODO CASO NO PODRÁ SER INFERIOR A UNA POR CADA UNIDAD DE 50 NÚMEROS DE ASIENTOS"
+      },
+      {
+        "label": "B",
+        "text": "LOS MIEMBROS DE LA TRIPULACIÓN, TITULARES DE LICENCIA QUE SE DESEMPEÑAN EN LAS LABORES DE SERVICIO Y ATENCIÓN DE PASAJEROS, SEGÚN LA CAPACIDAD MÍNIMA DE ASIENTOS DE PASAJEROS SEGÚN CERTIFICACIÓN DE LA AERONAVE."
+      },
+      {
+        "label": "C",
+        "text": "PERMITE, EN CASO DE EMERGENCIA, EFECTUAR LA EVACUACIÓN TOTAL DE LA AERONAVE EN UN TIEMPO NO MAYOR DE NOVENTA (90) SEGUNDOS."
+      },
+      {
+        "label": "D",
+        "text": "EL TITULAR DE UNA LICENCIA A QUIEN SE CONFÍA LABORES NO ESENCIALES EN LA AERONAVE DURANTE EL VUELO."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 67,
+    "text": "LA DAN-63, ES APLICABLE A:",
+    "options": [
+      {
+        "label": "A",
+        "text": "LICENCIAS PARA MIEMBROS DE LA TRIPULACIÓN EXCEPTO PILOTOS."
+      },
+      {
+        "label": "B",
+        "text": "LICENCIAS PARA PILOTOS Y SUS HABILITACIONES."
+      },
+      {
+        "label": "C",
+        "text": "LICENCIAS AL PERSONAL AERONÁUTICO."
+      },
+      {
+        "label": "D",
+        "text": "RESPUESTA A Y B SON CORRECTAS"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 68,
+    "text": "LA EDAD MÍNIMA PARA EL OTORGAMIENTO DE LA LICENCIA DE AUXILIAR DE CABINA ES:",
+    "options": [
+      {
+        "label": "A",
+        "text": "18 AÑOS"
+      },
+      {
+        "label": "B",
+        "text": "21 AÑOS"
+      },
+      {
+        "label": "C",
+        "text": "23 AÑOS"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 69,
+    "text": "LA EMPRESA AÉREA QUE REALICE OPERACIONES CON AERONAVES DEBERÁ:",
+    "options": [
+      {
+        "label": "A",
+        "text": "CONTAR CON AL MENOS UN BAÑO CON CONDICIONES DE ACCESIBILIDAD UNIVERSAL"
+      },
+      {
+        "label": "B",
+        "text": "ESTAR EQUIPADAS CON UNA SILLA DE RUEDAS PARA USO AL INTERIOR DE LA AERONAVE."
+      },
+      {
+        "label": "C",
+        "text": "TENER PERSONAL ADECUADO AL ÁREA DE LA SALUD PARA LA ATENCIÓN DE LOS PASAJEROS EN EL VUELO."
+      },
+      {
+        "label": "D",
+        "text": "RESPUESTAS A Y B SON CORRECTAS."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 70,
+    "text": "LA EXTENSIÓN DE LAS DOS HORAS EN CASOS DE CONTINGENCIA METEOROLÓGICAS, EMERGENCIAS MÉDICAS, MANTENIMIENTO O POR RAZONES DE SEGURIDAD LO DETERMINE EL PILOTO AL MANDO, SERÁ SÓLO CUANDO:",
+    "options": [
+      {
+        "label": "A",
+        "text": "EL PSV NO SEA MAYOR A 7 HORAS."
+      },
+      {
+        "label": "B",
+        "text": "SEA UNA JORNADA CON TRIPULACIÓN REFORZADA."
+      },
+      {
+        "label": "C",
+        "text": "SEA UNA JORNADA ORDINARIA MÁXIMA DE 12 HORAS."
+      },
+      {
+        "label": "D",
+        "text": "RESPUESTAS B Y C SON CORRECTAS."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 71,
+    "text": "LA OPERACIÓN DE APROVISIONAMIENTO DE COMBUSTIBLE DE UN AVIÓN DURANTE EL EMBARQUE O DESEMBARQUE DE PASAJEROS DESDE O HACIA UN ESTACIONAMIENTO:",
+    "options": [
+      {
+        "label": "A",
+        "text": "NO ESTÁ PERMITIDO POR LA REGLAMENTACIÓN."
+      },
+      {
+        "label": "B",
+        "text": "SERÁN ACOMPAÑADOS POR PERSONAL RESPONSABLE DEL OPERADOR, DESDE Y HASTA LA AERONAVE."
+      },
+      {
+        "label": "C",
+        "text": "NO ESTÁ PERMITIDO SÓLO SI LOS PASAJEROS SON ACOMPAÑADOS EN GRUPOS PEQUEÑOS POR PERSONAL RESPONSABLE DESDE EL AVIÓN Y HASTA ÉL."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 72,
+    "text": "LA REGLAMENTACIÓN AERONÁUTICA ESTABLECE QUE LOS AVIONES COMERCIALES POSEERÁN UN SISTEMA DE ILUMINACIÓN QUE, EN CONDICIONES DE EMERGENCIA, FUNCIONARÁN EN FORMA AUTOMÁTICA O MANUAL.",
+    "options": [
+      {
+        "label": "A",
+        "text": "VERDADERO"
+      },
+      {
+        "label": "B",
+        "text": "FALSO"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 73,
+    "text": "LA REGLAMENTACIÓN PROHÍBE A LOS MIEMBROS DE LA TRIPULACIÓN DE UN AVIÓN INGERIR BEBIDAS ALCOHÓLICAS DURANTE EL VUELO Y ANTES DE ÉSTE, A PARTIR DE:",
+    "options": [
+      {
+        "label": "A",
+        "text": "12 HORAS ANTES DE INICIARSE EL VUELO."
+      },
+      {
+        "label": "B",
+        "text": "24 HORAS ANTES DE INICIARSE EL VUELO."
+      },
+      {
+        "label": "C",
+        "text": "36 HORAS ANTES DE INICIARSE EL VUELO."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 74,
+    "text": "LAS AERONAVES QUE VUELEN A UNA DISTANCIA DE 400 MILLAS O MÁS DE LA LÍNEA DE LA COSTA DEBEN IR EQUIPADAS CON:",
+    "options": [
+      {
+        "label": "A",
+        "text": "CHALECOS, BALSAS SALVAVIDAS Y KIT DE SUPERVIVENCIA"
+      },
+      {
+        "label": "B",
+        "text": "DISPOSITIVO DE FLOTACIÓN, CHALECO Y BALSA SALVAVIDAS."
+      },
+      {
+        "label": "C",
+        "text": "BALSAS SALVAVIDAS, CHALECOS SALVAVIDAS Y EQUIPO DE RADIO PORTÁTIL AUTÓNOMO."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 75,
+    "text": "LAS ATRIBUCIONES Y DEBERES DEL COMANDANTE DE UNA AERONAVE MATRICULADA EN CHILE, SE REGIRÁN POR LA LEY CHILENA CUANDO LA AERONAVE SE ENCUENTRE:",
+    "options": [
+      {
+        "label": "A",
+        "text": "SOBRE TERRITORIO CHILENO"
+      },
+      {
+        "label": "B",
+        "text": "SOBRE TERRITORIO Y AGUAS JURISDICCIONALES CHILENAS."
+      },
+      {
+        "label": "C",
+        "text": "EN TERRITORIO NACIONAL O EXTRANJERO."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 76,
+    "text": "LAS DEMOSTRACIONES E INSTRUCCIONES DE SEGURIDAD, QUE SE EFECTÚEN PREVIO AL VUELO, EL OPERADOR SE DEBE ASEGURAR QUÉ:",
+    "options": [
+      {
+        "label": "A",
+        "text": "Conozca el uso de los cinturones."
+      },
+      {
+        "label": "B",
+        "text": "Conozca la ubicación de las salidas de emergencia."
+      },
+      {
+        "label": "C",
+        "text": "Conozca el uso del equipo de oxígeno."
+      },
+      {
+        "label": "D",
+        "text": "Todas las anteriores."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 77,
+    "text": "LAS DISPOSICIONES DE LA DGAC, DE CARÁCTER REGLAMENTARIO, CUYO CUMPLIMIENTO ES MANDATORIO, SE DENOMINAN:",
+    "options": [
+      {
+        "label": "A",
+        "text": "DAR"
+      },
+      {
+        "label": "B",
+        "text": "DAN"
+      },
+      {
+        "label": "C",
+        "text": "DAP"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 78,
+    "text": "LAS EMPRESAS DEBERÁN SER CAPACES DE DEMOSTRAR QUE:",
+    "options": [
+      {
+        "label": "A",
+        "text": "UNA TRIPULACIÓN AUXILIAR MÍNIMA, EVACUA EL AVIÓN EN FORMA COMPLETA Y SEGURA EN UN TIEMPO MÁXIMO DE 60 SEG."
+      },
+      {
+        "label": "B",
+        "text": "UNA TRIPULACIÓN AUXILIAR MÍNIMA, EVACUA EL AVIÓN EN FORMA COMPLETA Y SEGURA EN UN TIEMPO NO MAYOR DE 90 SEG."
+      },
+      {
+        "label": "C",
+        "text": "UNA TRIPULACIÓN AUXILIAR DE CABINA, EVACUA EL AVIÓN EN FORMA COMPLETA Y SEGURA EN UN TIEMPO MÁXIMO DE 99 SEG."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 79,
+    "text": "LAS INSTRUCCIONES A LOS PASAJEROS SOBRE EL EQUIPO DE SEGURIDAD Y EMERGENCIA DEBE INCLUIR UBICACIÓN Y USO DE:",
+    "options": [
+      {
+        "label": "A",
+        "text": "CINTURÓN DE SEGURIDAD, SALIDAS DE EMERGENCIA, CHALECO SALVAVIDAS SI CORRESPONDE, EQUIPO DE OXÍGENO Y TARJETA DE SEGURIDAD"
+      },
+      {
+        "label": "B",
+        "text": "CINTURÓN DE SEGURIDAD, SALIDAS DE EMERGENCIA, EQUIPO DE OXÍGENO, TARJETA DE SEGURIDAD, Y EQUIPOS DE AUDIO Y VIDEO."
+      },
+      {
+        "label": "C",
+        "text": "CINTURÓN DE SEGURIDAD, SALIDA POR TOBOGANES, CHALECO Y BALSA SALVAVIDAS, POSICIÓN DE PROTECCIÓN O IMPACTO, SI CORRESPONDE."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 80,
+    "text": "LAS LICENCIAS DE LOS TRIPULANTES AUXILIARES DE CABINA TIENEN UNA VIGENCIA DE:",
+    "options": [
+      {
+        "label": "A",
+        "text": "06 MESES."
+      },
+      {
+        "label": "B",
+        "text": "03 AÑOS."
+      },
+      {
+        "label": "C",
+        "text": "02 AÑOS."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 81,
+    "text": "LAS LIMITACIONES DE TIEMPO DE VUELO, PERÍODOS DE SERVICIO DE VUELO Y DESCANSO PARA MIEMBROS DE TRIPULACIONES DE VUELO Y AUXILIARES DE AERONAVES DE PASAJEROS Y/O CARGA, CUYO PESO MÁXIMO SEA SUPERIOR A 5700 KG.",
+    "options": [
+      {
+        "label": "A",
+        "text": "RESOLUCIÓN EXCENTA."
+      },
+      {
+        "label": "B",
+        "text": "NORMA DE REQUISITOS DE OPERACIÓN NACIONALES, INTERNACIONALES, REGULARES Y NO REGULARES."
+      },
+      {
+        "label": "C",
+        "text": "REGLAMENTO DE LICENCIAS DEL PERSONAL AERONÁUTICO."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 82,
+    "text": "LAS MERCANCÍAS PELIGROSAS NO DETECTADAS QUE PODRÍAN ESTAR EN EL INTERIOR DEL EQUIPAJE DE PASAJEROS, SE DEFINEN COMO:",
+    "options": [
+      {
+        "label": "A",
+        "text": "M.P. EN CANTIDADES EXENTAS."
+      },
+      {
+        "label": "B",
+        "text": "M. P. TRANSPORTADAS BAJO DISPENSA."
+      },
+      {
+        "label": "C",
+        "text": "M.P. PROPIEDAD DEL OPERADOR."
+      },
+      {
+        "label": "D",
+        "text": "M.P. OCULTAS."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 83,
+    "text": "LOS EXTINTORES PORTÁTILES EN NÚMERO Y TIPO PARA SER UTILIZADOS EN LOS COMPARTIMENTOS DE TRIPULACIÓN DE VUELO PASAJEROS Y GALLEYS, DEBERÁ:",
+    "options": [
+      {
+        "label": "A",
+        "text": "TENER AL MENOS UN EXTINTOR EN CADA UNO DE LOS GALLEY CON INSTALACIÓN DE HORNOS."
+      },
+      {
+        "label": "B",
+        "text": "AL MENOS UN EXTINTOR CONVENIENTEMENTE UBICADO EN EL COCKPIT."
+      },
+      {
+        "label": "C",
+        "text": "TENER AL MENOS 3 EXTINTORES EN UNA CABINA CON CAPACIDAD PARA 186 PASAJEROS."
+      },
+      {
+        "label": "D",
+        "text": "TODAS LAS ALTERNATIVAS SON CORRECTAS."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 84,
+    "text": "LOS LETREROS SITUADOS EN LUGARES VISIBLES DESDE TODOS LOS ASIENTOS, EN LOS AVIONES DEDICADOS AL TRANSPORTE DE PASAJEROS DEBEN INDICAR CUANDO DEBEN:",
+    "options": [
+      {
+        "label": "A",
+        "text": "AJUSTARSE LOS CINTURONES DE SEGURIDAD."
+      },
+      {
+        "label": "B",
+        "text": "REGRESAR A SU ASIENTO."
+      },
+      {
+        "label": "C",
+        "text": "NO PARARSE PARA IR AL BAÑO."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 85,
+    "text": "LOS PERÍODOS DE VIGENCIA DE LOS CERTIFICADOS MÉDICOS PARA LA LICENCIA DE TRIPULANTE AUXILIAR DE CABINA SERÁ DE:",
+    "options": [
+      {
+        "label": "A",
+        "text": "12 MESES."
+      },
+      {
+        "label": "B",
+        "text": "24 MESES."
+      },
+      {
+        "label": "C",
+        "text": "36 MESES."
+      },
+      {
+        "label": "D",
+        "text": "48 MESES."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 86,
+    "text": "LOS REQUISITOS DE EXPERIENCIA PARA EL OTORGAMIENTO DE LA LICENCIA DE AUXILIAR DE CABINA SON LOS SIGUIENTES:",
+    "options": [
+      {
+        "label": "A",
+        "text": "HABER EFECTUADO PRÁCTICAS DE EVACUACIÓN EN LAS AERONAVES QUE FIGURAN EN SU LICENCIA, TANTO EN TIERRA COMO EN EL AGUA, CON LOS EQUIPOS DE SUPERVIVENCIA CONSIDERANDO EL USO DE CHALECOS SALVAVIDAS, EQUIPOS DE OXÍGENO Y EXTINTORES DE INCENDIO QUE SE LLEVAN A BORDO."
+      },
+      {
+        "label": "B",
+        "text": "HABER REALIZADO PRÁCTICAS EN LOS EQUIPOS DE SUPERVIVENCIA CONSIDERANDO EL USO DE CHALECOS SALVAVIDAS, DE EQUIPOS DE OXÍGENO Y EXTINTORES DE INCENDIO QUE SE LLEVAN A BORDO."
+      },
+      {
+        "label": "C",
+        "text": "HABER EFECTUADO LA PRÁCTICA DE EVACUACIÓN EN UNA DE LAS AERONAVES QUE FIGURAN EN SU LICENCIA, TANTO EN TIERRA Y AGUA."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 87,
+    "text": "LOS REQUISITOS PARA IR SENTADO EN UNA SALIDA DE EMERGENCIA SON:",
+    "options": [
+      {
+        "label": "A",
+        "text": "SUJETAR Y EMPUJAR, HALAR, GIRAR O DE OTRA FORMA, MANIPULAR DICHOS MECANISMOS."
+      },
+      {
+        "label": "B",
+        "text": "REMOVER OBSTRUCCIONES SIMILARES EN TAMAÑO Y PESO (MASA) A LAS PUERTAS DE LAS SALIDAS DE EMERGENCIA SOBRE EL ALA."
+      },
+      {
+        "label": "C",
+        "text": "ASISTIR A OTROS PASAJEROS A SALIR POR EL TOBOGÁN DE ESCAPE."
+      },
+      {
+        "label": "D",
+        "text": "TODAS LAS ANTERIORES SON CORRECTAS."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 88,
+    "text": "LOS RESPONSABLES DEL CUMPLIMIENTO DE LOS LÍMITES ESTABLECIDOS PARA LOS T.V Y P.S.V. DISPUESTO EN LA DAN 121 CAPÍTULO G SERÁN:",
+    "options": [
+      {
+        "label": "A",
+        "text": "EL EXPLOTADOR"
+      },
+      {
+        "label": "B",
+        "text": "EL JEFE DE CABINA/JSB."
+      },
+      {
+        "label": "C",
+        "text": "LOS EXPLOTADORES, EL PILOTO AL MANDO Y LOS TRIPULANTES."
+      },
+      {
+        "label": "D",
+        "text": "EL PILOTO AL MANDO."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 89,
+    "text": "LOS SÓLIDOS INFLAMABLES CORRESPONDEN A M.P.:",
+    "options": [
+      {
+        "label": "A",
+        "text": "CLASE 2"
+      },
+      {
+        "label": "B",
+        "text": "CLASE 3"
+      },
+      {
+        "label": "C",
+        "text": "CLASE 4"
+      },
+      {
+        "label": "D",
+        "text": "CLASE 5"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 90,
+    "text": "LOS TIEMPOS DE VUELO Y PERÍODOS DE SERVICIO DE VUELO ESTABLECIDOS EN LA DAN 121, CAPÍTULO G, SON LOS MÁXIMOS PERMITIDOS Y NO SE AUTORIZARÁN SOLICITUDES DE EXTENSIÓN ADICIONALES A LAS QUE EXPRESAMENTE CONSIDERA LA NORMA.",
+    "options": [
+      {
+        "label": "A",
+        "text": "VERDADERO"
+      },
+      {
+        "label": "B",
+        "text": "FALSO"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 91,
+    "text": "LOS TRIPULANTES AUXILIARES QUE EN UN P.S.V. HAYAN CUMPLIDO MÁS DEL 50% DEL PERÍODO NOCTURNO, PODRÁN EFECTUAR SÓLO UN SEGUNDO P.S.V. NOCTURNO CONSECUTIVO EL CUAL NO PODRÁ EXCEDER EL 50% DEL PERÍODO NOCTURNO.",
+    "options": [
+      {
+        "label": "A",
+        "text": "VERDADERO"
+      },
+      {
+        "label": "B",
+        "text": "FALSO"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 92,
+    "text": "NUMERO DE CUATRO DÍGITOS ASIGNADO POR EL COMITÉ DE EXPERTOS DE MERCANCÍAS PELIGROSAS QUE SIRVE PARA RECONOCER LAS DIVERSAS SUSTANCIAS O DETERMINADO GRUPO DE ELLAS SE DENOMINA:",
+    "options": [
+      {
+        "label": "A",
+        "text": "NÚMERO DE LA DGAC."
+      },
+      {
+        "label": "B",
+        "text": "NÚMERO DE LA FAA"
+      },
+      {
+        "label": "C",
+        "text": "NÚMERO DE LA ONU."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 93,
+    "text": "PARA EL CUMPLIMIENTO DE SUS FUNCIONES LOS TRIPULANTES AUXILIARES DEBEN:",
+    "options": [
+      {
+        "label": "A",
+        "text": "SER TITULAR DE LICENCIA AERONÁUTICA."
+      },
+      {
+        "label": "B",
+        "text": "SER TITULAR DE LICENCIA CON SUS RESPECTIVAS HABILITACIONES."
+      },
+      {
+        "label": "C",
+        "text": "SER AUTORIZADO POR LA GERENCIA DE OPERACIONES."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 94,
+    "text": "PARA EL OTORGAMIENTO DE LA LICENCIA DE AUXILIAR DE CABINA SE DEBE PRESENTAR CERTIFICACIÓN MÉDICA:",
+    "options": [
+      {
+        "label": "A",
+        "text": "CLASE UNO"
+      },
+      {
+        "label": "B",
+        "text": "CLASE DOS"
+      },
+      {
+        "label": "C",
+        "text": "CLASE TRES"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 95,
+    "text": "PARA TODAS AERONAVES QUE REALICEN VUELOS PROLONGADOS SOBRE EL AGUA SE DEBE LLEVAR BALSA CUANDO:",
+    "options": [
+      {
+        "label": "A",
+        "text": "100 MILLAS NÁUTICAS."
+      },
+      {
+        "label": "B",
+        "text": "50 MILLAS NÁUTICAS."
+      },
+      {
+        "label": "C",
+        "text": "400 MILLAS NÁUTICAS."
+      },
+      {
+        "label": "D",
+        "text": "NINGUNA DE LAS ANTERIORES"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 96,
+    "text": "PARA UN P.S.V. PROGRAMADO DE 7 HORAS O MENOS DEBERÁ DARSE CUMPLIMIENTO A UN PERÍODO DE DESCANSO CORRESPONDIENTE A:",
+    "options": [
+      {
+        "label": "A",
+        "text": "OCHO HORAS"
+      },
+      {
+        "label": "B",
+        "text": "DIEZ HORAS"
+      },
+      {
+        "label": "C",
+        "text": "ONCE HORAS"
+      },
+      {
+        "label": "D",
+        "text": "DOCE HORAS"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 97,
+    "text": "PERSONAS AUTORIZADAS PARA EL INGRESO A CABINA DE MANDO. ADEMÁS DE LA TRIPULACIÓN, TENDRÁN ACCESO:",
+    "options": [
+      {
+        "label": "A",
+        "text": "LOS PILOTOS INSPECTORES DE LA DGAC CON CREDENCIAL QUE LOS IDENTIFIQUE."
+      },
+      {
+        "label": "B",
+        "text": "LOS PASAJEROS AUTORIZADOS POR LA GERENCIA DE OPERACIONES."
+      },
+      {
+        "label": "C",
+        "text": "LOS TRIPULANTES EXTRAS DE OTRAS COMPAÑÍAS."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 98,
+    "text": "¿QUE CANTIDAD DE BOTIQUINES DE PRIMEROS AUXILIOS SE REQUIERE EN UNA AERONAVE CON 200 ASIENTOS DE PASAJEROS SEGÚN EL CERTIFICADO DE TIPO?",
+    "options": [
+      {
+        "label": "A",
+        "text": "UN BOTIQUÍN DE PRIMEROS AUXILIOS."
+      },
+      {
+        "label": "B",
+        "text": "DOS BOTIQUINES DE PRIMEROS AUXILIOS."
+      },
+      {
+        "label": "C",
+        "text": "TRES BOTIQUINES DE PRIMEROS AUXILIOS."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 99,
+    "text": "¿QUÉ DEBE INCLUIR LISTA DE VERIFICACIÓN PARA LOS PROCEDIMIENTOS DE BÚSQUEDA EN LA AERONAVE?:",
+    "options": [
+      {
+        "label": "A",
+        "text": "ESTABLECER LAS INSTRUCCIONES SOBRE LAS MEDIDAS QUE DEBEN ADOPTARSE EN CASO DE ENCONTRARSE UNA BOMBA."
+      },
+      {
+        "label": "B",
+        "text": "SEÑALAR AQUEL LUGAR DE LA AERONAVE DONDE AL UBICAR LA BOMBA ENCONTRADA, ESTA IMPLIQUE UN MÍNIMO RIESGO."
+      },
+      {
+        "label": "C",
+        "text": "DESCRIPCIÓN DE DIFERENTES TIPOS DE EXPLOSIVOS"
+      },
+      {
+        "label": "D",
+        "text": "RESPUESTA A Y B SON CORRECTAS"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 100,
+    "text": "¿QUÉ ESTABLECE LA DAN 121 EN RELACIÓN CON USO DE EQUIPOS ELECTRÓNICOS Y DE COMUNICACIONES PORTÁTILES ABORDO?",
+    "options": [
+      {
+        "label": "A",
+        "text": "SE PODRÁ AUTORIZAR EL USO DE CUALQUIER EQUIPO ELECTRÓNICO CON CAPACIDAD DE TRASMISIÓN EN CUALQUIER FASE DEL VUELO, UNA VEZ QUE EL OPERADOR HAYA DETERMINADO Y DEMOSTRADO A DGAC QUE ESTE NO CAUSA INTERFERENCIA CON ALGÚN SISTEMA DE LA AERONAVE."
+      },
+      {
+        "label": "B",
+        "text": "SE PODRÁ AUTORIZAR EL USO DE CUALQUIER EQUIPO ELECTRÓNICO EN TODO MOMENTO DEL VUELO (OPERADO EN MODO AVIÓN, O MODO AVIÓN Y WI-FI ENCENDIDO PARA CONECTARSE A UNA RED DE LA AERONAVE) DISPUESTO POR EL OPERADOR."
+      },
+      {
+        "label": "C",
+        "text": "SE PODRÁ AUTORIZAR EL USO DE CUALQUIER EQUIPO ELECTRÓNICO (OPERADO EN MODO AVIÓN, O MODO AVIÓN Y WI-FI ENCENDIDO PARA CONECTARSE A UNA RED DE LA AERONAVE) UNA VEZ QUE EL OPERADOR HAYA DETERMINADO Y DEMOSTRADO A DGAC QUE ESTE NO CAUSA INTERFERENCIA CON ALGÚN SISTEMA DE LA AERONAVE."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 101,
+    "text": "SE COMPRENDERÁN COMO P.S.V. LAS HORAS DESTINADAS A REENTRENAMIENTOS PERIÓDICOS EN AVIÓN Y ENTRENADORES SINTÉTICOS DE VUELO, PRÁCTICAS PERIÓDICAS DE EVACUACIÓN EN TIERRA O EN MAR (DITCHING).",
+    "options": [
+      {
+        "label": "A",
+        "text": "VERDADERO"
+      },
+      {
+        "label": "B",
+        "text": "FALSO"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 102,
+    "text": "SEGÚN DAN 121, ASIGNACIÓN DE OBLIGACIONES EN CASO DE EMERGENCIA, ¿CUALES SON LAS BASES PARA QUE LA EMPRESA AÉREA ESTABLEZCA EL NUMERO MÍNIMO DE TRIPULACIÓN DE CABINA REQUERIDO PARA CADA AVIÓN DE SU FLOTA?",
+    "options": [
+      {
+        "label": "A",
+        "text": "SOBRE LA BASE DEL NUMERO DE ASIENTOS DE PASAJEROS A FIN DE EFECTUAR LA EVACUACIÓN SEGURA Y RÁPIDA DEL AVIÓN."
+      },
+      {
+        "label": "B",
+        "text": "LAS EMPRESAS AÉREAS ASIGNARÁN ESTAS FUNCIONES PARA CADA TIPO DE AVIÓN Y DEBERÁN SER CAPACES DE EFECTUAR UNA DEMOSTRACIÓN DE EVACUACIÓN EN FORMA COMPLETA Y SEGURA CON LA CANTIDAD DE TRIPULANTES DE CABINA ASIGNADOS."
+      },
+      {
+        "label": "C",
+        "text": "TODAS LAS ALTERNATIVAS ANTERIORES SON CORRECTAS."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 103,
+    "text": "SEGÚN DAN 121, CADA UNO DE LOS MIEMBROS DE LA TRIPULACIÓN DE CABINA PERMANECERÁ SENTADO Y CON EL CINTURÓN DE SEGURIDAD Y EL ARNÉS DE SEGURIDAD AJUSTADO SOLAMENTE EN LAS MANIOBRAS DE DESPEGUE Y DE ATERRIZAJE.",
+    "options": [
+      {
+        "label": "A",
+        "text": "VERDADERO"
+      },
+      {
+        "label": "B",
+        "text": "FALSO"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 104,
+    "text": "SEGÚN DAN 121 COMAT ES:",
+    "options": [
+      {
+        "label": "A",
+        "text": "LISTA DE SUMINISTROS APROBADOS COMO MERCANCÍA PELIGROSA QUE PUEDE SER RETENIDA POR EL OPERADOR."
+      },
+      {
+        "label": "B",
+        "text": "TODO MATERIAL RADIOACTIVO QUE NO PUEDE SER TRANSPORTADO POR VÍA AÉREA."
+      },
+      {
+        "label": "C",
+        "text": "MATERIAL DE LA COMPAÑÍA PIEZAS Y SUMINISTROS DE UNA EMPRESA AÉREA TRANSPORTADOS EN UNA AERONAVE DE ÉSTA PARA FINES PROPIOS DEL OPERADOR."
+      },
+      {
+        "label": "D",
+        "text": "TODAS LAS RESPUESTAS SON CORRECTAS."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 105,
+    "text": "SEGÚN DAN 121, ¿CÓMO DEBEN SER LAS COMIDAS DE LOS PILOTOS?",
+    "options": [
+      {
+        "label": "A",
+        "text": "DISTINTAS ENTRE SÍ, Y CONSUMIDAS AL MISMO TIEMPO"
+      },
+      {
+        "label": "B",
+        "text": "DISTINTAS ENTRE SÍ, Y CONSUMIDAS EN DIFERENTES TIEMPOS"
+      },
+      {
+        "label": "C",
+        "text": "PUEDEN SER IGUALES ENTRE SÍ, PERO CONSUMIRSE EN DIFERENTES TIEMPOS."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 106,
+    "text": "SEGÚN DAN 121, ¿CUÁL ES LA TRIPULACIÓN AUXILIAR DE CABINA MÍNIMA REQUERIDA PARA LA OPERACIÓN DE UNA AERONAVE CON CAPACIDAD DE 174 ASIENTOS DE PASAJEROS?",
+    "options": [
+      {
+        "label": "A",
+        "text": "TRES TRIPULANTES DE CABINA."
+      },
+      {
+        "label": "B",
+        "text": "CUATRO TRIPULANTES DE CABINA."
+      },
+      {
+        "label": "C",
+        "text": "CINCO TRIPULANTES DE CABINA"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 107,
+    "text": "SEGÚN DAN 121 ¿CUÁLES SON LOS PROCESOS DE GESTIÓN DE RIESGOS ASOCIADOS A LA FATIGA?",
+    "options": [
+      {
+        "label": "A",
+        "text": "PROCESO PREDICTIVO"
+      },
+      {
+        "label": "B",
+        "text": "PROCESO PROACTIVO."
+      },
+      {
+        "label": "C",
+        "text": "PROCESO REACTIVO"
+      },
+      {
+        "label": "D",
+        "text": "TODAS LAS RESPUESTAS SON CORRECTAS."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 108,
+    "text": "SEGÚN DAN 121: EL INSTRUMENTO DE PLANIFICACIÓN DE VUELOS QUE CORRESPONDE A LA JORNADA EN TURNOS DE TRABAJO DE LOS TRIPULANTES, Y QUE CUMPLE LAS FUNCIONES SEÑALADAS EN EL NUMERAL 5 DEL ARTÍCULO 10 DEL CÓDIGO DEL TRABAJO ES ROL DE VUELO.",
+    "options": [
+      {
+        "label": "A",
+        "text": "VERDADERO"
+      },
+      {
+        "label": "B",
+        "text": "FALSO"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 109,
+    "text": "SEGÚN DAN 121, EL PERÍODO DE SERVICIO DE VUELO MÁXIMO ESTABLECIDO PARA LAS TRIPULACIONES DE CABINA EN UN AÑO CALENDARIO ES DE:",
+    "options": [
+      {
+        "label": "A",
+        "text": "1.200 HORAS."
+      },
+      {
+        "label": "B",
+        "text": "1.400 HORAS."
+      },
+      {
+        "label": "C",
+        "text": "1.600 HORAS."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 110,
+    "text": "SEGÚN DAN 121, EL REQUISITO MÍNIMO DE BOTIQUINES MÉDICOS PARA UNA AERONAVE CON CAPACIDAD DE 180 ASIENTOS DE PASAJEROS ES DE:",
+    "options": [
+      {
+        "label": "A",
+        "text": "NO REQUIERE BOTIQUÍN MÉDICO."
+      },
+      {
+        "label": "B",
+        "text": "UN BOTIQUÍN MÉDICO"
+      },
+      {
+        "label": "C",
+        "text": "DOS BOTIQUINES MÉDICOS."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 111,
+    "text": "SEGÚN DAN 121, EL SIGNIFICADO DE TIEMPO DE VUELO (T.V.) ES:",
+    "options": [
+      {
+        "label": "A",
+        "text": "EL TIEMPO CORRESPONDIENTE A CUALQUIERA ACTIVIDAD ASIGNADA POR EL EXPLOTADOR A UN TRIPULANTE, PROPIO AL VUELO MISMO"
+      },
+      {
+        "label": "B",
+        "text": "TIEMPO TOTAL TRANSCURRIDO DESDE QUE LA AERONAVE INICIA SU MOVIMIENTO CON EL PROPÓSITO DE DESPEGAR, HASTA QUE SE DETIENE COMPLETAMENTE AL FINALIZAR EL VUELO."
+      },
+      {
+        "label": "C",
+        "text": "EL TIEMPO TOTAL DESDE EL PRIMER VUELO DE UNA SERIE DE VUELOS, DESDE QUE EL AVIÓN DESPEGA HASTA QUE ATERRIZA EN EL AEROPUERTO DEL DESTINO FINAL"
+      },
+      {
+        "label": "D",
+        "text": "TIEMPO TRANSCURRIDO, DENTRO DE UN PERÍODO DE 24 HORAS CONSECUTIVAS, DESDE EL MOMENTO EN QUE EL TRIPULANTE SE PRESENTA EN LAS DEPENDENCIAS AEROPORTUARIAS CON EL OBJETO DE PREPARAR, REALIZAR Y FINALIZAR UN VUELO."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 112,
+    "text": "SEGÚN DAN 121 LA ABREVIATURA PIC SIGNIFICA:",
+    "options": [
+      {
+        "label": "A",
+        "text": "PRIMER INFORMA DE CALIFICACIÓN."
+      },
+      {
+        "label": "B",
+        "text": "PROBLEMA EN LA INFORMACIÓN DEL COMPUTADOR."
+      },
+      {
+        "label": "C",
+        "text": "PILOTO AL MANDO."
+      },
+      {
+        "label": "D",
+        "text": "PILOTO EN LOS COMANDOS."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 113,
+    "text": "SEGÚN DAN 121 LOS EQUIPOS QUE ESTABLECE LA NORMA DEBEN ESTAR EN LA AERONAVE:",
+    "options": [
+      {
+        "label": "A",
+        "text": "CLARAMENTE IDENTIFICADO Y ROTULADO PARA INDICAR SU MÉTODO DE OPERACIÓN."
+      },
+      {
+        "label": "B",
+        "text": "UBICADOS EN LUGARES DE FÁCIL ACCESO PARA LA TRIPULACIÓN DE CABINA."
+      },
+      {
+        "label": "C",
+        "text": "HABER UN EQUIPO DE CADA UNO EN EL INTERIOR DE LA CABINA DE PASAJEROS"
+      },
+      {
+        "label": "D",
+        "text": "RESPUESTAS A Y B SON CORRECTAS."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 114,
+    "text": "SEGÚN DAN 121: NO SERÁN CONSIDERADO PROHIBIDO DURANTE LAS FASES DE DESPEGUE Y ATERRIZAJE EL USO DE EQUIPOS ELECTRÓNICOS PORTÁTILES Y DE COMUNICACIÓN TALES COMO:",
+    "options": [
+      {
+        "label": "A",
+        "text": "LOS COMPUTADORES PERSONALES, AYUDAS AUDITIVAS ELECTRÓNICAS, MARCAPASOS"
+      },
+      {
+        "label": "B",
+        "text": "LAS AYUDAS AUDITIVAS ELECTRÓNICAS, MARCAPASOS, TELÉFONOS CELULARES."
+      },
+      {
+        "label": "C",
+        "text": "GRABADORAS DE VOZ, AYUDAS AUDITIVAS ELECTRÓNICAS, MARCAPASOS Y AFEITADORAS ELÉCTRICAS."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 115,
+    "text": "SEGÚN DAN 121, SI UN PILOTO AL MANDO O ALGÚN MIEMBRO DE LA TRIPULACIÓN DE VUELO SE ENCUENTRE INCAPACITADO PARA CUMPLIR SUS OBLIGACIONES, SE DEBERÁ:",
+    "options": [
+      {
+        "label": "A",
+        "text": "PEDIR AYUDA MÉDICA Y CONTINUAR CON EL VUELO PROGRAMADO."
+      },
+      {
+        "label": "B",
+        "text": "PEDIR AYUDA MÉDICA, ATENDERLO DENTRO DE LA CABINA DE MANDO Y CONTINUAR CON EL VUELO PROGRAMADO."
+      },
+      {
+        "label": "C",
+        "text": "NO SE DEBERÁ INICIAR O CONTINUAR UN VUELO."
+      },
+      {
+        "label": "D",
+        "text": "RESPUESTAS A Y C SON CORRECTAS."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 116,
+    "text": "SEGÚN DAN 63 ¿CÓMO SE DENOMINA EL ACTO ADMINISTRATIVO ANTE LA DGAC, POR EL CUAL AL TITULAR DE UNA LICENCIA SE LE RESTABLECE LA O LAS ATRIBUCIONES QUE LA MISMA LE CONFIERE, UNA VEZ CUMPLIDO CON LOS REQUISITOS ESTABLECIDOS POR LA NORMATIVA VIGENTE?",
+    "options": [
+      {
+        "label": "A",
+        "text": "EXPERIENCIA RECIENTE."
+      },
+      {
+        "label": "B",
+        "text": "CONVALIDACIÓN."
+      },
+      {
+        "label": "C",
+        "text": "RENOVACIÓN."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 117,
+    "text": "SEGÚN DAN 63 LA LICENCIA ES DOCUMENTO OFICIAL OTORGADO POR LA DGAC QUE INDICA LA ESPECIALIDAD AERONÁUTICA DEL TITULAR Y LAS RESTRICCIONES EN CASO DE HABERLAS, Y LE OTORGA, DENTRO DEL PERÍODO DE SU VIGENCIA, LA FACULTAD Y ATRIBUCIONES PARA DESEMPEÑAR LAS FUNCIONES PROPIAS DE LAS HABILITACIONES EXPRESAMENTE CONSIGNADAS EN ELLA Y ES DE CARÁCTER PERMANENTE.",
+    "options": [
+      {
+        "label": "A",
+        "text": "VERDADERO"
+      },
+      {
+        "label": "B",
+        "text": "FALSO"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 118,
+    "text": "SEGÚN DAN 63, UN TITULAR DE LICENCIA PODRÁ OBTENER Y MANTENER HABILITACIONES ADICIONALES, CUMPLIENDO CON:",
+    "options": [
+      {
+        "label": "A",
+        "text": "CONOCIMIENTO DE LAS CARACTERÍSTICAS Y SISTEMAS DE LA AERONAVE, A CUYA HABILITACIÓN POSTULA"
+      },
+      {
+        "label": "B",
+        "text": "TRABAJO EN EQUIPO, COMO MIEMBRO DE LA TRIPULACIÓN."
+      },
+      {
+        "label": "C",
+        "text": "PRUEBA ESCRITA DE MERCANCÍAS PELIGROSAS."
+      },
+      {
+        "label": "D",
+        "text": "RESPUESTAS A Y B SON CORRECTAS"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 119,
+    "text": "SEGÚN DAR 17 LA AUTORIDAD AERONÁUTICA, LOS EXPLOTADORES Y PILOTOS AL MANDO DE AERONAVES DEBERÁN ESTAR INFORMADOS EN LOS CASOS EN QUE VIAJEN PASAJEROS SOMETIDOS A PROCEDIMIENTOS JUDICIALES O ADMINISTRATIVOS, PARA QUE PUEDAN APLICARSE LOS CONTROLES DE SEGURIDAD APROPIADOS.",
+    "options": [
+      {
+        "label": "A",
+        "text": "FALSO"
+      },
+      {
+        "label": "B",
+        "text": "VERDADERO"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 120,
+    "text": "SEGÚN EL CÓDIGO AERONÁUTICO ART. 58: MIEMBRO DE LA TRIPULACIÓN QUE ES LA ENCARGADA DEL CUIDADO Y SEGURIDAD DE LAS PERSONAS O COSAS QUE SE TRANSPORTAN EN ELLA ES:",
+    "options": [
+      {
+        "label": "A",
+        "text": "MIEMBROS DE LA TRIPULACIÓN."
+      },
+      {
+        "label": "B",
+        "text": "TRIPULACIÓN DE VUELO."
+      },
+      {
+        "label": "C",
+        "text": "TRIPULANTE AUXILIAR."
+      },
+      {
+        "label": "D",
+        "text": "TODAS LAS ANTERIORES SON CORRECTAS."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 121,
+    "text": "SEGÚN EL CÓDIGO AERONÁUTICO \" EL COMANDANTE DE LA AERONAVE PODRÁ IMPONER LAS MEDIDAS LAS MEDIDAS PREVENTIVAS Y COERCITIVAS NECESARIAS PARA MANTENER LA SEGURIDAD DE LA AERONAVE, DE LAS PERSONAS O DE LOS BIENES\"",
+    "options": [
+      {
+        "label": "A",
+        "text": "VERDADERO"
+      },
+      {
+        "label": "B",
+        "text": "FALSO"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 122,
+    "text": "SEGÚN EL CÓDIGO AERONÁUTICO, RESPONDA LA SIGUIENTE AFIRMACIÓN. EL SERVICIO DE TRANSPORTE AÉREO COMERCIAL REGULAR ES AQUEL NO REALIZADO EN FORMA CONTINUA Y SISTEMÁTICA, EJEMPLO DE ESTO SON LOS VUELOS CHARTER.",
+    "options": [
+      {
+        "label": "A",
+        "text": "VERDADERO"
+      },
+      {
+        "label": "B",
+        "text": "FALSO"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 123,
+    "text": "SEGÚN EL DAR 18 TODO OPERADOR FACILITARÁ:",
+    "options": [
+      {
+        "label": "A",
+        "text": "EN SU MANUAL DE OPERACIONES, INFORMACIÓN APROPIADA QUE PERMITA A LOS MIEMBROS DE LA TRIPULACIÓN DESEMPEÑAR SU COMETIDO."
+      },
+      {
+        "label": "B",
+        "text": "FACILITARÁ INSTRUCCIONES ACERCA DE LAS MEDIDAS QUE HAYA DE ADOPTAR EN EL CASO DE QUE SURJAN SITUACIONES DE EMERGENCIA EN LAS QUE SE VEAN ENVUELTAS MERCANCÍAS PELIGROSAS."
+      },
+      {
+        "label": "C",
+        "text": "TODO EXPLOTADOR TIENE QUE CERCIORARSE DE QUE LA INFORMACIÓN SE DIFUNDA DE MANERA TAL QUE LOS PASAJEROS SEPAN QUÉ CLASE DE MERCANCÍA LES ESTÁ PROHIBIDO TRANSPORTAR"
+      },
+      {
+        "label": "D",
+        "text": "TODAS LAS RESPUESTAS SON CORRECTAS."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 124,
+    "text": "SEGÚN LA DAN 121, CAPÍTULO G. EL EXPLOTADOR DEBERÁ DISPONER DE:",
+    "options": [
+      {
+        "label": "A",
+        "text": "UN LUGAR A BORDO DE LA AERONAVE PARA USO EXCLUSIVO DE LA TRIPULACIÓN REFORZADA."
+      },
+      {
+        "label": "B",
+        "text": "EL USO EN FORMA ROTATIVA, A LO MENOS UNA HORA CUANDO EL P.S.V. SUPERE LAS 12 HORAS Y NO DESARROLLARÁ LABORES EFECTIVAS POR UN TIEMPO SUPERIOR A 14 HORAS."
+      },
+      {
+        "label": "C",
+        "text": "EL LUGAR DE REPOSO SERÁ PROPUESTO PARA APROBACIÓN DE LA DGAC."
+      },
+      {
+        "label": "D",
+        "text": "TODAS LAS ALTERNATIVAS ANTERIORES SON CORRECTAS."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 125,
+    "text": "SEGÚN LA DAN 121, ¿CUÁL ES EL LIMITE DEL PERÍODO DE SERVICIO DE VUELO PARA UNA TRIPULACIÓN REFORZADA DENTRO DE UN PERÍODO DE 24 HORAS CONSECUTIVAS?",
+    "options": [
+      {
+        "label": "A",
+        "text": "DOCE HORAS."
+      },
+      {
+        "label": "B",
+        "text": "VEINTE HORAS."
+      },
+      {
+        "label": "C",
+        "text": "CATORCE HORAS."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 126,
+    "text": "SEGÚN LA DAN 121, ¿CUÁL ES EL PERÍODO DE SERVICIO DE VUELO PARA UNA TRIPULACIÓN MÍNIMA DENTRO DE UN PERÍODO DE 24 HORAS CONSECUTIVAS?",
+    "options": [
+      {
+        "label": "A",
+        "text": "12 HORAS"
+      },
+      {
+        "label": "B",
+        "text": "20 HORAS"
+      },
+      {
+        "label": "C",
+        "text": "10 HORAS"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 127,
+    "text": "SEGÚN LA DAN 121, ¿CUÁL ES LA DEFINICIÓN DE PERÍODO DE DESCANSO?",
+    "options": [
+      {
+        "label": "A",
+        "text": "ES TODO TIEMPO EN TIERRA DURANTE EL CUAL EL OPERADOR RELEVA AL MIEMBRO DE LA TRIPULACIÓN DE CABINA DE TODA FUNCIÓN RELACIONADA CON SU TRABAJO, CON EL OBJETO QUE ÉSTE SE RECUPERE FÍSICA Y PSÍQUICAMENTE LUEGO DE UN PSV o PS."
+      },
+      {
+        "label": "B",
+        "text": "ES TODO TIEMPO EN VUELO DURANTE EL CUAL EL OPERADOR RELEVA AL MIEMBRO DE LA TRIPULACIÓN DE CABINA DE TODA FUNCIÓN RELACIONADA CON SU TRABAJO, CON EL OBJETO QUE ÉSTE SE RECUPERE FÍSICA Y PSÍQUICAMENTE LUEGO DE CONTINUAR CON EL VUELO."
+      },
+      {
+        "label": "C",
+        "text": "ES TODO TIEMPO EN TIERRA DURANTE EL CUAL EL OPERADOR RELEVA AL MIEMBRO DE LA TRIPULACIÓN DE CABINA DE TODA FUNCIÓN RELACIONADA CON SU TRABAJO, CON EL OBJETO QUE ÉSTE SE RECUPERE FÍSICA Y PSÍQUICAMENTE, LUEGO DE INICIAR LOS DÍAS LIBRES ASIGNADOS EN SU ROL DE VUELO."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 128,
+    "text": "SEGÚN LA DAN 121, ¿CUÁL ES LA EXCEPCIÓN A LA PROHIBICIÓN DE INGRESO A LA CABINA DE MANDO DE CUALQUIER PERSONA AJENA A LA TRIPULACIÓN?",
+    "options": [
+      {
+        "label": "A",
+        "text": "PILOTOS INSTRUCTORES DEL OPERADOR, ENCARGADOS DE OPERACIONES DE VUELO (EOV), Y EMPLEADOS DEL OPERADOR, TITULARES DE LICENCIA EN FUNCIONES ESPECÍFICAS RELACIONADAS CON EL VUELO."
+      },
+      {
+        "label": "B",
+        "text": "LOS INSPECTORES DE OPERACIONES AÉREAS Y AERONAVEGABILIDAD DE LA DGAC EN FUNCIONES CON CREDENCIAL QUE LOS IDENTIFIQUE."
+      },
+      {
+        "label": "C",
+        "text": "FUNCIONES CON CREDENCIAL QUE LOS IDENTIFIQUE."
+      },
+      {
+        "label": "D",
+        "text": "LAS ALTERNATIVAS A Y B SON CORRECTAS."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 129,
+    "text": "SEGÚN LA DAN 121. EL PÁRRAFO CORRESPONDIENTE A LAS BEBIDAS ALCOHÓLICAS ESTABLECE LO SIGUIENTE:",
+    "options": [
+      {
+        "label": "A",
+        "text": "NINGUNA PERSONA PODRÁ INGERIR BEBIDAS ALCOHÓLICAS A BORDO DE UNA AERONAVE A MENOS QUE SEA SERVIDA POR UN TRIPULANTE."
+      },
+      {
+        "label": "B",
+        "text": "NO PODRÁ SER SERVIDA A NINGUNA PERSONA QUE MANIFIESTE O ESTÉ EBRIA."
+      },
+      {
+        "label": "C",
+        "text": "TODAS LAS ALTERNATIVAS ANTERIORES SON CORRECTAS."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 130,
+    "text": "SEGÚN LA DAN 121 LA JORNADA ORDINARIA COMPRENDE UN P.S.V. DE:",
+    "options": [
+      {
+        "label": "A",
+        "text": "20 HORAS"
+      },
+      {
+        "label": "B",
+        "text": "08 HORAS"
+      },
+      {
+        "label": "C",
+        "text": "12 HORAS"
+      },
+      {
+        "label": "D",
+        "text": "07 HORAS"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 131,
+    "text": "SEGÚN LA DAN 121, LAS FASES CRÍTICAS DE UN VUELO CONTEMPLAN:",
+    "options": [
+      {
+        "label": "A",
+        "text": "OPERACIONES TERRESTRES DE RODAJE, DESPEGUE Y ATERRIZAJE."
+      },
+      {
+        "label": "B",
+        "text": "ALGUNAS OPERACIONES DE VUELO REALIZADAS SOBRE LOS 10.000 PIES."
+      },
+      {
+        "label": "C",
+        "text": "VUELO CRUCERO."
+      },
+      {
+        "label": "D",
+        "text": "ÁREA CRÍTICA."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 132,
+    "text": "SEGÚN LA DAN 121, LOS MIEMBROS DE LAS TRIPULACIONES DE VUELO Y AUXILIAR NO DESEMPEÑARÁN SUS FUNCIONES MIENTRAS ESTÉN BAJO LA INFLUENCIA DE SUSTANCIAS PSICOACTIVAS QUE PERJUDIQUEN LA ACTUACIÓN HUMANA",
+    "options": [
+      {
+        "label": "A",
+        "text": "VERDADERO"
+      },
+      {
+        "label": "B",
+        "text": "FALSO"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 133,
+    "text": "SEGÚN LA DAN 121. PARA LAS PERSONAS QUE OCUPARÁN LOS ASIENTOS JUNTO A LAS SALIDAS DE EMERGENCIA, EL TITULAR DEL CERTIFICADO AOC DEBERÁ:",
+    "options": [
+      {
+        "label": "A",
+        "text": "DETERMINAR LA IDONEIDAD DE LA PERSONA."
+      },
+      {
+        "label": "B",
+        "text": "LA CONDICIÓN DE SER UN VIAJERO FRECUENTE."
+      },
+      {
+        "label": "C",
+        "text": "ASEGURARSE QUE EL PASAJERO DESEA REALIZAR ESTAS FUNCIONES."
+      },
+      {
+        "label": "D",
+        "text": "LAS ALTERNATIVAS A Y C SON CORRECTAS"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 134,
+    "text": "SEGÚN LA DAN 121, ¿QUÉ ESTABLECE LA NORMA CON RELACIÓN AL PERIODO DE REPOSO EN VUELO, ¿CUÁNDO EL PERÍODO DE SERVICIO DE VUELO SUPERA LAS 12 HORAS?",
+    "options": [
+      {
+        "label": "A",
+        "text": "LA TRIPULACIÓN DE CABINA, EN FORMA ROTATIVA, DEBERÁ REPOSAR AL MENOS 2 HORAS, NO PUDE DESARROLLAR LABORES EFECTIVAS POR UN TIEMPO SUPERIOR A 14 HORAS."
+      },
+      {
+        "label": "B",
+        "text": "LA TRIPULACIÓN DE CABINA, EN FORMA ROTATIVA, DEBERÁ REPOSAR AL MENOS 1 HORA, NO PUDE DESARROLLAR LABORES EFECTIVAS POR UN TIEMPO SUPERIOR A 20 HORAS."
+      },
+      {
+        "label": "C",
+        "text": "LA TRIPULACIÓN DE CABINA, DEBERÁ REPOSAR AL MENOS 1 HORA, NO PUDE DESARROLLAR LABORES EFECTIVAS POR UN TIEMPO SUPERIOR A 14 HORAS."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 135,
+    "text": "SEGÚN LA DAN 121, ¿QUÉ OTRAS ACTIVIDADES SON CONSIDERADAS COMO PERIODO DE SERVICIO DE VUELO?",
+    "options": [
+      {
+        "label": "A",
+        "text": "EL TRASLADO EN VUELO DE UN TRIPULANTE DE CABINA POR CONVENIENCIA DEL OPERADOR. REENTRENAMIENTOS PERIÓDICOS EN AVIÓN Y ENTRENADORES SINTÉTICOS DE VUELO. PRÁCTICAS PERIÓDICAS DE EVACUACIÓN EN TIERRA O EN EL MAR (DITCHING)."
+      },
+      {
+        "label": "B",
+        "text": "EL TRASLADO EN VUELO DE UN TRIPULANTE DE CABINA POR CONVENIENCIA DEL OPERADOR. REUNIÓN DE TRABAJO POR TEMAS DE SEGURIDAD. PRÁCTICAS PERIÓDICAS DE EVACUACIÓN EN TIERRA O EN EL MAR (DITCHING)."
+      },
+      {
+        "label": "C",
+        "text": "EL TRASLADO EN VUELO DE UN TRIPULANTE DE CABINA POR CONVENIENCIA DEL OPERADOR. ACTIVIDAD RELACIONADA CON ENTRENAMIENTO DE SERVICIO. PRÁCTICAS PERIÓDICAS DE EVACUACIÓN EN TIERRA O EN EL MAR."
+      },
+      {
+        "label": "D",
+        "text": "18:00 HORAS; 04:00 HORAS."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 136,
+    "text": "SEGÚN LA DAN 121. SE PROHÍBE EL TRANSPORTE DE ARTÍCULOS QUE NO SEAN DE LIBRE TRÁFICO SEGÚN LOS TRATADOS Y CONVENIOS SUSCRITOS Y RATIFICADOS POR EL GOBIERNO DE CHILE.",
+    "options": [
+      {
+        "label": "A",
+        "text": "VERDADERO"
+      },
+      {
+        "label": "B",
+        "text": "FALSO"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 137,
+    "text": "SEGÚN LA DAN 121. TODA AERONAVE QUE SE DEDIQUE AL TRANSPORTE DE PASAJEROS DEBE CONTAR CON:",
+    "options": [
+      {
+        "label": "A",
+        "text": "DURANTE LOS DESPEGUES, ATERRIZAJES Y LOS MOVIMIENTOS DE LA AERONAVE EN LA SUPERFICIE, TODO PASAJERO A BORDO DEBE OCUPAR UN ASIENTO CUYO RESPALDO DEBE ESTAR COLOCADO EN SU POSICIÓN VERTICAL."
+      },
+      {
+        "label": "B",
+        "text": "ASIENTOS QUE CUENTEN CON SUS RESPECTIVOS CINTURONES DE SEGURIDAD PARA CADA PERSONA MAYOR DE DOS AÑOS QUE VAYA A BORDO."
+      },
+      {
+        "label": "C",
+        "text": "EN CADA ASIENTO NO OCUPADO, EL CINTURÓN DE SEGURIDAD Y/O ARNÉS DE HOMBRO, DEBEN ESTAR ASEGURADOS DE MANERA DE NO INTERFERIR CON LOS MIEMBROS DE LA TRIPULACIÓN EN LA EJECUCIÓN DE SUS FUNCIONES O CON LA SALIDA RÁPIDA DE PERSONAS EN UNA EMERGENCIA."
+      },
+      {
+        "label": "D",
+        "text": "TODAS LAS ALTERNATIVAS ANTERIORES SON CORRECTAS."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 138,
+    "text": "SEGÚN LA DAN 121, UN BOTIQUÍN DE PRIMEROS AUXILIOS DEBE LLEVAR LOS SIGUIENTES ELEMENTOS:",
+    "options": [
+      {
+        "label": "A",
+        "text": "UN MANUAL DE PRIMEROS AUXILIOS, VENDAS ELÁSTICAS, GASA ESTÉRIL, ALGODÓN HIDRÓFILO AGUA OXIGENADA POVIDONA YODADA, ETC."
+      },
+      {
+        "label": "B",
+        "text": "UN MANUAL DE PRIMEROS AUXILIOS, UN ESTETOSCOPIO DE CAMPANA Y MEMBRANA, VENDAS, ELÁSTICAS, GASA ESTÉRIL ALGODÓN HIDRÓFILO AGUA OXIGENADA POVIDONA YODADA, ETC."
+      },
+      {
+        "label": "C",
+        "text": "UN MANUAL DE PRIMEROS AUXILIOS, VENDAS, ELÁSTICAS, GASA ESTÉRIL ALGODÓN HIDRÓFILO AGUA OXIGENADA POVIDONA YODADA, JERINGAS ESTÉRILES DESECHABLES DE 3 Y 5 CC, AGUJAS DESECHABLES DE TRES TAMAÑOS, ETC"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 139,
+    "text": "SEGÚN LA DAN 19 LA DEFINICIÓN DE MITIGACIÓN ES: LAS MEDIDAS QUE PERMITEN REDUCIR LA PROBABILIDAD DEL RIESGO",
+    "options": [
+      {
+        "label": "A",
+        "text": "VERDADERO"
+      },
+      {
+        "label": "B",
+        "text": "FALSO"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 140,
+    "text": "SEGÚN LA DAN 63, EL PERÍODO DETERMINADO POR LA DGAC DURANTE EL CUAL EL TITULAR DE UNA LICENCIA Y HABILITACIÓN ESTÁ FACULTADO PARA EJERCER LAS CORRESPONDIENTES ATRIBUCIONES, SE DENOMINA.",
+    "options": [
+      {
+        "label": "A",
+        "text": "VALIDEZ."
+      },
+      {
+        "label": "B",
+        "text": "ACREDITADO."
+      },
+      {
+        "label": "C",
+        "text": "VIGENCIA ."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 141,
+    "text": "SELECCIONE EL TÉRMINO AL QUE LE CORRESPONDE LA SIGUIENTE DEFINICIÓN: SE REFIERE EXCLUSIVAMENTE AL DESCANSO DE 10 HORAS LIBERADO DE TODA FUNCIÓN, A QUE TIENE DERECHO UN TRIPULANTE, LUEGO DE HABER CUMPLIDO UN P.S.V. DE 7 HORAS O MENOS, ANTES DE CUMPLIR OTRO P.S.V. COMPLEMENTARIO DENTRO DE 24 HORAS.",
+    "options": [
+      {
+        "label": "A",
+        "text": "PERÍODO DE SERVICIO DE VUELO."
+      },
+      {
+        "label": "B",
+        "text": "PERÍODO DE DESCANSO MÍNIMO."
+      },
+      {
+        "label": "C",
+        "text": "PERÍODO DE DESCANSO."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 142,
+    "text": "SELECCIONE EL TÉRMINO QUE CORRESPONDE A LA SIGUIENTE DEFINICIÓN: PARA UN VUELO SE CALCULARÁ DE ACUERDO CON LO ESTABLECIDO EN LOS RESPECTIVOS MANUALES DE OPERACIONES PARA CADA TIPO DE AERONAVE O RUTAS, LO QUE EN NINGÚN CASO PODRÁ SER INFERIOR A UNA HORA ANTES DE LA HORA PREVISTA PARA COMENZAR EL VUELO HASTA TREINTA MINUTOS DESPUÉS DE FINALIZAR ÉSTE.",
+    "options": [
+      {
+        "label": "A",
+        "text": "PERÍODO DE SERVICIO."
+      },
+      {
+        "label": "B",
+        "text": "PERÍODO DE SERVICIO DE VUELO."
+      },
+      {
+        "label": "C",
+        "text": "PERÍODO DE REPOSO EN VUELO."
+      },
+      {
+        "label": "D",
+        "text": "PERÍODO DE DESCANSO."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 143,
+    "text": "SELECCIONE LA ALTERNATIVA CORRECTA, ¿EN QUE FASES DEL VUELO LA TRIPULACIÓN DE CABINA PERMANECERÁ SENTADA EN SU ASIENTO ASIGNADO CON SU CINTURÓN Y ARNÉS ASEGURADOS?",
+    "options": [
+      {
+        "label": "A",
+        "text": "DESDE EL CIERRE DE PUERTA E INICIO DEL VUELO, DURANTE LOS DESPEGUES Y ATERRIZAJES."
+      },
+      {
+        "label": "B",
+        "text": "DURANTE LOS DESPEGUES, ATERRIZAJES Y SIEMPRE QUE EL PILOTO AL MANDO ASÍ LO ORDENE."
+      },
+      {
+        "label": "C",
+        "text": "DURANTE LOS DESPEGUES, Y POR RAZONES DE TURBULENCIA O CUALQUIER OTRA EMERGENCIA QUE OCURRA DURANTE EL VUELO."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 144,
+    "text": "SELECCIONE LA ALTERNATIVA CORRECTA, LA DAN 121 ESTABLECE LO SIGUIENTE RESPECTO A LA OBSERVACIÓN DE LEYES, REGLAMENTOS Y PROCEDIMIENTOS:",
+    "options": [
+      {
+        "label": "A",
+        "text": "EL OPERADOR NACIONAL SE CERCIORARÁ QUE SUS TRIPULACIONES MIENTRAS SE ENCUENTREN EN EL EXTRANJERO DEBEN OBSERVAR LOS DE AQUELLOS ESTADOS EN LOS QUE SE REALIZAN OPERACIONES."
+      },
+      {
+        "label": "B",
+        "text": "EL OPERADOR SE CERCIORARÁ QUE SUS TRIPULACIONES CONOZCAN LOS VIGENTES EN CHILE RELACIONADOS CON EL DESEMPEÑO DE SUS FUNCIONES. EL OPERADOR INSTRUIRÁ A SUS TRIPULANTES RESPECTO A LAS MANIOBRAS Y SEÑALES DE INTERCEPTACIÓN ESTABLECIDAS A NIVEL INTERNACIONAL."
+      },
+      {
+        "label": "C",
+        "text": "TODAS LAS ALTERNATIVAS ANTERIORES SON CORRECTAS."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 145,
+    "text": "SELECCIONE LA ALTERNATIVA MAS CORRECTA. LOS CHALECOS SALVAVIDAS PARA PASAJEROS TIENEN LAS SIGUIENTES CARACTERÍSTICAS:",
+    "options": [
+      {
+        "label": "A",
+        "text": "UNA O DOS CÁMARAS DE FLOTACIÓN, CON UN SISTEMA MANUAL Y AUTOMÁTICO DE INFLADO, CINTAS DE AMARRE, LUZ DE LOCALIZACIÓN Y DE COLOR AMARILLO."
+      },
+      {
+        "label": "B",
+        "text": "DOS CÁMARAS DE FLOTACIÓN CON SISTEMA MANUAL DE INFLADO, UN SILBATO Y UN ESPEJO."
+      },
+      {
+        "label": "C",
+        "text": "UNA CÁMARA DE FLOTACIÓN CON INFLADO AUTOMÁTICO, LUZ DE LOCALIZACIÓN Y DE COLOR ROJO FOSFORESCENTE."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 146,
+    "text": "SELECCIONE LA RESPUESTA MÁS COMPLETA. SERIE DE VUELOS SE DEFINE COMO:",
+    "options": [
+      {
+        "label": "A",
+        "text": "COMBINACIÓN DE VUELOS QUE PUEDEN SER REALIZADOS EN UN PERÍODO DE 24 HORAS CONSECUTIVAS, SIN QUE SE EXCEDAN LOS LIMITES DE T.V. NI DE P.S.V. LA SERIE DE VUELOS TERMINA CUANDO SE INICIA UN PERÍODO DE DESCANSO."
+      },
+      {
+        "label": "B",
+        "text": "COMBINACIÓN DE VUELOS CONSECUTIVOS QUE PUEDEN SER REALIZADOS POR UN TRIPULACIÓN REFORZADA, SIN QUE SE EXCEDAN LOS LÍMITES DE PERÍODO DE SERVICIO DE VUELO."
+      },
+      {
+        "label": "C",
+        "text": "COMBINACIÓN DE VUELOS QUE PUEDEN SER REALIZADOS POR UNA O MÁS TRIPULACIONES AUXILIARES MÍNIMA, SIN QUE SE EXCEDAN LOS LÍMITES DE PERÍODO DE SERVICIO DE VUELO."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 147,
+    "text": "SIEMPRE QUE SE VUELE A ALTITUDES EN LA QUE LA PRESIÓN ATMOSFÉRICA SEA ENTRE 700 HPA (10.000 PIES) Y 620 HPA (13.000), SE DEBE LLEVAR PROVISIÓN DE OXÍGENO PARA:",
+    "options": [
+      {
+        "label": "A",
+        "text": "TODOS LOS TRIPULANTES Y AL 10% DE LOS PASAJEROS POR UN PERÍODO DE 45 MINUTOS."
+      },
+      {
+        "label": "B",
+        "text": "TODOS LOS PASAJEROS Y EL 10 % DE LOS TRIPULANTES POR UN PERÍODO DE 30 MINUTOS."
+      },
+      {
+        "label": "C",
+        "text": "TODOS LOS TRIPULANTES Y AL 10% DE LOS PASAJEROS POR UN PERÍODO QUE EXCEDA DE 30 MINUTOS."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 148,
+    "text": "SI EN EL AVIÓN SE SIRVEN BEBIDAS ALCOHÓLICAS DURANTE EL VUELO, LA TRIPULACIÓN AUXILIAR DE CABINA PODRÁ",
+    "options": [
+      {
+        "label": "A",
+        "text": "NEGAR EL SUMINISTRO DE TALES BEBIDAS A UN PAX CON EL PROPÓSITO DE EVITAR SU EMBRIAGUEZ."
+      },
+      {
+        "label": "B",
+        "text": "NO SE LE NEGARÁ EL SUMINISTRO DE TALES BEBIDAS."
+      },
+      {
+        "label": "C",
+        "text": "SE LE PODRÁ NEGAR SÓLO SI EL CAPITÁN LO ORDENA."
+      },
+      {
+        "label": "D",
+        "text": "TODAS LAS ANTERIORES SON CORRECTAS."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 149,
+    "text": "SI LA TRIPULACIÓN EFECTUARE UN P.S. DE 8 HORAS, PARA INICIAR UN P.S.V. DEBERÁ CONSIDERARSE PREVIAMENTE UN DESCANSO MÍNIMO DE:",
+    "options": [
+      {
+        "label": "A",
+        "text": "DIEZ HORAS."
+      },
+      {
+        "label": "B",
+        "text": "ONCE HORAS."
+      },
+      {
+        "label": "C",
+        "text": "DOCE HORAS."
+      },
+      {
+        "label": "D",
+        "text": "CATORCE HORAS."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 150,
+    "text": "SI, POR ALGUNA RAZÓN, UNO DE LOS PILOTOS ABANDONE LOS CONTROLES EL PILOTO QUE PERMANECE EN ÉSTOS DEBERÁ COLOCARSE Y USAR LA MÁSCARA DE OXÍGENO, SI EL NIVEL DE VUELO ES SOBRE:",
+    "options": [
+      {
+        "label": "A",
+        "text": "35.000 PIES."
+      },
+      {
+        "label": "B",
+        "text": "25.000 PIES"
+      },
+      {
+        "label": "C",
+        "text": "14.000 PIES."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 151,
+    "text": "SI UNA AERONAVE TIENE SU CERTIFICADO DE AERONAVEGABILIDAD VIGENTE, SE ASUME QUE REÚNE LAS CONDICIONES TÉCNICAS PARA VOLAR.",
+    "options": [
+      {
+        "label": "A",
+        "text": "VERDADERO"
+      },
+      {
+        "label": "B",
+        "text": "FALSO"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 152,
+    "text": "SON TAMBIÉN CONSIDERADO(S) PERÍODO(S) DE SERVICIO DE VUELO, LAS SIGUIENTES ACTIVIDADES:",
+    "options": [
+      {
+        "label": "A",
+        "text": "EL TRASLADO EN VUELO, POR CONVENIENCIA DEL OPERADOR, PARA CUMPLIR UN PERÍODO DE SERVICIO DE VUELO ASIGNADO. (TRIPULANTE EN TRASLADO)."
+      },
+      {
+        "label": "B",
+        "text": "EL TRASLADO EN UNA AERONAVE DE OTRA EMPRESA PARA REALIZAR ACTIVIDADES NO RELACIONADAS CON EL OPERADOR."
+      },
+      {
+        "label": "C",
+        "text": "LOS TRASLADOS DEL TC DURANTE SU PERÍODO DE DESCANSO ANUAL."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 153,
+    "text": "TODA AERONAVE DE TRANSPORTE DE PASAJEROS DEBERÁ DISPONER DE UNA LINTERNA ELÉCTRICA OPERATIVA Y DE RÁPIDO ACCESO DESDE EL ASIENTO DE CADA MIEMBRO DE LA TRIPULACIÓN. SEGÚN LA DAN 121.",
+    "options": [
+      {
+        "label": "A",
+        "text": "VERDADERO"
+      },
+      {
+        "label": "B",
+        "text": "FALSO"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 154,
+    "text": "TODO OBJETO O SUSTANCIA QUE PUEDE CONSTITUIR UN RIESGO PARA LA SALUD, LA SEGURIDAD, LA PROPIEDAD O EL MEDIO AMBIENTE ES:",
+    "options": [
+      {
+        "label": "A",
+        "text": "MERCANCÍAS PELIGROSAS."
+      },
+      {
+        "label": "B",
+        "text": "MERCANCÍAS EXPLOSIVAS."
+      },
+      {
+        "label": "C",
+        "text": "MERCANCÍAS EXCEPTUADAS."
+      },
+      {
+        "label": "D",
+        "text": "MERCANCÍAS TRANSPORTADAS"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 155,
+    "text": "TODO OPERADOR DEBERÁ ESTABLECER Y MANTENER UN PROGRAMA DE INSTRUCCIÓN APROBADO POR LA DGAC EN MATERIA DE SEGURIDAD ANTE LOS ACTOS DE INTERFERENCIA ILÍCITA QUE CONTEMPLE:",
+    "options": [
+      {
+        "label": "A",
+        "text": "COMUNICACIÓN Y COORDINACIÓN DE LA TRIPULACIÓN."
+      },
+      {
+        "label": "B",
+        "text": "USO DE DISPOSITIVOS DE PROTECCIÓN QUE NO SEAN LETALES, ASIGNADOS A LOS MIEMBROS DE LA TRIPULACIÓN."
+      },
+      {
+        "label": "C",
+        "text": "DETERMINACIÓN DE LA GRAVEDAD DE CADA INCIDENTE."
+      },
+      {
+        "label": "D",
+        "text": "TODAS LAS RESPUESTAS SON CORRECTAS."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 156,
+    "text": "TRIPULACIÓN REFORZADA ES:",
+    "options": [
+      {
+        "label": "A",
+        "text": "TRIPULACIÓN REFORZADA A LA QUE SE ADICIONA EL RELEVO CORRESPONDIENTE CON EL PROPÓSITO DE CUBRIR UN VUELO EN EL QUE, POR SU DURACIÓN, EL PERÍODO DE SERVICIO DE VUELO EXCEDE EL MÁXIMO AUTORIZADO."
+      },
+      {
+        "label": "B",
+        "text": "TRIPULACIÓN MÍNIMA A LA QUE SE LE ADICIONAN MÁS TRIPULANTES, CON EL PROPÓSITO DE OTORGAR UN SERVICIO DE CALIDAD, DURANTE UN PERÍODO DE SERVICIO DE VUELO."
+      },
+      {
+        "label": "C",
+        "text": "TRIPULACIÓN A LA QUE SE LE ADICIONA EL RELEVO CORRESPONDIENTE, CON EL PROPÓSITO DE CUBRIR UNA SERIE DE VUELOS QUE DENTRO DEL PERÍODO DE SERVICIO DE VUELO"
+      },
+      {
+        "label": "D",
+        "text": "TRIPULACIÓN MÍNIMA A LA QUE SE ADICIONA UN NÚMERO DETERMINADO DE TRIPULANTES CON EL PROPÓSITO DE CUBRIR UN VUELO, EL QUE POR SU DURACIÓN, EL TIEMPO DE VUELO O EL PERÍODO DE SERVICIO DE VUELO EXCEDE EL MÁXIMO AUTORIZADO."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 157,
+    "text": "¿TRIPULANTES DE VUELO Y TRIPULANTES AUXILIARES SON DOS CONCEPTOS QUE INDICAN LO MISMO SEGÚN LA DAN 121, CAPÍTULO G?",
+    "options": [
+      {
+        "label": "A",
+        "text": "VERDADERO"
+      },
+      {
+        "label": "B",
+        "text": "FALSO"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 158,
+    "text": "UNA AERONAVE SERÁ AUTORIZADA PARA EL VUELO SOLO CON LA PREVIA EXPEDICIÓN DE UN CERTIFICADO DE AERONAVEGABILIDAD POR PARTE DE LA AUTORIDAD AERONÁUTICA.",
+    "options": [
+      {
+        "label": "A",
+        "text": "VERDADERO"
+      },
+      {
+        "label": "B",
+        "text": "FALSO"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 159,
+    "text": "UN AVIÓN DE TRANSPORTE COMERCIAL TIENE INSTALADOS 149 ASIENTOS PARA PASAJEROS Y 8 ASIENTOS PARA TRIPULANTES. ¿CUÁNTO ES EL MÍNIMO DE AUXILIARES DE CABINA REQUERIDOS CON 97 PASAJEROS A BORDO?",
+    "options": [
+      {
+        "label": "A",
+        "text": "CUATRO"
+      },
+      {
+        "label": "B",
+        "text": "TRES"
+      },
+      {
+        "label": "C",
+        "text": "DOS"
+      },
+      {
+        "label": "D",
+        "text": "CINCO"
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 160,
+    "text": "UNO DE LOS REQUISITOS QUE ESTABLECE LA REGLAMENTACIÓN PARA ABASTECER DE COMBUSTIBLE UN AVIÓN CON PASAJEROS A BORDO Y MOTORES DETENIDOS ES QUE:",
+    "options": [
+      {
+        "label": "A",
+        "text": "SE DISPONGA DE UN SISTEMA A PRESIÓN PARA EL CARGUÍO DE COMBUSTIBLE."
+      },
+      {
+        "label": "B",
+        "text": "SE UTILICE UN SISTEMA DE CARGUÍO DE COMBUSTIBLE POR GRAVEDAD."
+      },
+      {
+        "label": "C",
+        "text": "QUE TODA LA TRIPULACIÓN PERMANEZCA A BORDO DEL AVIÓN DURANTE EL CARGUÍO."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 161,
+    "text": "UN PASAJERO EN ESTADO DE EMBRIAGUEZ:",
+    "options": [
+      {
+        "label": "A",
+        "text": "SÓLO EMBARCARÁ SI LO AUTORIZA EL PILOTO AL MANDO."
+      },
+      {
+        "label": "B",
+        "text": "NO TIENE RESTRICCIÓN DE EMBARQUE SI VIAJA CON LA FAMILIA."
+      },
+      {
+        "label": "C",
+        "text": "TIENE PROHIBIDO EMBARCARSE EN EL AVIÓN DE ACUERDO CON DAN 121."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 162,
+    "text": "UN PASAJERO PUEDE TRANSPORTAR CONSIGO:",
+    "options": [
+      {
+        "label": "A",
+        "text": "ELEMENTOS DISCAPACITADORES"
+      },
+      {
+        "label": "B",
+        "text": "UN TERMÓMETRO CLÍNICO, EN SU ESTUCHE PROTECTOR."
+      },
+      {
+        "label": "C",
+        "text": "6 LITROS DE LICOR."
+      },
+      {
+        "label": "D",
+        "text": "CERILLAS DE ENCENDIDO UNIVERSAL."
+      }
+    ],
+    "correctIndex": 0
+  },
+  {
+    "id": 163,
+    "text": "UN TRIPULANTE DE CABINA DEBE CADA 12 MESES EFECTUAR INSTRUCCIÓN PERIÓDICA QUE CONTEMPLE A LO MENOS:",
+    "options": [
+      {
+        "label": "A",
+        "text": "PRÁCTICA DE EVACUACIÓN DE EMERGENCIA EN TIERRA Y AMARAJE DE EMERGENCIA."
+      },
+      {
+        "label": "B",
+        "text": "EFECTUAR LOS EJERCICIOS DE EMERGENCIA EN CADA TIPO DE SALIDA DE EMERGENCIA EN LA OPERACIÓN NORMAL Y DE EMERGENCIA."
+      },
+      {
+        "label": "C",
+        "text": "EFECTUAR LOS EJERCICIOS DE CADA TIPO DE EXTINTOR PORTÁTIL INSTALADO."
+      },
+      {
+        "label": "D",
+        "text": "TODAS LAS ANTERIORES SON CORRECTAS."
+      }
+    ],
+    "correctIndex": 0
+  }
+]
