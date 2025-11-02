@@ -5,16 +5,26 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Quiz - Emergencias2025</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 </head>
 <body>
+  <canvas id="confetti"></canvas>
   <main class="container">
-    <h1>Quiz — Emergencias2025</h1>
+    <header class="top">
+      <h1><span class="logo">📘</span> Quiz — Emergencias2025</h1>
+      <div class="meta">
+        <div id="timer" class="chip">⏱ 00:00</div>
+        <div id="theme-ind" class="chip" title="Tema automático">🌓</div>
+      </div>
+    </header>
 
-    <!-- Pantalla inicial para pedir nombre y apellido -->
-    <section id="welcome" class="card">
-      <h2 style="margin-top:0">Identifícate para comenzar</h2>
+    <!-- Pantalla inicial -->
+    <section id="welcome" class="card glass fade-in">
+      <h2 class="mt0">Identifícate para comenzar</h2>
       <div class="form-row">
         <label>
           Nombre
@@ -24,21 +34,23 @@
           Apellido
           <input id="last-name" type="text" placeholder="Tu apellido" autocomplete="family-name">
         </label>
-        <button id="btn-start" class="btn">Comenzar</button>
+        <button id="btn-start" class="btn primary">▶ Comenzar</button>
       </div>
       <div id="welcome-error" class="small muted"></div>
     </section>
 
-    <!-- Área del quiz (oculta hasta que se ingrese el nombre) -->
-    <section id="quiz-area" class="card hidden">
+    <!-- Área del quiz -->
+    <section id="quiz-area" class="card glass hidden">
       <div class="progress-row">
-        <div id="progress-text">Pregunta 0 / 0</div>
         <div class="progress">
           <div id="progress-bar" class="progress-fill" style="width:0%"></div>
         </div>
+        <div id="progress-text" class="muted small">Pregunta 0 / 0</div>
       </div>
 
-      <div id="question-card" class="question-card">
+      <div id="progress-steps" class="steps"></div>
+
+      <div id="question-card" class="question-card fade-in">
         <h2 id="question-title">—</h2>
         <div id="options" class="options"></div>
       </div>
@@ -49,9 +61,9 @@
           <div id="live-stats" class="live-stats">Correctas: 0 · Incorrectas: 0</div>
         </div>
         <div class="actions">
-          <button id="btn-prev" class="btn ghost" disabled>Anterior</button>
-          <button id="btn-next" class="btn" disabled data-state="next">Siguiente</button>
-          <div id="score" class="score">0 / 0</div>
+          <button id="btn-prev" class="btn ghost" disabled title="Atrás (Backspace)">⏮ Anterior</button>
+          <button id="btn-next" class="btn primary" disabled data-state="next" title="Siguiente (Enter)">⏭ Siguiente</button>
+          <div id="score" class="score" title="Aciertos / Total">0 / 0</div>
         </div>
       </div>
     </section>

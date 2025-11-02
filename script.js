@@ -1,5 +1,6 @@
 
 (() => {
+  // Elements
   const welcome = document.getElementById('welcome');
   const firstNameInput = document.getElementById('first-name');
   const lastNameInput = document.getElementById('last-name');
@@ -16,38 +17,78 @@
   const resultEl = document.getElementById('result');
   const liveStatsEl = document.getElementById('live-stats');
   const scoreEl = document.getElementById('score');
+  const stepsEl = document.getElementById('progress-steps');
+  const timerEl = document.getElementById('timer');
+  const confettiCanvas = document.getElementById('confetti');
+  const ctx = confettiCanvas.getContext('2d');
 
+  // State
   let firstName = '';
   let lastName = '';
-
+  let baseQuestions = [];
   let questions = [];
   let current = 0;
-  let selections = []; // guarda el TEXTO seleccionado por pregunta (para preservar al reordenar)
+  let selections = []; // guarda el TEXTO seleccionado por pregunta
+  let startTime = 0;
+  let timerId = null;
+  let particles = [];
 
-  // Cargar preguntas desde questions.json
+  // Resize confetti canvas
+  function sizeCanvas(){
+    confettiCanvas.width = window.innerWidth;
+    confettiCanvas.height = window.innerHeight;
+  }
+  sizeCanvas(); window.addEventListener('resize', sizeCanvas);
+
+  // Fetch questions
   fetch('questions.json', {cache:'no-store'})
     .then(r => r.ok ? r.json() : [])
-    .then(data => { questions = data || []; })
+    .then(data => { baseQuestions = Array.isArray(data) ? data : []; })
     .catch(() => {});
 
-  // Inicio del quiz tras capturar nombre/apellido
+  // Utilities
+  function shuffle(arr){
+    const a = arr.slice();
+    for(let i=a.length-1;i>0;i--){
+      const j = Math.floor(Math.random()*(i+1));
+      [a[i],a[j]] = [a[j],a[i]];
+    }
+    return a;
+  }
+  function pad(n){ return n.toString().padStart(2,'0'); }
+  function fmtTime(ms){
+    const s = Math.floor(ms/1000);
+    const m = Math.floor(s/60);
+    const sec = s%60;
+    return pad(m)+':'+pad(sec);
+  }
+
+  // Timer
+  function startTimer(){
+    startTime = Date.now();
+    timerId = setInterval(() => {
+      const elapsed = Date.now()-startTime;
+      timerEl.textContent = '⏱ ' + fmtTime(elapsed);
+    }, 250);
+  }
+  function stopTimer(){
+    if (timerId) { clearInterval(timerId); timerId = null; }
+  }
+
+  // Start
   startBtn.addEventListener('click', () => {
     const f = (firstNameInput.value || '').trim();
     const l = (lastNameInput.value || '').trim();
-    if (!f || !l) {
-      welcomeError.textContent = 'Por favor, escribe tu nombre y apellido.';
-      return;
-    }
+    if (!f || !l) { welcomeError.textContent = 'Por favor, escribe tu nombre y apellido.'; return; }
     firstName = f; lastName = l;
     welcome.classList.add('hidden');
-    startQuiz();
+    startQuiz(true);
   });
 
   btnPrev.addEventListener('click', () => {
     if (current > 0) { current--; renderQuestion(true); }
   });
 
-  // Un solo handler para "Siguiente"/"Ver resultados"
   btnNext.addEventListener('click', () => {
     if (btnNext.disabled) return;
     const state = btnNext.getAttribute('data-state') || 'next';
@@ -55,21 +96,69 @@
     if (current < questions.length - 1) { current++; renderQuestion(); }
   });
 
-  function startQuiz() {
-    if (!questions.length) {
+  // Keyboard navigation: 1-5 / A-E select; Enter next; Backspace prev
+  window.addEventListener('keydown', (e) => {
+    if (quizArea.classList.contains('hidden')) return;
+    const key = e.key.toLowerCase();
+    const buttons = Array.from(optionsEl.querySelectorAll('.option-btn'));
+    if (buttons.length){
+      const map = {'1':0,'2':1,'3':2,'4':3,'5':4,'a':0,'b':1,'c':2,'d':3,'e':4};
+      if (key in map){
+        const idx = map[key];
+        if (buttons[idx] && !buttons[idx].classList.contains('disabled')) {
+          buttons[idx].click();
+          e.preventDefault();
+          return;
+        }
+      }
+    }
+    if (key === 'enter'){
+      if (!btnNext.disabled) btnNext.click();
+      e.preventDefault();
+    } else if (key === 'backspace'){
+      if (!btnPrev.disabled) btnPrev.click();
+      e.preventDefault();
+    }
+  });
+
+  function startQuiz(shuffleQuestions=false){
+    if (!baseQuestions.length){
+      questions = [];
       quizArea.classList.remove('hidden');
       questionTitle.textContent = 'No hay preguntas disponibles. Agrega un questions.json.';
       optionsEl.innerHTML = '';
-      setNextState('next', true, 'Siguiente');
+      setNextState('next', true, '⏭ Siguiente');
       btnPrev.disabled = true;
       progressBar.style.width = '0%'; progressText.textContent = 'Pregunta 0 / 0';
       scoreEl.textContent = '0 / 0'; liveStatsEl.textContent = 'Correctas: 0 · Incorrectas: 0';
+      stepsEl.innerHTML = '';
       return;
     }
+    questions = shuffleQuestions ? shuffle(baseQuestions) : baseQuestions.slice();
     current = 0;
     selections = new Array(questions.length).fill(null);
+    buildSteps();
     quizArea.classList.remove('hidden');
+    startTimer();
     renderQuestion();
+  }
+
+  function buildSteps(){
+    stepsEl.innerHTML = '';
+    for (let i=0;i<questions.length;i++){
+      const s = document.createElement('div');
+      s.className = 'step';
+      s.title = 'Pregunta ' + (i+1);
+      stepsEl.appendChild(s);
+    }
+  }
+
+  function updateSteps(){
+    const steps = Array.from(stepsEl.querySelectorAll('.step'));
+    steps.forEach((el, i) => {
+      el.classList.toggle('active', i === current);
+      el.classList.toggle('done', selections[i] !== null);
+    });
   }
 
   function counts(){
@@ -82,26 +171,22 @@
     return { correct, incorrect, totalAnswered };
   }
 
-  // Fisher-Yates shuffle
-  function shuffle(arr){
-    const a = arr.slice();
-    for(let i=a.length-1;i>0;i--){
-      const j = Math.floor(Math.random()*(i+1));
-      [a[i],a[j]] = [a[j],a[i]];
-    }
-    return a;
-  }
-
-  function renderQuestion(showAsAnswered=false) {
+  function renderQuestion(showAsAnswered=false){
     const item = questions[current];
     questionTitle.textContent = item.question;
 
-    // Crear pares {text, correct} y mezclarlos SIEMPRE
+    // fade-in
+    const card = document.getElementById('question-card');
+    card.classList.remove('fade-in');
+    void card.offsetWidth; // reflow
+    card.classList.add('fade-in');
+
+    // Shuffle options each render
     const entries = item.options.map((t, i) => ({ text: t, correct: i === item.answerIndex }));
     const mixed = shuffle(entries);
 
     optionsEl.innerHTML = '';
-    mixed.forEach((entry, i) => {
+    mixed.forEach((entry) => {
       const btn = document.createElement('button');
       btn.className = 'option-btn';
       btn.type = 'button';
@@ -118,12 +203,12 @@
     resultEl.textContent = '';
     btnPrev.disabled = current === 0;
 
-    // Contadores
     const {correct, incorrect} = counts();
     scoreEl.textContent = correct + ' / ' + questions.length;
     liveStatsEl.textContent = 'Correctas: ' + correct + ' · Incorrectas: ' + incorrect;
 
-    // Si ya respondió esta, reflejar su selección incluso con orden mezclado
+    updateSteps();
+
     const selText = selections[current];
     if (selText !== null || showAsAnswered) {
       const buttons = Array.from(optionsEl.querySelectorAll('.option-btn'));
@@ -134,18 +219,17 @@
         const selectedBtn = buttons.find(b => b.innerHTML === selText);
         if (selectedBtn && selectedBtn.dataset.correct !== '1') selectedBtn.classList.add('incorrect');
       }
-      // Habilitar siguiente
       if (current === questions.length - 1 && selText !== null) {
-        setNextState('results', false, 'Ver resultados');
+        setNextState('results', false, '📊 Ver resultados');
       } else {
-        setNextState('next', selText === null, 'Siguiente');
+        setNextState('next', selText === null, '⏭ Siguiente');
       }
     } else {
-      setNextState('next', true, 'Siguiente');
+      setNextState('next', true, '⏭ Siguiente');
     }
   }
 
-  function onSelect(ev) {
+  function onSelect(ev){
     const btn = ev.currentTarget;
     const isCorrect = btn.dataset.correct === '1';
     const selectedText = btn.innerHTML;
@@ -158,24 +242,23 @@
 
     if (isCorrect) {
       btn.classList.add('correct');
-      resultEl.textContent = 'Correcto ✅';
+      resultEl.textContent = '✅ Correcto';
     } else {
       btn.classList.add('incorrect');
       if (correctBtn) correctBtn.classList.add('correct');
-      // Mostrar texto correcto desde datos originales
       const correctText = questions[current].options[questions[current].answerIndex] || '';
-      resultEl.textContent = 'Incorrecto, la respuesta correcta es: ' + correctText;
+      resultEl.textContent = '❌ Incorrecto — La correcta es: ' + correctText;
     }
 
     const {correct, incorrect} = counts();
     scoreEl.textContent = correct + ' / ' + questions.length;
     liveStatsEl.textContent = 'Correctas: ' + correct + ' · Incorrectas: ' + incorrect;
+    updateSteps();
 
-    // Habilitar "Siguiente" o "Ver resultados"
     if (current === questions.length - 1) {
-      setNextState('results', false, 'Ver resultados');
+      setNextState('results', false, '📊 Ver resultados');
     } else {
-      setNextState('next', false, 'Siguiente');
+      setNextState('next', false, '⏭ Siguiente');
     }
   }
 
@@ -185,28 +268,42 @@
     btnNext.textContent = label;
   }
 
-  function showSummary() {
+  function showSummary(){
+    stopTimer();
     const {correct, incorrect} = counts();
     const total = questions.length || 1;
     const pct = Math.round((correct / total) * 100);
-    const radius = 70;
+    const elapsed = Date.now()-startTime;
+
+    // confetti if >=80
+    if (pct >= 80) fireConfetti();
+
+    // animated donut (stroke-dashoffset animation via CSS/JS)
+    const radius = 80;
     const circumference = 2 * Math.PI * radius;
     const dash = (pct/100) * circumference;
     const gap = circumference - dash;
 
     const summaryHTML = `
       <div class="summary">
-        <svg class="donut" viewBox="0 0 180 180" width="180" height="180" aria-label="Resumen">
-          <circle cx="90" cy="90" r="${radius}" fill="none" stroke="#e5e7eb" stroke-width="18"></circle>
-          <circle cx="90" cy="90" r="${radius}" fill="none" stroke="#10b981" stroke-width="18"
-                  stroke-dasharray="${dash} ${gap}" transform="rotate(-90 90 90)"></circle>
-          <text x="90" y="90">${pct}%</text>
+        <svg class="donut" viewBox="0 0 220 220" width="220" height="220" aria-label="Resumen">
+          <defs>
+            <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#60a5fa"/>
+              <stop offset="100%" stop-color="#1d4ed8"/>
+            </linearGradient>
+          </defs>
+          <circle cx="110" cy="110" r="${radius}" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="18"></circle>
+          <circle id="donut-fill" cx="110" cy="110" r="${radius}" fill="none" stroke="url(#grad)" stroke-width="18"
+                  stroke-dasharray="${circumference}" stroke-dashoffset="${circumference}"
+                  transform="rotate(-90 110 110)" style="transition: stroke-dashoffset 900ms ease"></circle>
+          <text x="110" y="105">${pct}%</text>
+          <text x="110" y="135" style="font-size:12px; fill: var(--muted);">${correct}/${total} correctas</text>
         </svg>
-        <div class="muted">Resumen: ${correct} correctas de ${total} preguntas</div>
-        <div class="muted">Incorrectas: ${incorrect}</div>
+        <div class="muted">Tiempo total: ${fmtTime(elapsed)}</div>
         <div class="buttons">
-          <button id="btn-download" class="btn">Descargar respuestas</button>
-          <button id="btn-retry" class="btn ghost">Volver a intentar</button>
+          <button id="btn-download" class="btn primary">📥 Descargar respuestas</button>
+          <button id="btn-retry" class="btn ghost">🔁 Volver a intentar</button>
         </div>
       </div>
     `;
@@ -214,21 +311,33 @@
     optionsEl.innerHTML = summaryHTML;
     resultEl.textContent = '';
     btnPrev.disabled = true;
-    setNextState('next', true, 'Siguiente'); // bloquear el next en el resumen
+    setNextState('next', true, '⏭ Siguiente');
     progressBar.style.width = '100%';
     progressText.textContent = 'Finalizado';
     scoreEl.textContent = correct + ' / ' + total;
+    updateSteps();
 
-    document.getElementById('btn-download').addEventListener('click', downloadResultsXLSX);
+    // animate donut after insertion
+    requestAnimationFrame(() => {
+      const donut = document.getElementById('donut-fill');
+      if (donut) donut.style.strokeDashoffset = String(circumference - dash);
+    });
+
+    document.getElementById('btn-download').addEventListener('click', () => downloadResultsXLSX(elapsed));
     document.getElementById('btn-retry').addEventListener('click', () => {
       welcome.classList.remove('hidden');
       quizArea.classList.add('hidden');
+      // keep name or clear? we'll keep for speed; user can edit
     });
   }
 
-  function downloadResultsXLSX(){
-    const rows = [['Nombre', 'Apellido', '', '', ''], [firstName, lastName, '', '', ''], [],
-                  ['N°','Pregunta','Respuesta seleccionada','Respuesta correcta','¿Acertó?']];
+  function downloadResultsXLSX(elapsedMs){
+    const rows = [
+      ['Nombre','Apellido','Tiempo total','',''],
+      [firstName,lastName,fmtTime(elapsedMs),'',''],
+      [],
+      ['N°','Pregunta','Respuesta seleccionada','Respuesta correcta','¿Acertó?']
+    ];
     selections.forEach((sel, i) => {
       const q = questions[i];
       const selText = sel !== null ? sel : '';
@@ -240,5 +349,41 @@
     const ws = XLSX.utils.aoa_to_sheet(rows);
     XLSX.utils.book_append_sheet(wb, ws, 'Resultados');
     XLSX.writeFile(wb, 'resultado_quiz.xlsx');
+  }
+
+  // confetti simple
+  function fireConfetti(){
+    particles = [];
+    const colors = ['#60a5fa','#1d4ed8','#93c5fd','#22c55e','#f59e0b'];
+    for (let i=0;i<180;i++){
+      particles.push({
+        x: Math.random()*confettiCanvas.width,
+        y: -10 - Math.random()*confettiCanvas.height*0.5,
+        r: 2 + Math.random()*4,
+        c: colors[Math.floor(Math.random()*colors.length)],
+        vx: (Math.random()-0.5)*2,
+        vy: 2 + Math.random()*4,
+        a: 0.8 + Math.random()*0.2
+      });
+    }
+    let t = 0;
+    const maxT = 200;
+    function step(){
+      ctx.clearRect(0,0,confettiCanvas.width,confettiCanvas.height);
+      particles.forEach(p => {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.02;
+        ctx.globalAlpha = p.a;
+        ctx.fillStyle = p.c;
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fill();
+      });
+      ctx.globalAlpha = 1;
+      t++;
+      if (t<maxT) requestAnimationFrame(step);
+    }
+    step();
   }
 })();
