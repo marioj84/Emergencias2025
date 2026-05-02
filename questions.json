@@ -1,42 +1,22 @@
 [
   {
-    "question": "Mi nombre",
-    "options": [
-      "Mario",
-      "Jose",
-      "Eduardo",
-      "Rafael",
-      "Carlos"
-    ],
-    "answerIndex": 0
-  },
-  {
-    "question": "Mi Apellido",
-    "options": [
-      "Sanchez",
-      "Jaimes",
-      "Agüero",
-      "Alvarez",
-      "Martinez"
-    ],
+    "question": "¿Cómo calificas la limpieza de tu colonia?",
+    "options": ["Muy buena", "Buena", "Regular", "Mala"],
     "answerIndex": 1
   },
   {
-    "question": "Mi Edad",
-    "options": [
-      "32",
-      "45",
-      "21",
-      "41"
-    ],
-    "answerIndex": 3
+    "question": "¿Con qué frecuencia usas transporte público?",
+    "options": ["Diario", "3-4 veces por semana", "1-2 veces por semana", "Casi nunca"],
+    "answerIndex": 0
   },
   {
-    "question": "Mi Genero",
-    "options": [
-      "Masculino",
-      "Femenino"
-    ],
-    "answerIndex": 0
+    "question": "¿Te sientes seguro/a al caminar de noche en tu zona?",
+    "options": ["Siempre", "Casi siempre", "A veces", "Nunca"],
+    "answerIndex": 2
+  },
+  {
+    "question": "¿Cuál es el principal problema que te gustaría resolver primero?",
+    "options": ["Baches", "Alumbrado", "Basura", "Seguridad"],
+    "answerIndex": 3
   }
 ]

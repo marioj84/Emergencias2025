@@ -1,10 +1,9 @@
-
 <!doctype html>
 <html lang="es">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Quiz - SKY · Prueba</title>
+  <title>Encuestas en Calle · Captura Rápida</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
@@ -15,37 +14,37 @@
   <canvas id="confetti"></canvas>
   <main class="container">
     <header class="top">
-      <h1><span class="logo">📘</span> SKY · Quiz</h1>
+      <h1><span class="logo">📝</span> Encuestas en Calle</h1>
       <div class="meta">
         <div id="timer" class="chip">⏱ 00:00</div>
         <div id="theme-ind" class="chip" title="Tema automático">🌓</div>
       </div>
     </header>
 
-    <!-- Pantalla inicial -->
     <section id="welcome" class="card glass fade-in">
-      <h2 class="mt0">Selecciona módulo e identifícate</h2>
+      <h2 class="mt0">Configura tu levantamiento</h2>
       <div class="form-row">
         <label>
-          Módulo
+          Campaña
           <select id="module-select">
-            <option value="SKY · Prueba 1" selected>SKY · Prueba 1</option>
+            <option value="Satisfacción de servicios" selected>Satisfacción de servicios</option>
+            <option value="Movilidad urbana">Movilidad urbana</option>
+            <option value="Percepción de seguridad">Percepción de seguridad</option>
           </select>
         </label>
         <label>
-          Nombre
-          <input id="first-name" type="text" placeholder="Tu nombre" autocomplete="given-name">
+          Encuestador/a
+          <input id="first-name" type="text" placeholder="Nombre" autocomplete="given-name">
         </label>
         <label>
           Apellido
-          <input id="last-name" type="text" placeholder="Tu apellido" autocomplete="family-name">
+          <input id="last-name" type="text" placeholder="Apellido" autocomplete="family-name">
         </label>
-        <button id="btn-start" class="btn primary">▶ Comenzar</button>
+        <button id="btn-start" class="btn primary">▶ Iniciar encuesta</button>
       </div>
       <div id="welcome-error" class="small muted"></div>
     </section>
 
-    <!-- Área del quiz -->
     <section id="quiz-area" class="card glass hidden">
       <div class="progress-row">
         <div class="progress">
@@ -64,12 +63,12 @@
       <div class="footer">
         <div class="left">
           <div id="result" class="result muted"></div>
-          <div id="live-stats" class="live-stats">Correctas: 0 · Incorrectas: 0</div>
+          <div id="live-stats" class="live-stats">Respondidas: 0 · Pendientes: 0</div>
         </div>
         <div class="actions">
           <button id="btn-prev" class="btn ghost" disabled title="Atrás (Backspace)">⏮ Anterior</button>
           <button id="btn-next" class="btn primary" disabled data-state="next" title="Siguiente (Enter)">⏭ Siguiente</button>
-          <div id="score" class="score" title="Aciertos / Total">0 / 0</div>
+          <div id="score" class="score" title="Respondidas / Total">0 / 0</div>
         </div>
       </div>
     </section>
