@@ -28,7 +28,7 @@
   // ====== ESTADO ======
   let firstName = '';
   let lastName = '';
-  let selModule = 'SKY · Prueba 1';
+  let selModule = 'Satisfacción de servicios';
 
   let baseQuestions = [];
   let questions = [];
@@ -92,8 +92,8 @@
   startBtn.addEventListener('click', () => {
     const f = (firstNameInput.value || '').trim();
     const l = (lastNameInput.value || '').trim();
-    selModule = moduleSelect ? (moduleSelect.value || 'SKY · Prueba 1') : 'SKY · Prueba 1';
-    if (!f || !l) { welcomeError.textContent = 'Por favor, escribe tu nombre y apellido.'; return; }
+    selModule = moduleSelect ? (moduleSelect.value || 'Satisfacción de servicios') : 'Satisfacción de servicios';
+    if (!f || !l) { welcomeError.textContent = 'Por favor, escribe nombre y apellido del encuestador.'; return; }
     firstName = f; lastName = l;
     welcome.classList.add('hidden');
     startQuiz(true);
@@ -145,7 +145,7 @@
       setNextState('next', true, '⏭ Siguiente');
       btnPrev.disabled = true;
       progressBar.style.width = '0%'; progressText.textContent = 'Pregunta 0 / 0';
-      scoreEl.textContent = '0 / 0'; liveStatsEl.textContent = 'Correctas: 0 · Incorrectas: 0';
+      scoreEl.textContent = '0 / 0'; liveStatsEl.textContent = 'Respondidas: 0 · Pendientes: 0';
       stepsEl.innerHTML = '';
       return;
     }
@@ -181,12 +181,8 @@
 
   function counts(){
     const totalAnswered = selections.filter(x => x !== null).length;
-    let correct = 0;
-    selections.forEach((sel, i) => {
-      if (sel !== null && sel === questions[i].options[questions[i].answerIndex]) correct++;
-    });
-    const incorrect = totalAnswered - correct;
-    return { correct, incorrect, totalAnswered };
+    const pending = Math.max(questions.length - totalAnswered, 0);
+    return { totalAnswered, pending };
   }
 
   function renderQuestion(showAsAnswered=false){
@@ -217,9 +213,9 @@
     resultEl.textContent = '';
     btnPrev.disabled = current === 0;
 
-    const {correct, incorrect} = counts();
-    scoreEl.textContent = correct + ' / ' + questions.length;
-    liveStatsEl.textContent = 'Correctas: ' + correct + ' · Incorrectas: ' + incorrect;
+    const {totalAnswered, pending} = counts();
+    scoreEl.textContent = totalAnswered + ' / ' + questions.length;
+    liveStatsEl.textContent = 'Respondidas: ' + totalAnswered + ' · Pendientes: ' + pending;
 
     updateSteps();
     questionStart = Date.now();
@@ -231,11 +227,9 @@
     if (selText !== null || showAsAnswered) {
       const buttons = Array.from(optionsEl.querySelectorAll('.option-btn'));
       buttons.forEach(b => b.classList.add('disabled'));
-      const correctBtn = buttons.find(b => b.dataset.correct === '1');
-      if (correctBtn) correctBtn.classList.add('correct');
       if (selText !== null) {
         const selectedBtn = buttons.find(b => b.innerHTML === selText);
-        if (selectedBtn && selectedBtn.dataset.correct !== '1') selectedBtn.classList.add('incorrect');
+        if (selectedBtn) selectedBtn.classList.add('correct');
       }
       if (current === questions.length - 1 && selText !== null) {
         setNextState('results', false, '📊 Ver resultados');
@@ -249,25 +243,17 @@
 
   function onSelect(ev){
     const btn = ev.currentTarget;
-    const isCorrect = btn.dataset.correct === '1';
+    const isPreferred = btn.dataset.correct === '1';
     const selectedText = btn.innerHTML;
     if (selections[current] !== null) return;
     selections[current] = selectedText;
 
     const buttons = Array.from(optionsEl.querySelectorAll('.option-btn'));
     buttons.forEach(b => b.classList.add('disabled'));
-    const correctBtn = buttons.find(b => b.dataset.correct === '1');
-
     const correctText = questions[current].options[questions[current].answerIndex] || '';
 
-    if (isCorrect) {
-      btn.classList.add('correct');
-      resultEl.textContent = '✅ Correcto';
-    } else {
-      btn.classList.add('incorrect');
-      if (correctBtn) correctBtn.classList.add('correct');
-      resultEl.textContent = '❌ Incorrecto — La correcta es: ' + correctText;
-    }
+    btn.classList.add('correct');
+    resultEl.textContent = '✅ Respuesta registrada';
 
     const timeMs = Date.now() - questionStart;
     details.push({
@@ -279,14 +265,14 @@
       question: questions[current].question,
       selected: selectedText,
       correctAnswer: correctText,
-      isCorrect: isCorrect ? 1 : 0,
+      isPreferred: isPreferred ? 1 : 0,
       timeMs,
       timestamp: new Date().toISOString()
     });
 
-    const {correct, incorrect} = counts();
-    scoreEl.textContent = correct + ' / ' + questions.length;
-    liveStatsEl.textContent = 'Correctas: ' + correct + ' · Incorrectas: ' + incorrect;
+    const {totalAnswered, pending} = counts();
+    scoreEl.textContent = totalAnswered + ' / ' + questions.length;
+    liveStatsEl.textContent = 'Respondidas: ' + totalAnswered + ' · Pendientes: ' + pending;
     updateSteps();
 
     if (current === questions.length - 1) {
@@ -304,12 +290,12 @@
 
   function showSummary(){
     stopTimer();
-    const {correct} = counts();
+    const {totalAnswered} = counts();
     const total = questions.length || 1;
-    const pct = Math.round((correct / total) * 100);
+    const pct = Math.round((totalAnswered / total) * 100);
     const elapsed = Date.now()-startTime;
 
-    if (pct >= 80) fireConfetti();
+    if (pct >= 100) fireConfetti();
 
     const radius = 80;
     const dash = (pct/100) * (2 * Math.PI * radius);
@@ -328,7 +314,7 @@
                   stroke-dasharray="${2*Math.PI*radius}" stroke-dashoffset="${2*Math.PI*radius}"
                   transform="rotate(-90 110 110)" style="transition: stroke-dashoffset 900ms ease"></circle>
           <text x="110" y="105">${pct}%</text>
-          <text x="110" y="135" style="font-size:12px; fill: var(--muted);">${correct}/${total} correctas</text>
+          <text x="110" y="135" style="font-size:12px; fill: var(--muted);">${totalAnswered}/${total} respondidas</text>
         </svg>
         <div class="muted">Tiempo total: ${fmtTime(elapsed)}</div>
         <div class="buttons">
@@ -348,7 +334,7 @@
 
     progressBar.style.width = '100%';
     progressText.textContent = 'Finalizado';
-    scoreEl.textContent = correct + ' / ' + total;
+    scoreEl.textContent = totalAnswered + ' / ' + total;
     updateSteps();
 
     requestAnimationFrame(() => {
@@ -363,7 +349,7 @@
       firstName,
       lastName,
       scorePct: pct,
-      correct,
+      answered: totalAnswered,
       total,
       elapsedMs: elapsed,
       timestamp: new Date().toISOString()
@@ -387,7 +373,7 @@
       ['Módulo','Nombre','Apellido','Tiempo total','Intento'],
       [selModule, firstName,lastName,fmtTime(elapsedMs),attemptId],
       [],
-      ['N°','Pregunta','Respuesta seleccionada','Respuesta correcta','¿Acertó?','Tiempo (ms)']
+      ['N°','Pregunta','Respuesta seleccionada','Opción de referencia','Coincide referencia','Tiempo (ms)']
     ];
     selections.forEach((sel, i) => {
       const q = questions[i];
